@@ -1,13 +1,18 @@
 <template>
-  <div class="dashboard-header">
-    <div class="student-info">
-      <h1 class="welcome-text">Welcome, {{ studentName }}</h1>
-      <p class="matric-number">{{ matricNumber }}</p>
+  <section class="dashboard-hero">
+    <div class="hero-content">
+      <div class="avatar">
+        {{ initials }}
+      </div>
+      <div class="hero-text">
+        <h1>Welcome, <span class="student-name">{{ studentName }}</span></h1>
+        <div class="student-id">{{ matricNumber }}</div>
+      </div>
+      <div class="semester-pill">
+        {{ currentSemester }}
+      </div>
     </div>
-    <div class="semester-info">
-      <span class="semester-badge">{{ currentSemester }}</span>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -16,61 +21,110 @@ export default {
   props: {
     studentName: {
       type: String,
-      required: true,
       default: "Student",
     },
     matricNumber: {
       type: String,
-      required: true,
       default: "",
     },
     currentSemester: {
       type: String,
-      required: true,
       default: "",
+    },
+  },
+  computed: {
+    initials() {
+      if (!this.studentName) return "S";
+      const parts = this.studentName.split(" ");
+      return parts.length > 1
+        ? parts[0][0] + parts[1][0]
+        : parts[0][0];
     },
   },
 };
 </script>
 
 <style scoped>
-.dashboard-header {
+.dashboard-hero {
+  width: 100%;
+  border-radius: 1.5rem;
+  background: linear-gradient(90deg, #6366f1 0%, #a21caf 100%);
+  color: #fff;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 24px 0 rgba(99, 102, 241, 0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 30px;
-  border-radius: 16px;
-  color: white;
+  min-height: 160px;
 }
-
-.welcome-text {
-  font-size: 2rem;
+.hero-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
+  box-shadow: 0 2px 12px 0 rgba(99, 102, 241, 0.15);
+}
+.hero-text {
+  flex: 1;
+}
+.hero-text h1 {
+  font-size: 2.1rem;
   font-weight: 700;
-  margin: 0;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -1px;
 }
-
-.matric-number {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  margin: 5px 0 0 0;
+.student-name {
+  font-weight: 800;
+  letter-spacing: 0.5px;
 }
-
-.semester-badge {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 8px 16px;
-  border-radius: 20px;
+.student-id {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-top: 0.2rem;
+}
+.semester-pill {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
   font-weight: 600;
-  backdrop-filter: blur(10px);
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  padding: 0.6rem 1.5rem;
+  position: absolute;
+  right: 0;
+  top: 1.5rem;
+  box-shadow: 0 2px 8px 0 rgba(99, 102, 241, 0.10);
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .dashboard-header {
+@media (max-width: 700px) {
+  .dashboard-hero {
     flex-direction: column;
-    gap: 16px;
-    text-align: center;
+    padding: 1.5rem 1rem 1rem 1rem;
+    min-height: 120px;
+  }
+  .hero-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .avatar {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  .semester-pill {
+    position: static;
+    margin-top: 1rem;
+    align-self: flex-end;
   }
 }
 </style>

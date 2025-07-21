@@ -1,49 +1,51 @@
 <template>
-  <div class="student-dashboard">
-    <!-- Dashboard Header -->
-    <DashboardHeader
-      :student-name="studentInfo.name"
-      :matric-number="studentInfo.matricNumber"
-      :current-semester="studentInfo.currentSemester"
-    />
+  <div class="dashboard-outer">
+    <div class="dashboard-panel">
+      <!-- Dashboard Header -->
+      <DashboardHeader
+        :student-name="studentInfo.name"
+        :matric-number="studentInfo.matricNumber"
+        :current-semester="studentInfo.currentSemester"
+      />
 
-    <!-- Stats Grid -->
-    <StatsGrid
-      :overall-g-p-a="academicStats.overallGPA"
-      :gpa-change="academicStats.gpaChange"
-      :enrolled-courses-count="academicStats.enrolledCoursesCount"
-      :class-rank="academicStats.classRank"
-      :total-students="academicStats.totalStudents"
-      :percentile="academicStats.percentile"
-    />
+      <!-- Stats Grid -->
+      <StatsGrid
+        :overall-g-p-a="academicStats.overallGPA"
+        :gpa-change="academicStats.gpaChange"
+        :enrolled-courses-count="academicStats.enrolledCoursesCount"
+        :class-rank="academicStats.classRank"
+        :total-students="academicStats.totalStudents"
+        :percentile="academicStats.percentile"
+      />
 
-    <!-- Course Performance Section -->
-    <CoursePerformanceSection
-      :courses="courses"
-      :loading="loadingCourses"
-      @view-all-courses="handleViewAllCourses"
-      @course-details="handleCourseDetails"
-    />
+      <!-- Course Performance Section -->
+      <CoursePerformanceSection
+        :courses="courses"
+        :loading="loadingCourses"
+        @view-all-courses="handleViewAllCourses"
+        @course-details="handleCourseDetails"
+      />
 
-    <!-- Quick Actions Section -->
-    <QuickActionsSection @action-clicked="handleActionClick" />
+      <!-- Quick Actions Section -->
+      <QuickActionsSection @action-clicked="handleActionClick" />
 
-    <!-- Recent Activity Section -->
-    <RecentActivitySection
-      :activities="recentActivities"
-      :loading="loadingActivities"
-      @activity-action="handleActivityAction"
-    />
+      <!-- Recent Activity Section -->
+      <RecentActivitySection
+        :activities="recentActivities"
+        :loading="loadingActivities"
+        @activity-action="handleActivityAction"
+      />
 
-    <!-- Loading Overlay -->
-    <div v-if="loading" class="loading-overlay">
-      <div class="loading-spinner">Loading...</div>
-    </div>
+      <!-- Loading Overlay -->
+      <div v-if="loading" class="loading-overlay">
+        <div class="loading-spinner">Loading...</div>
+      </div>
 
-    <!-- Error Message -->
-    <div v-if="error" class="error-message">
-      <p>{{ error }}</p>
-      <button @click="retryLoadData">Retry</button>
+      <!-- Error Message -->
+      <div v-if="error" class="error-message">
+        <p>{{ error }}</p>
+        <button @click="retryLoadData">Retry</button>
+      </div>
     </div>
   </div>
 </template>
@@ -369,13 +371,32 @@ export default {
 </script>
 
 <style scoped>
-.student-dashboard {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #f8fafc;
+.dashboard-outer {
+  width: 100vw;
   min-height: 100vh;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: transparent;
+}
+.dashboard-panel {
+  background: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(60, 60, 60, 0.10);
+  max-width: 1100px;
+  width: 100%;
+  margin: 3rem 0 2rem 0;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 80vh;
+}
+@media (max-width: 1200px) {
+  .dashboard-panel {
+    max-width: 98vw;
+    padding: 1.5rem 0.5rem 1rem 0.5rem;
+  }
 }
 
 .loading-overlay {
