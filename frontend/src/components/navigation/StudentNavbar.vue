@@ -10,23 +10,23 @@
     </div>
     <nav class="sidebar-nav">
       <router-link to="/student/dashboard" class="sidebar-link" :class="{ active: $route.path === '/student/dashboard' }">
-        <span class="sidebar-icon">🏠</span>
+       <Home class="sidebar-icon" />
         <span v-if="!isCollapsed" class="sidebar-text">Dashboard</span>
       </router-link>
       <router-link to="/student/performance-comparison" class="sidebar-link" :class="{ active: $route.path === '/student/performance-comparison' }">
-        <span class="sidebar-icon">📊</span>
+       <BarChart2 class="sidebar-icon" />
         <span v-if="!isCollapsed" class="sidebar-text">Compare</span>
       </router-link>
       <router-link to="/student/performance-trends" class="sidebar-link" :class="{ active: $route.path === '/student/performance-trends' }">
-        <span class="sidebar-icon">📈</span>
+       <TrendingUp class="sidebar-icon" />
         <span v-if="!isCollapsed" class="sidebar-text">Trends</span>
       </router-link>
       <router-link to="/student/what-if-simulator" class="sidebar-link" :class="{ active: $route.path === '/student/what-if-simulator' }">
-        <span class="sidebar-icon">🎯</span>
+    <Crosshair class="sidebar-icon" />
         <span v-if="!isCollapsed" class="sidebar-text">Simulator</span>
       </router-link>
       <router-link to="/student/profile" class="sidebar-link" :class="{ active: $route.path === '/student/profile' }">
-        <span class="sidebar-icon">👤</span>
+       <User class="sidebar-icon" />
         <span v-if="!isCollapsed" class="sidebar-text">Profile</span>
       </router-link>
     </nav>
@@ -41,8 +41,17 @@
 </template>
 
 <script>
+import { Home, BarChart2, TrendingUp, Crosshair, User } from 'lucide-vue-next';
+
 export default {
   name: "StudentNavbar",
+  components: {
+  Home,
+  BarChart2,
+  TrendingUp,
+  Crosshair,
+  User,
+},
   data() {
     return {
       isCollapsed: false,

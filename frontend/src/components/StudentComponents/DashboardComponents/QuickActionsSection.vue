@@ -1,65 +1,43 @@
 <template>
   <div class="quick-actions-section">
-    <h2>Quick Actions</h2>
-    <div class="action-buttons">
-      <ActionCard
-        v-for="action in actions"
-        :key="action.id"
-        :action="action"
-        @action-clicked="handleActionClick"
-      />
+    <div class="quick-actions-grid">
+      <div class="quick-action-card" @click="$emit('action-clicked', 'simulator')">
+        <Target class="quick-action-icon" />
+        <div class="quick-action-content">
+          <h4>What-If Simulator</h4>
+          <p>Predict your final grades</p>
+        </div>
+      </div>
+      <div class="quick-action-card" @click="$emit('action-clicked', 'compare')">
+        <BarChart2 class="quick-action-icon" />
+        <div class="quick-action-content">
+          <h4>Compare Performance</h4>
+          <p>See how you rank</p>
+        </div>
+      </div>
+      <div class="quick-action-card" @click="$emit('action-clicked', 'remark')">
+        <FileText class="quick-action-icon" />
+        <div class="quick-action-content">
+          <h4>Request Remark</h4>
+          <p>Appeal assessment marks</p>
+        </div>
+      </div>
+      <div class="quick-action-card" @click="$emit('action-clicked', 'trends')">
+        <LineChart class="quick-action-icon" />
+        <div class="quick-action-content">
+          <h4>Performance Trends</h4>
+          <p>Track your progress</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import ActionCard from "./ActionCard.vue";
-
+import { Target, BarChart2, FileText, LineChart } from 'lucide-vue-next';
 export default {
   name: "QuickActionsSection",
-  components: {
-    ActionCard,
-  },
-  data() {
-    return {
-      actions: [
-        {
-          id: "what-if",
-          icon: "🎯",
-          title: "What-If Simulator",
-          description: "Predict your final grades",
-          route: "/what-if-simulator",
-        },
-        {
-          id: "compare",
-          icon: "📊",
-          title: "Compare Performance",
-          description: "See how you rank",
-          route: "/performance-comparison",
-        },
-        {
-          id: "remark",
-          icon: "📝",
-          title: "Request Remark",
-          description: "Appeal assessment marks",
-          route: "/remark-request",
-        },
-        {
-          id: "trends",
-          icon: "📈",
-          title: "Performance Trends",
-          description: "Track your progress",
-          route: "/performance-trends",
-        },
-      ],
-    };
-  },
-  emits: ["action-clicked"],
-  methods: {
-    handleActionClick(action) {
-      this.$emit("action-clicked", action);
-    },
-  },
+  components: { Target, BarChart2, FileText, LineChart },
 };
 </script>
 
