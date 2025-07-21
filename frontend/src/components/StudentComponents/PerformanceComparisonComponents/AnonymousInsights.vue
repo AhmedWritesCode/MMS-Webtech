@@ -3,7 +3,7 @@
     <h3>Anonymous Class Insights</h3>
     <div class="insights-grid">
       <div class="insight-card">
-        <div class="insight-icon">💡</div>
+       <Lightbulb class="insight-icon" />
         <div class="insight-content">
           <h4>Most Challenging Assessment</h4>
           <p>{{ getMostChallengingAssessment() }}</p>
@@ -12,7 +12,7 @@
       </div>
 
       <div class="insight-card">
-        <div class="insight-icon">⭐</div>
+        <Star class="insight-icon" />
         <div class="insight-content">
           <h4>Best Class Performance</h4>
           <p>{{ getBestClassPerformance() }}</p>
@@ -21,7 +21,7 @@
       </div>
 
       <div class="insight-card">
-        <div class="insight-icon">📚</div>
+     <Book class="insight-icon" />
         <div class="insight-content">
           <h4>Improvement Opportunity</h4>
           <p>{{ getImprovementOpportunity() }}</p>
@@ -33,8 +33,14 @@
 </template>
 
 <script>
+import { Lightbulb, Star, Book } from 'lucide-vue-next';
 export default {
   name: "AnonymousInsights",
+  components: {
+  Lightbulb,
+  Star,
+  Book,
+},
   props: {
     selectedCourse: {
       type: Object,

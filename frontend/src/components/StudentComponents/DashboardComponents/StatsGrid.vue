@@ -1,7 +1,7 @@
 <template>
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-icon">📊</div>
+      <BarChart2 class="stat-icon" />
       <div class="stat-content">
         <h3>Overall GPA</h3>
         <p class="stat-value">{{ overallGPA }}</p>
@@ -12,7 +12,7 @@
     </div>
 
     <div class="stat-card">
-      <div class="stat-icon">📚</div>
+      <Book class="stat-icon" />
       <div class="stat-content">
         <h3>Enrolled Courses</h3>
         <p class="stat-value">{{ enrolledCoursesCount }}</p>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="stat-card">
-      <div class="stat-icon">🏆</div>
+      <Award class="stat-icon" />
       <div class="stat-content">
         <h3>Class Rank</h3>
         <p class="stat-value">#{{ classRank }}</p>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="stat-card">
-      <div class="stat-icon">📈</div>
+      <TrendingUp class="stat-icon" />
       <div class="stat-content">
         <h3>Percentile</h3>
         <p class="stat-value">{{ percentile }}%</p>
@@ -41,8 +41,10 @@
 </template>
 
 <script>
+import { BarChart2, Book, Award, TrendingUp } from 'lucide-vue-next';
 export default {
   name: "StatsGrid",
+  components: { BarChart2, Book, Award, TrendingUp },
   props: {
     overallGPA: {
       type: [String, Number],
@@ -77,8 +79,7 @@ export default {
   },
   computed: {
     gpaChangeClass() {
-      // Make sure gpaChange is a string
-      const change = String(this.gpaChange); // Convert to string
+      const change = String(this.gpaChange);
       if (change.startsWith("+")) {
         return "positive";
       } else if (change.startsWith("-")) {
@@ -86,7 +87,6 @@ export default {
       }
       return "neutral";
     },
-
     formattedGpaChange() {
       const change = this.gpaChange;
       if (typeof change === "number") {

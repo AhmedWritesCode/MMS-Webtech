@@ -1,7 +1,29 @@
+
 <template>
+  <div class="compare-hero">
+    <div class="compare-hero-content">
+      <h1 class="compare-title">Anonymous Performance Comparison</h1>
+      <p class="compare-subtitle">
+        Compare your performance with classmates anonymously. All data is displayed without identifying individual students.
+      </p>
+    </div>
+  </div>
+  <div class="course-selector-row">
+    <div class="course-selector">
+      <button
+        v-for="course in courses"
+        :key="course.id"
+        :class="['course-pill', { active: selectedCourse && selectedCourse.id === course.id }]"
+        @click="selectCourse(course)"
+      >
+        {{ course.code }}<span v-if="course.name"> - {{ course.name }}</span>
+      </button>
+    </div>
+    <div class="select-course-label">Select Course</div>
+  </div>
   <div class="performance-comparison">
     <!-- Header -->
-    <ComparisonHeader />
+ 
 
     <!-- Course Selection -->
     <CourseSelector
@@ -67,7 +89,6 @@
 
 <script>
 // Import components
-import ComparisonHeader from "@/components/StudentComponents/PerformanceComparisonComponents/ComparisonHeader.vue";
 import CourseSelector from "@/components/StudentComponents/PerformanceComparisonComponents/CourseSelector.vue";
 import PerformanceOverview from "@/components/StudentComponents/PerformanceComparisonComponents/PerformanceOverview.vue";
 import ComparisonControls from "@/components/StudentComponents/PerformanceComparisonComponents/ComparisonControls.vue";
@@ -84,7 +105,6 @@ import { studentPerformanceAPI, utilityAPI } from "@/services/api";
 export default {
   name: "PerformanceComparison",
   components: {
-    ComparisonHeader,
     CourseSelector,
     PerformanceOverview,
     ComparisonControls,
@@ -106,6 +126,7 @@ export default {
       comparisonData: null,
       rankData: null,
       classAverages: null,
+      courses: [],
     };
   },
   computed: {
@@ -310,20 +331,78 @@ export default {
 </script>
 
 <style scoped>
-.performance-comparison {
-  padding: 20px;
-  background-color: #f8fafc;
-  min-height: 100vh;
+.compare-hero {
+  width: 100%;
+  border-radius: 1.5rem 1.5rem 0 0;
+  background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
+  color: #fff;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 24px 0 rgba(59, 130, 246, 0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
+  display: flex;
+  align-items: center;
+  min-height: 120px;
 }
-
-.comparison-content {
-  /* Content container styles if needed */
+.compare-hero-content {
+  width: 100%;
+  text-align: left;
 }
-
-/* Global responsive adjustments */
-@media (max-width: 768px) {
-  .performance-comparison {
-    padding: 16px;
+.compare-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -1px;
+}
+.compare-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  margin: 0;
+}
+.course-selector-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.course-selector {
+  display: flex;
+  gap: 1rem;
+}
+.course-pill {
+  background: #f3f4f6;
+  color: #222;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(59, 130, 246, 0.06);
+}
+.course-pill.active, .course-pill:hover {
+  background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px 0 rgba(59, 130, 246, 0.12);
+}
+.select-course-label {
+  font-size: 1.1rem;
+  color: #888;
+  margin-left: 2rem;
+}
+@media (max-width: 900px) {
+  .compare-hero {
+    padding: 1.5rem 1rem 1rem 1rem;
+    min-height: 90px;
+  }
+  .course-selector-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .select-course-label {
+    margin-left: 0;
+    margin-top: 0.5rem;
   }
 }
 </style>

@@ -3,7 +3,7 @@
     <h3>Class Performance Summary</h3>
     <div class="summary-grid">
       <div class="summary-card">
-        <div class="summary-icon">📊</div>
+       <BarChart2 class="summary-icon" />
         <div class="summary-content">
           <h4>Average Performance</h4>
           <p class="summary-value">{{ classAverage }}%</p>
@@ -12,7 +12,7 @@
       </div>
 
       <div class="summary-card">
-        <div class="summary-icon">🎯</div>
+          <Target class="summary-icon" />
         <div class="summary-content">
           <h4>Highest Achievement</h4>
           <p class="summary-value">{{ getHighestClassScore() }}%</p>
@@ -21,7 +21,7 @@
       </div>
 
       <div class="summary-card">
-        <div class="summary-icon">📈</div>
+         <LineChart class="summary-icon" />
         <div class="summary-content">
           <h4>Performance Range</h4>
           <p class="summary-value">{{ getPerformanceRange() }}%</p>
@@ -30,7 +30,7 @@
       </div>
 
       <div class="summary-card">
-        <div class="summary-icon">🏆</div>
+       <Award class="summary-icon" />
         <div class="summary-content">
           <h4>Your Position</h4>
           <p class="summary-value">Top {{ 100 - yourPercentile }}%</p>
@@ -42,8 +42,15 @@
 </template>
 
 <script>
+import { BarChart2, Target, LineChart, Award } from 'lucide-vue-next';
 export default {
   name: "ClassSummary",
+    components: {
+       BarChart2,
+       Target,
+       LineChart,
+       Award,
+     },
   props: {
     selectedCourse: {
       type: Object,
