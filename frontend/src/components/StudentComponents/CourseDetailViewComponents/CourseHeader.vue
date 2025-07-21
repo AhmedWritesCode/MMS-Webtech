@@ -71,126 +71,169 @@ export default {
 
 <style scoped>
 .course-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 16px;
-  padding: 30px;
-  margin-bottom: 30px;
-  color: white;
+  background: linear-gradient(135deg, #111 0%, #1a3d1a 100%);
+  border-radius: 20px;
+  padding: 36px 28px;
+  margin-bottom: 32px;
+  color: #d1ffd6;
+  box-shadow: 0 6px 32px 0 rgba(0, 64, 0, 0.18);
+  border: 2px solid #1db954;
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
+  gap: 40px;
 }
 
 .breadcrumb {
-  margin-bottom: 16px;
-  font-size: 0.9rem;
-  opacity: 0.9;
+  margin-bottom: 18px;
+  font-size: 1rem;
+  opacity: 0.85;
+  letter-spacing: 0.04em;
 }
 
 .breadcrumb-link {
-  color: white;
+  color: #1db954;
   text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
 }
 
 .breadcrumb-link:hover {
+  color: #aaffc3;
   text-decoration: underline;
 }
 
 .breadcrumb-separator {
-  margin: 0 8px;
+  margin: 0 10px;
+  color: #1db954;
+}
+
+.breadcrumb-current {
+  color: #d1ffd6;
+  font-weight: 700;
 }
 
 .course-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 0 0 16px 0;
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0 0 18px 0;
+  color: #1db954;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 12px #0a2d0a;
 }
 
 .course-meta {
   display: flex;
-  gap: 16px;
+  gap: 18px;
   flex-wrap: wrap;
 }
 
 .course-code,
 .course-credits,
 .course-semester {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 6px 12px;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
+  background: rgba(29, 185, 84, 0.18);
+  padding: 7px 16px;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #d1ffd6;
+  border: 1px solid #1db954;
+  box-shadow: 0 1px 6px 0 rgba(29, 185, 84, 0.08);
 }
 
 .course-stats {
   display: flex;
-  gap: 20px;
+  gap: 28px;
+  align-items: stretch;
 }
 
 .stat-card {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 20px;
-  border-radius: 12px;
+  background: linear-gradient(120deg, #1a3d1a 60%, #111 100%);
+  padding: 26px 22px;
+  border-radius: 18px;
   text-align: center;
-  backdrop-filter: blur(10px);
-  min-width: 120px;
+  min-width: 140px;
+  border: 1.5px solid #1db954;
+  box-shadow: 0 2px 16px 0 rgba(29, 185, 84, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .stat-card h3 {
-  margin: 0 0 12px 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  opacity: 0.9;
+  margin: 0 0 14px 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #aaffc3;
+  opacity: 0.92;
+  letter-spacing: 0.02em;
 }
 
 .grade-display,
 .rank-display {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+  border-radius: 10px;
+  padding: 6px 0;
+  background: rgba(29, 185, 84, 0.10);
+  border: 1px solid #1db954;
+  color: #1db954;
+  box-shadow: 0 1px 8px 0 rgba(29, 185, 84, 0.10);
 }
 
 .grade-display.grade-a-plus,
 .grade-display.grade-a {
-  color: #10b981;
+  color: #00ff6a;
+  background: rgba(0, 255, 106, 0.10);
+  border-color: #00ff6a;
 }
 .grade-display.grade-a-minus,
 .grade-display.grade-b-plus {
-  color: #3b82f6;
+  color: #1db954;
+  background: rgba(29, 185, 84, 0.13);
+  border-color: #1db954;
 }
 .grade-display.grade-b {
-  color: #f59e0b;
+  color: #aaffc3;
+  background: rgba(170, 255, 195, 0.10);
+  border-color: #aaffc3;
+}
+.grade-display.grade-default {
+  color: #d1ffd6;
+  background: rgba(209, 255, 214, 0.08);
+  border-color: #d1ffd6;
 }
 
 .grade-points,
 .rank-total {
   margin: 0;
-  font-size: 0.8rem;
-  opacity: 0.8;
+  font-size: 0.9rem;
+  opacity: 0.85;
+  color: #aaffc3;
+  font-weight: 600;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .header-content {
     flex-direction: column;
-    gap: 20px;
+    gap: 28px;
   }
-
   .course-stats {
     flex-direction: column;
     width: 100%;
+    gap: 18px;
   }
-
   .course-title {
-    font-size: 2rem;
+    font-size: 2.1rem;
   }
-
   .course-meta {
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 }
 </style>

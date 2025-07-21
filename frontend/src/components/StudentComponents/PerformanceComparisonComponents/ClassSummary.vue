@@ -3,7 +3,7 @@
     <h3>Class Performance Summary</h3>
     <div class="summary-grid">
       <div class="summary-card">
-       <BarChart2 class="summary-icon" />
+        <BarChart2 class="summary-icon" />
         <div class="summary-content">
           <h4>Average Performance</h4>
           <p class="summary-value">{{ classAverage }}%</p>
@@ -12,7 +12,7 @@
       </div>
 
       <div class="summary-card">
-          <Target class="summary-icon" />
+        <Target class="summary-icon" />
         <div class="summary-content">
           <h4>Highest Achievement</h4>
           <p class="summary-value">{{ getHighestClassScore() }}%</p>
@@ -21,7 +21,7 @@
       </div>
 
       <div class="summary-card">
-         <LineChart class="summary-icon" />
+        <LineChart class="summary-icon" />
         <div class="summary-content">
           <h4>Performance Range</h4>
           <p class="summary-value">{{ getPerformanceRange() }}%</p>
@@ -30,7 +30,7 @@
       </div>
 
       <div class="summary-card">
-       <Award class="summary-icon" />
+        <Award class="summary-icon" />
         <div class="summary-content">
           <h4>Your Position</h4>
           <p class="summary-value">Top {{ 100 - yourPercentile }}%</p>
@@ -45,12 +45,12 @@
 import { BarChart2, Target, LineChart, Award } from 'lucide-vue-next';
 export default {
   name: "ClassSummary",
-    components: {
-       BarChart2,
-       Target,
-       LineChart,
-       Award,
-     },
+  components: {
+    BarChart2,
+    Target,
+    LineChart,
+    Award,
+  },
   props: {
     selectedCourse: {
       type: Object,
@@ -69,7 +69,6 @@ export default {
     },
   },
   computed: {
-    // Use real data from API instead of static course data
     classAverage() {
       if (
         this.classAverages?.class_averages &&
@@ -135,75 +134,108 @@ export default {
 
 <style scoped>
 .class-summary {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: #101010;
+  border-radius: 20px;
+  padding: 36px 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 24px rgba(0, 128, 64, 0.15);
+  border: 2px solid #1db954;
 }
 
 .class-summary h3 {
-  margin: 0 0 24px 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
+  margin: 0 0 32px 0;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1db954;
+  letter-spacing: 1px;
+  text-align: center;
+  text-shadow: 0 2px 8px #0f0;
 }
 
 .summary-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
 }
 
 .summary-card {
-  background: #f8fafc;
-  border-radius: 12px;
-  padding: 24px;
+  background: linear-gradient(135deg, #1db954 0%, #101010 100%);
+  border-radius: 18px;
+  padding: 32px 20px;
+  min-width: 240px;
+  max-width: 320px;
+  flex: 1 1 240px;
   display: flex;
-  align-items: center;
-  gap: 16px;
-  transition: transform 0.2s;
+  align-items: flex-start;
+  gap: 18px;
+  box-shadow: 0 2px 16px rgba(29, 185, 84, 0.18);
+  border: 1.5px solid #1db954;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
 .summary-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(29, 185, 84, 0.25);
+  z-index: 2;
 }
 
 .summary-icon {
-  font-size: 2rem;
-  width: 60px;
-  height: 60px;
+  font-size: 2.5rem;
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #101010;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(29, 185, 84, 0.12);
+  color: #1db954;
+  border: 2px solid #1db954;
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .summary-content h4 {
-  margin: 0 0 8px 0;
-  font-size: 1rem;
-  color: #64748b;
-  font-weight: 600;
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: #1db954;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 4px #0f0;
 }
 
 .summary-value {
-  margin: 0 0 4px 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
+  margin: 0 0 6px 0;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 2px 8px #1db954;
+  letter-spacing: 1px;
 }
 
 .summary-detail {
   margin: 0;
-  font-size: 0.8rem;
-  color: #64748b;
+  font-size: 0.95rem;
+  color: #b6ffce;
+  font-weight: 500;
+  letter-spacing: 0.2px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .summary-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 22px;
+    align-items: stretch;
+  }
+  .summary-card {
+    max-width: 100%;
+    min-width: 0;
   }
 }
 </style>

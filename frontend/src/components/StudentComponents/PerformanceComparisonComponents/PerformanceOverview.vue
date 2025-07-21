@@ -2,8 +2,8 @@
   <div class="overview-cards">
     <div class="overview-card your-performance">
       <div class="card-header">
-        <h3>Your Performance</h3>
         <div class="performance-icon">👤</div>
+        <h3>Your Performance</h3>
       </div>
       <div class="card-stats">
         <div class="stat-item">
@@ -23,8 +23,8 @@
 
     <div class="overview-card class-stats">
       <div class="card-header">
-        <h3>Class Statistics</h3>
         <div class="performance-icon">👥</div>
+        <h3>Class Statistics</h3>
       </div>
       <div class="card-stats">
         <div class="stat-item">
@@ -44,8 +44,8 @@
 
     <div class="overview-card performance-trend">
       <div class="card-header">
-        <h3>Performance Trend</h3>
         <div class="performance-icon">📈</div>
+        <h3>Performance Trend</h3>
       </div>
       <div class="card-stats">
         <div class="stat-item">
@@ -88,7 +88,6 @@ export default {
     },
   },
   computed: {
-    // Use real data from APIs instead of static course data
     yourRank() {
       return this.rankData?.rank || 0;
     },
@@ -114,7 +113,6 @@ export default {
       return this.rankData?.total_students || 0;
     },
     standardDeviation() {
-      // Calculate from class averages if available
       if (
         this.classAverages?.class_averages &&
         this.classAverages.class_averages.length > 0
@@ -132,7 +130,6 @@ export default {
       return 0;
     },
     trend() {
-      // This would need trend data from the API
       return 0;
     },
     aboveAverageCount() {
@@ -149,7 +146,6 @@ export default {
         ? "trend-negative"
         : "trend-neutral";
     },
-
     getAboveAverageCount() {
       return this.aboveAverageCount;
     },
@@ -158,93 +154,153 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  --main-green: #16a34a;
+  --dark-green: #065f46;
+  --black: #111827;
+  --gray: #374151;
+  --light-green: #22c55e;
+  --white: #fff;
+}
+
 .overview-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: var(--black);
+  padding: 32px 0;
 }
 
 .overview-card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid;
+  background: linear-gradient(135deg, var(--dark-green) 60%, var(--main-green) 100%);
+  border-radius: 18px;
+  padding: 32px 28px;
+  box-shadow: 0 6px 32px rgba(22, 163, 74, 0.18);
+  border: none;
+  color: var(--white);
+  transition: transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.overview-card:before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: rgba(34, 197, 94, 0.12);
+  border-radius: 50%;
+  z-index: 0;
+}
+.overview-card .card-header,
+.overview-card .card-stats {
+  position: relative;
+  z-index: 1;
 }
 
-.overview-card.your-performance {
-  border-left-color: #3b82f6;
-}
-
-.overview-card.class-stats {
-  border-left-color: #10b981;
-}
-
-.overview-card.performance-trend {
-  border-left-color: #f59e0b;
+.overview-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(22, 163, 74, 0.28);
 }
 
 .card-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  gap: 18px;
+  margin-bottom: 28px;
 }
 
 .card-header h3 {
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--white);
+  text-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
 }
 
 .performance-icon {
-  font-size: 1.5rem;
-  opacity: 0.7;
+  font-size: 2.2rem;
+  background: var(--main-green);
+  color: var(--white);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(34, 197, 94, 0.18);
 }
 
 .card-stats {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: 24px;
 }
 
 .stat-item {
-  text-align: center;
+  text-align: left;
   flex: 1;
+  background: rgba(17, 24, 39, 0.7);
+  border-radius: 10px;
+  padding: 18px 14px;
+  margin: 0 2px;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.08);
+  min-width: 0;
 }
 
 .stat-value {
   display: block;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 4px;
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: var(--light-green);
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+  transition: color 0.2s;
 }
 
 .stat-value.trend-positive {
-  color: #10b981;
+  color: #22d3ee;
 }
-
 .stat-value.trend-negative {
-  color: #ef4444;
+  color: #f87171;
+}
+.stat-value.trend-neutral {
+  color: var(--light-green);
 }
 
 .stat-label {
-  font-size: 0.8rem;
-  color: #64748b;
-  font-weight: 500;
+  font-size: 0.95rem;
+  color: #a7f3d0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
 }
 
-@media (max-width: 768px) {
-  .overview-cards {
-    grid-template-columns: 1fr;
-  }
+.overview-card.your-performance {
+  box-shadow: 0 6px 32px rgba(34, 197, 94, 0.18);
+}
+.overview-card.class-stats {
+  box-shadow: 0 6px 32px rgba(16, 185, 129, 0.18);
+}
+.overview-card.performance-trend {
+  box-shadow: 0 6px 32px rgba(34, 197, 94, 0.18);
+}
 
+@media (max-width: 900px) {
+  .overview-cards {
+    flex-direction: column;
+    gap: 24px;
+    padding: 18px 0;
+  }
   .card-stats {
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
+  }
+  .overview-card {
+    padding: 22px 10px;
   }
 }
 </style>

@@ -3,7 +3,7 @@
     <h3>Anonymous Class Insights</h3>
     <div class="insights-grid">
       <div class="insight-card">
-       <Lightbulb class="insight-icon" />
+        <Lightbulb class="insight-icon" />
         <div class="insight-content">
           <h4>Most Challenging Assessment</h4>
           <p>{{ getMostChallengingAssessment() }}</p>
@@ -21,7 +21,7 @@
       </div>
 
       <div class="insight-card">
-     <Book class="insight-icon" />
+        <Book class="insight-icon" />
         <div class="insight-content">
           <h4>Improvement Opportunity</h4>
           <p>{{ getImprovementOpportunity() }}</p>
@@ -37,10 +37,10 @@ import { Lightbulb, Star, Book } from 'lucide-vue-next';
 export default {
   name: "AnonymousInsights",
   components: {
-  Lightbulb,
-  Star,
-  Book,
-},
+    Lightbulb,
+    Star,
+    Book,
+  },
   props: {
     selectedCourse: {
       type: Object,
@@ -110,61 +110,97 @@ export default {
 
 <style scoped>
 .anonymous-insights {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: #111;
+  border-radius: 18px;
+  padding: 36px 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 24px rgba(0, 128, 0, 0.15);
+  border: 2px solid #22c55e;
+  transition: box-shadow 0.2s;
 }
 
 .anonymous-insights h3 {
-  margin: 0 0 24px 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
+  margin: 0 0 32px 0;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #22c55e;
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 0 2px 8px #0f0;
 }
 
 .insights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
 }
 
 .insight-card {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border-radius: 12px;
-  padding: 24px;
-  border-left: 4px solid #3b82f6;
+  background: linear-gradient(135deg, #1a2e1a 0%, #111 100%);
+  border-radius: 16px;
+  padding: 32px 24px;
+  border: 2px solid #22c55e;
+  min-width: 260px;
+  max-width: 340px;
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 16px rgba(34, 197, 94, 0.15);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.insight-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(34, 197, 94, 0.25);
+  border-color: #16a34a;
 }
 
 .insight-icon {
-  font-size: 2rem;
-  margin-bottom: 16px;
+  font-size: 2.5rem;
+  color: #22c55e;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 0 8px #22c55e88);
 }
 
 .insight-content h4 {
-  margin: 0 0 12px 0;
-  font-size: 1.1rem;
+  margin: 0 0 14px 0;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #22c55e;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
 .insight-content p {
-  margin: 0 0 8px 0;
-  font-size: 1rem;
-  color: #1e293b;
+  margin: 0 0 10px 0;
+  font-size: 1.05rem;
+  color: #fff;
   font-weight: 600;
+  text-align: center;
+  background: rgba(34, 197, 94, 0.08);
+  border-radius: 6px;
+  padding: 6px 0;
 }
 
 .insight-detail {
-  font-size: 0.8rem;
-  color: #64748b;
+  font-size: 0.85rem;
+  color: #a7f3d0;
   font-style: italic;
+  text-align: center;
+  display: block;
+  margin-top: 4px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .insights-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .insight-card {
+    max-width: 100%;
+    min-width: 0;
   }
 }
 </style>

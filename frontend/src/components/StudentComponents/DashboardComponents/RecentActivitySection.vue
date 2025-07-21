@@ -39,19 +39,29 @@ export default {
 <style scoped>
 .recent-activity-section {
   margin-bottom: 30px;
+  background: #111;
+  border-radius: 18px;
+  padding: 32px 24px;
+  box-shadow: 0 4px 24px rgba(0, 128, 0, 0.15);
+  border: 2px solid #16a34a;
 }
 
 .recent-activity-section h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin: 0 0 20px 0;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #16a34a;
+  margin: 0 0 28px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px #000, 0 0 2px #16a34a;
 }
 
 .activity-list {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #022c22 0%, #111 100%);
+  border-radius: 14px;
+  box-shadow: 0 2px 18px rgba(22, 163, 74, 0.18);
   overflow: hidden;
+  border: 1.5px solid #16a34a;
+  padding: 18px 10px;
 }
 </style>

@@ -45,56 +45,96 @@ export default {
 .quick-actions-section {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+  background: #101710;
+  padding: 2rem 0;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 0 2px #1db954 inset;
 }
+
 .quick-actions-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
-  justify-items: center;
+  justify-content: center;
 }
+
 .quick-action-card {
-  background: #fff;
-  border-radius: 1.2rem;
-  box-shadow: 0 4px 16px 0 rgba(60, 60, 60, 0.08);
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: linear-gradient(135deg, #1db954 0%, #101710 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 24px 0 rgba(30, 185, 84, 0.18);
+  padding: 2rem 2rem 1.5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.2s;
-  min-width: 180px;
-  min-height: 170px;
+  min-width: 200px;
+  min-height: 180px;
+  border: 2px solid #1db954;
+  transition: 
+    box-shadow 0.2s,
+    transform 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+  position: relative;
+  overflow: hidden;
 }
+
 .quick-action-card:hover {
-  box-shadow: 0 8px 32px 0 rgba(60, 60, 60, 0.16);
-  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 36px 0 rgba(30, 185, 84, 0.28);
+  transform: translateY(-4px) scale(1.04);
+  border-color: #0e331a;
+  background: linear-gradient(135deg, #101710 0%, #1db954 100%);
 }
+
 .quick-action-icon {
-  font-size: 2.5rem;
-  color: #6c63ff;
-  margin-bottom: 1.2rem;
+  font-size: 2.8rem;
+  color: #1db954;
+  margin-bottom: 1.3rem;
+  filter: drop-shadow(0 0 8px #1db95488);
+  background: #101710;
+  border-radius: 50%;
+  padding: 0.7rem;
+  border: 2px solid #1db954;
+  transition: background 0.2s, color 0.2s;
 }
+
+.quick-action-card:hover .quick-action-icon {
+  background: #1db954;
+  color: #101710;
+  border-color: #101710;
+}
+
 .quick-action-content {
   text-align: center;
+  color: #fff;
 }
+
 .quick-action-content h4 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.3rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+  color: #1db954;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 8px #10171088;
 }
+
 .quick-action-content p {
-  font-size: 0.95rem;
-  color: #444;
+  font-size: 1rem;
+  color: #e0ffe0;
   margin: 0;
+  opacity: 0.85;
 }
+
 @media (max-width: 900px) {
   .quick-actions-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 1.2rem;
+    align-items: center;
   }
   .quick-action-card {
     min-width: 0;
-    width: 100%;
+    width: 90vw;
+    max-width: 400px;
   }
 }
 </style>

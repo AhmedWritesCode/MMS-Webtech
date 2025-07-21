@@ -77,60 +77,87 @@ export default {
 
 <style scoped>
 .comparison-controls {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: #101010;
+  border-radius: 18px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 24px rgba(0, 128, 0, 0.15);
   display: flex;
-  gap: 40px;
+  gap: 48px;
   flex-wrap: wrap;
+  border: 2px solid #22c55e;
 }
 
 .control-group {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 18px;
 }
 
 .control-group label {
-  font-weight: 600;
-  color: #1e293b;
-  font-size: 0.9rem;
+  font-weight: 700;
+  color: #22c55e;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .control-tabs {
   display: flex;
-  gap: 8px;
+  gap: 14px;
 }
 
 .control-tab {
-  padding: 8px 16px;
-  border: 2px solid #e2e8f0;
-  background: #f8fafc;
-  border-radius: 20px;
-  font-weight: 600;
-  color: #64748b;
+  padding: 12px 28px;
+  border: 2px solid #22c55e;
+  background: #181818;
+  border-radius: 30px;
+  font-weight: 700;
+  color: #22c55e;
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.08);
+  outline: none;
+  position: relative;
+  overflow: hidden;
 }
 
 .control-tab.active,
 .control-tab:hover {
-  border-color: #3b82f6;
-  color: #3b82f6;
-  background: #eff6ff;
+  background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+  color: #101010;
+  border-color: #16a34a;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.18);
+}
+
+.control-tab.active::after,
+.control-tab:hover::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  border-radius: 30px;
+  box-shadow: 0 0 0 3px #22c55e33;
+  pointer-events: none;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 3px #22c55e33; }
+  100% { box-shadow: 0 0 0 8px #22c55e11; }
 }
 
 @media (max-width: 768px) {
   .comparison-controls {
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
+    padding: 18px;
   }
 
   .control-tabs {
     flex-wrap: wrap;
+    gap: 10px;
   }
 }
 </style>

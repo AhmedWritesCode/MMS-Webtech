@@ -339,19 +339,22 @@ export default {
 
 <style scoped>
 .course-detail-view {
-  padding: 20px;
-  background-color: #f8fafc;
+  padding: 32px;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a2e1a 100%);
   min-height: 100vh;
   position: relative;
+  color: #d1ffd6;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  box-shadow: 0 0 0 8px #0f0f0f inset;
 }
 
 .loading-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.9);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 30, 10, 0.96);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -359,50 +362,77 @@ export default {
 }
 
 .loading-spinner {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  font-size: 1.1rem;
-  color: #3b82f6;
-  font-weight: 600;
+  background: #101d10;
+  padding: 36px 48px;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(0, 255, 128, 0.15);
+  font-size: 1.2rem;
+  color: #00ff88;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: 2px solid #00ff88;
+  text-shadow: 0 0 8px #00ff8844;
 }
 
 .error-message {
-  background: white;
-  border: 1px solid #ef4444;
-  border-radius: 12px;
-  padding: 24px;
-  margin: 20px;
+  background: #101d10;
+  border: 2px solid #00ff88;
+  border-radius: 18px;
+  padding: 32px;
+  margin: 32px auto;
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 255, 128, 0.08);
+  max-width: 480px;
 }
 
 .error-message p {
-  color: #ef4444;
-  margin: 0 0 16px 0;
-  font-weight: 600;
+  color: #ff4f4f;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
 
 .error-message button {
-  background: #ef4444;
-  color: white;
+  background: linear-gradient(90deg, #00ff88 0%, #007f44 100%);
+  color: #101d10;
   border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 10px 28px;
+  border-radius: 10px;
   cursor: pointer;
-  font-weight: 600;
-  transition: background 0.2s;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px #00ff8855;
+  transition: background 0.2s, color 0.2s;
 }
 
 .error-message button:hover {
-  background: #dc2626;
+  background: linear-gradient(90deg, #007f44 0%, #00ff88 100%);
+  color: #d1ffd6;
 }
 
-/* Global responsive adjustments */
+/* Custom scrollbar for dark theme */
+.course-detail-view ::-webkit-scrollbar {
+  width: 10px;
+  background: #1a2e1a;
+}
+.course-detail-view ::-webkit-scrollbar-thumb {
+  background: #00ff88;
+  border-radius: 8px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .course-detail-view {
-    padding: 16px;
+    padding: 12px;
+  }
+  .error-message {
+    padding: 18px;
+    margin: 14px auto;
+  }
+  .loading-spinner {
+    padding: 18px 12px;
+    font-size: 1rem;
   }
 }
 </style>

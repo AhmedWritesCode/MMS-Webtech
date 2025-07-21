@@ -10,16 +10,16 @@
               cy="50"
               r="45"
               fill="none"
-              stroke="#e2e8f0"
-              stroke-width="8"
+              stroke="#222"
+              stroke-width="10"
             />
             <circle
               cx="50"
               cy="50"
               r="45"
               fill="none"
-              stroke="#3b82f6"
-              stroke-width="8"
+              stroke="#22c55e"
+              stroke-width="10"
               stroke-linecap="round"
               :stroke-dasharray="circumference"
               :stroke-dashoffset="progressOffset"
@@ -87,26 +87,34 @@ export default {
 <style scoped>
 .progress-overview {
   margin-bottom: 30px;
+  background: #111;
+  padding: 40px 0;
 }
 
 .progress-card {
-  background: white;
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: #181818;
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 4px 24px rgba(34, 197, 94, 0.08);
+  border: 2px solid #22c55e;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .progress-card h3 {
-  margin: 0 0 24px 0;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #1e293b;
+  margin: 0 0 28px 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #22c55e;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
 .progress-visual {
   display: flex;
-  align-items: center;
-  gap: 40px;
+  align-items: stretch;
+  gap: 48px;
+  justify-content: center;
 }
 
 .circular-progress {
@@ -114,38 +122,61 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #111;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px #22c55e33;
+  width: 140px;
+  height: 140px;
 }
 
 .progress-circle {
-  transition: stroke-dashoffset 0.5s ease;
+  transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 8px #22c55e88);
 }
 
 .progress-text {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
 .progress-percentage {
   display: block;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #22c55e;
+  text-shadow: 0 2px 8px #111;
+  letter-spacing: 2px;
 }
 
 .progress-label {
-  font-size: 0.8rem;
-  color: #64748b;
+  font-size: 1rem;
+  color: #fff;
+  opacity: 0.7;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .progress-details {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #111;
+  border-radius: 14px;
+  padding: 18px 24px;
+  box-shadow: 0 2px 12px rgba(34, 197, 94, 0.06);
+  min-width: 200px;
 }
 
 .detail-item {
   display: flex;
   justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #e2e8f0;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #222;
 }
 
 .detail-item:last-child {
@@ -153,20 +184,34 @@ export default {
 }
 
 .detail-label {
-  color: #64748b;
-  font-weight: 500;
+  color: #a3e635;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
 }
 
 .detail-value {
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 900;
+  color: #fff;
+  background: #22c55e;
+  padding: 4px 14px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  box-shadow: 0 1px 4px #22c55e33;
 }
 
 @media (max-width: 768px) {
   .progress-visual {
     flex-direction: column;
-    gap: 20px;
+    gap: 28px;
     text-align: center;
+  }
+  .progress-card {
+    padding: 18px;
+  }
+  .progress-details {
+    padding: 12px 8px;
+    min-width: unset;
   }
 }
 </style>

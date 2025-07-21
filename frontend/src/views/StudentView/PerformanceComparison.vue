@@ -1,4 +1,3 @@
-
 <template>
   <div class="compare-hero">
     <div class="compare-hero-content">
@@ -22,10 +21,6 @@
     <div class="select-course-label">Select Course</div>
   </div>
   <div class="performance-comparison">
-    <!-- Header -->
- 
-
-    <!-- Course Selection -->
     <CourseSelector
       :courses="enrolledCourses"
       :selected-course="selectedCourse"
@@ -33,56 +28,41 @@
     />
 
     <div v-if="selectedCourse" class="comparison-content">
-      <!-- Performance Overview Cards -->
       <PerformanceOverview
         :course="selectedCourse"
         :rank-data="rankData"
         :class-averages="classAverages"
       />
-
-      <!-- Comparison Controls -->
       <ComparisonControls
         :selected-comparison-type="selectedComparisonType"
         :selected-view-type="selectedViewType"
         @update-comparison-type="updateComparisonType"
         @update-view-type="updateViewType"
       />
-
-      <!-- Assessment Comparison (Bar Chart View) -->
       <AssessmentComparison
         v-if="selectedViewType === 'assessments'"
         :assessments="transformedAssessments"
       />
-
-      <!-- Grade Distribution (Chart View) -->
       <GradeDistribution
         v-if="selectedViewType === 'distribution'"
         :grade-distribution="gradeDistribution"
         :selected-course="selectedCourse"
       />
-
-      <!-- Percentile Ranking (Table View) -->
       <PercentileRanking
         v-if="selectedViewType === 'percentiles'"
         :selected-course="selectedCourse"
         :rank-data="rankData"
       />
-
-      <!-- Class Performance Summary -->
       <ClassSummary
         :selected-course="selectedCourse"
         :class-averages="classAverages"
         :rank-data="rankData"
       />
-
-      <!-- Anonymous Comments Section -->
       <AnonymousInsights
         :selected-course="selectedCourse"
         :comparison-data="comparisonData"
       />
     </div>
-
-    <!-- No Course Selected State -->
     <NoCourseSelected v-else />
   </div>
 </template>
@@ -134,25 +114,21 @@ export default {
       if (!this.comparisonData || !this.comparisonData.comparisons) {
         return [];
       }
-
       return this.comparisonData.comparisons.map((comparison) => ({
         id: comparison.component_name,
         name: comparison.component_name,
         type: comparison.component_type,
-        weight: 0, // This would need to come from assessment_components table
+        weight: 0,
         maxScore: comparison.max_marks,
         yourScore: comparison.my_marks || 0,
         classAverage: comparison.class_average || 0,
-        highestScore: comparison.max_marks, // Using max_marks as highest for now
+        highestScore: comparison.max_marks,
         yourPercentile: comparison.percentile || 0,
         submissions: comparison.submissions || 0,
       }));
     },
-
     gradeDistribution() {
       if (!this.selectedCourse || !this.comparisonData) return [];
-
-      // Generate grade distribution from real comparison data
       const distribution = [
         { grade: "A+", count: 0 },
         { grade: "A", count: 0 },
@@ -164,22 +140,18 @@ export default {
         { grade: "C", count: 0 },
         { grade: "C-", count: 0 },
       ];
-
-      // Calculate distribution based on comparison data
       if (this.comparisonData.comparisons) {
-        // This is a simplified calculation - in a real app, you'd have actual grade distribution data
         const totalStudents =
           this.comparisonData.comparisons[0]?.submissions || 0;
         if (totalStudents > 0) {
-          distribution[0].count = Math.floor(totalStudents * 0.1); // A+ ~10%
-          distribution[1].count = Math.floor(totalStudents * 0.15); // A ~15%
-          distribution[2].count = Math.floor(totalStudents * 0.2); // A- ~20%
-          distribution[3].count = Math.floor(totalStudents * 0.25); // B+ ~25%
-          distribution[4].count = Math.floor(totalStudents * 0.2); // B ~20%
-          distribution[5].count = Math.floor(totalStudents * 0.1); // B- ~10%
+          distribution[0].count = Math.floor(totalStudents * 0.1);
+          distribution[1].count = Math.floor(totalStudents * 0.15);
+          distribution[2].count = Math.floor(totalStudents * 0.2);
+          distribution[3].count = Math.floor(totalStudents * 0.25);
+          distribution[4].count = Math.floor(totalStudents * 0.2);
+          distribution[5].count = Math.floor(totalStudents * 0.1);
         }
       }
-
       return distribution;
     },
   },
@@ -190,9 +162,7 @@ export default {
     async selectCourse(course) {
       this.selectedCourse = course;
       this.loading = true;
-
       try {
-        // Load real comparison data for the selected course
         await this.loadCourseComparisonData(course.id);
         await this.loadStudentRankData(course.id);
         await this.loadClassAveragesData(course.id);
@@ -203,16 +173,12 @@ export default {
         this.loading = false;
       }
     },
-
     updateComparisonType(type) {
       this.selectedComparisonType = type;
     },
-
     updateViewType(type) {
       this.selectedViewType = type;
     },
-
-    // Load real comparison data from API
     async loadCourseComparisonData(courseId) {
       try {
         const response = await studentPerformanceAPI.getCourseComparison(
@@ -228,8 +194,6 @@ export default {
         console.error("Error loading comparison data:", error);
       }
     },
-
-    // Load student rank data from API
     async loadStudentRankData(courseId) {
       try {
         const userResponse = await utilityAPI.getUserProfile();
@@ -251,8 +215,6 @@ export default {
         console.error("Error loading rank data:", error);
       }
     },
-
-    // Load class averages data from API
     async loadClassAveragesData(courseId) {
       try {
         const response = await studentPerformanceAPI.getClassAverages(courseId);
@@ -264,43 +226,35 @@ export default {
         console.error("Error loading class averages:", error);
       }
     },
-
-    // API methods for loading data
     async loadPerformanceData() {
       this.loading = true;
       this.error = null;
-
       try {
-        // Get user profile first
         const userResponse = await utilityAPI.getUserProfile();
         const isStudent =
           userResponse.success &&
           (userResponse.data.role === "student" || userResponse.data.user_type === "student");
         if (isStudent) {
           const studentId = userResponse.data.id;
-
-          // Load student breakdown to get enrolled courses
           const response = await studentPerformanceAPI.getStudentFullBreakdown(
             studentId
           );
-
           if (response.success) {
             const coursesData = response.data.courses || [];
             console.log("Loaded coursesData:", coursesData);
-            // Transform API data to match component expectations
             this.enrolledCourses = coursesData.map((course) => ({
               id: course.course_id,
               code: course.course_code,
               name: course.course_name,
               yourAverage: course.overall_percentage || 0,
-              yourRank: 0, // Will be loaded when course is selected
-              yourPercentile: 0, // Will be loaded when course is selected
+              yourRank: 0,
+              yourPercentile: 0,
               yourGrade: course.grade_letter || "N/A",
-              classAverage: 0, // Will be loaded when course is selected
-              totalStudents: 0, // Will be loaded when course is selected
-              standardDeviation: 0, // Will be loaded when course is selected
-              trend: 0, // Will be loaded when course is selected
-              assessments: [], // Will be loaded when course is selected
+              classAverage: 0,
+              totalStudents: 0,
+              standardDeviation: 0,
+              trend: 0,
+              assessments: [],
             }));
             console.log("enrolledCourses after mapping:", this.enrolledCourses);
           }
@@ -312,9 +266,7 @@ export default {
         this.loading = false;
       }
     },
-
     showError(message) {
-      // TODO: Implement proper error handling/notification
       alert(message);
     },
   },
@@ -334,61 +286,87 @@ export default {
 .compare-hero {
   width: 100%;
   border-radius: 1.5rem 1.5rem 0 0;
-  background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
+  background: linear-gradient(90deg, #0f0 0%, #0a3d0a 100%);
   color: #fff;
   margin-bottom: 2.5rem;
-  box-shadow: 0 4px 24px 0 rgba(59, 130, 246, 0.10);
+  box-shadow: 0 4px 24px 0 rgba(0, 255, 64, 0.10);
   padding: 2.5rem 2rem 2rem 2rem;
   display: flex;
   align-items: center;
   min-height: 120px;
+  border-bottom: 4px solid #0f0;
 }
 .compare-hero-content {
   width: 100%;
   text-align: left;
 }
 .compare-title {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 800;
   margin: 0 0 0.5rem 0;
   letter-spacing: -1px;
+  color: #0f0;
+  text-shadow: 0 2px 8px #000a;
 }
 .compare-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   opacity: 0.95;
   margin: 0;
+  color: #e0ffe0;
 }
 .course-selector-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
+  background: #111;
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 12px 0 rgba(0,255,64,0.08);
 }
 .course-selector {
   display: flex;
   gap: 1rem;
 }
 .course-pill {
-  background: #f3f4f6;
-  color: #222;
-  border: none;
+  background: #181818;
+  color: #0f0;
+  border: 2px solid #0f0;
   border-radius: 2rem;
   padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px 0 rgba(59, 130, 246, 0.06);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0,255,64,0.10);
+  outline: none;
 }
 .course-pill.active, .course-pill:hover {
-  background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
-  color: #fff;
-  box-shadow: 0 4px 16px 0 rgba(59, 130, 246, 0.12);
+  background: linear-gradient(90deg, #0f0 0%, #0a3d0a 100%);
+  color: #111;
+  border: 2px solid #0f0;
+  box-shadow: 0 4px 16px 0 rgba(0,255,64,0.18);
 }
 .select-course-label {
   font-size: 1.1rem;
-  color: #888;
+  color: #0f0;
   margin-left: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 4px #000a;
+}
+.performance-comparison {
+  background: #101010;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 16px 0 rgba(0,255,64,0.06);
+  min-height: 400px;
+}
+.comparison-content {
+  background: #181f18;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 16px 0 rgba(0,255,64,0.04);
 }
 @media (max-width: 900px) {
   .compare-hero {
@@ -399,10 +377,14 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    padding: 1rem;
   }
   .select-course-label {
     margin-left: 0;
     margin-top: 0.5rem;
+  }
+  .performance-comparison, .comparison-content {
+    padding: 1rem 0.5rem;
   }
 }
 </style>

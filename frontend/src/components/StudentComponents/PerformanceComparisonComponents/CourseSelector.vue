@@ -42,63 +42,83 @@ export default {
 
 <style scoped>
 .course-selector {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: #111;
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 24px rgba(0, 128, 0, 0.15);
+  border: 2px solid #22c55e;
 }
 
 .selector-header h2 {
-  margin: 0 0 20px 0;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #1e293b;
+  margin: 0 0 28px 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #22c55e;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #000a;
 }
 
 .course-tabs {
   display: flex;
-  gap: 12px;
+  gap: 18px;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .course-tab {
-  background: #f1f5f9;
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 16px 20px;
+  background: #181818;
+  border: 2px solid #22c55e;
+  border-radius: 16px;
+  padding: 20px 28px;
   cursor: pointer;
   transition: all 0.2s;
   text-align: left;
+  color: #22c55e;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.08);
+  position: relative;
+  overflow: hidden;
 }
 
 .course-tab:hover {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  background: #22c55e;
+  color: #111;
+  border-color: #16a34a;
 }
 
 .course-tab.active {
-  border-color: #3b82f6;
-  background: #3b82f6;
-  color: white;
+  background: linear-gradient(90deg, #22c55e 60%, #111 100%);
+  color: #111;
+  border-color: #16a34a;
+  font-weight: 900;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.18);
 }
 
 .course-code {
   display: block;
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-bottom: 4px;
+  font-weight: 900;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+  color: inherit;
+  letter-spacing: 1px;
 }
 
 .course-name {
   display: block;
-  font-size: 0.9rem;
-  opacity: 0.8;
+  font-size: 1rem;
+  opacity: 0.85;
+  color: inherit;
 }
 
 @media (max-width: 768px) {
   .course-tabs {
     flex-direction: column;
+    gap: 14px;
+  }
+  .course-tab {
+    width: 100%;
+    padding: 18px 16px;
   }
 }
 </style>
