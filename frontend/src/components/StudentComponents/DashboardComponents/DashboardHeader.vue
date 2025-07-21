@@ -47,8 +47,8 @@ export default {
 <style scoped>
 .dashboard-hero {
   width: 100%;
-  border-radius: 1.5rem;
-  background: linear-gradient(90deg, #6366f1 0%, #a21caf 100%);
+  border-radius: 1.5rem; 
+background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
   color: #fff;
   margin-bottom: 2.5rem;
   box-shadow: 0 4px 24px 0 rgba(99, 102, 241, 0.10);

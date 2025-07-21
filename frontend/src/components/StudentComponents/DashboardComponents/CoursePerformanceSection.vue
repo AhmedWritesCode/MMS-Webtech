@@ -1,45 +1,35 @@
 <template>
   <div class="course-performance-section">
-    <div class="section-header">
-      <h2>Course Performance</h2>
-      <button class="view-all-btn" @click="$emit('view-all-courses')">
-        View All Details
-      </button>
+    <div v-if="courses.length === 0 && !loading" class="no-courses-message">
+      No courses to display.
     </div>
-
-    <div class="course-cards">
+    <div v-else class="course-cards-grid">
       <CourseCard
         v-for="course in courses"
         :key="course.id"
         :course="course"
-        @course-clicked="handleCourseClick"
+        @course-details="$emit('course-details', course)"
       />
-      <div v-if="courses.length === 0" class="no-courses-message">
-        <p>No courses to display.</p>
-      </div>
+    </div>
+    <div v-if="loading" class="loading-overlay">
+      <div class="loading-spinner">Loading...</div>
     </div>
   </div>
 </template>
 
 <script>
-import CourseCard from "./CourseCard.vue";
-
+import CourseCard from './CourseCard.vue';
 export default {
-  name: "CoursePerformanceSection",
-  components: {
-    CourseCard,
-  },
+  name: 'CoursePerformanceSection',
+  components: { CourseCard },
   props: {
     courses: {
       type: Array,
-      required: true,
       default: () => [],
     },
-  },
-  emits: ["view-all-courses", "course-details"],
-  methods: {
-    handleCourseClick(courseId) {
-      this.$emit("course-details", courseId);
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
 };
@@ -47,56 +37,31 @@ export default {
 
 <style scoped>
 .course-performance-section {
-  margin-bottom: 30px;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.section-header h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin: 0;
-}
-
-.view-all-btn {
-  background: #3b82f6;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.view-all-btn:hover {
-  background: #2563eb;
-}
-
-.course-cards {
+.course-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  width: 100%;
 }
-
 .no-courses-message {
-  grid-column: 1 / -1;
   text-align: center;
-  color: #64748b;
+  color: #888;
   font-size: 1.1rem;
-  padding: 40px 0;
+  margin: 2rem 0;
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .course-cards {
-    grid-template-columns: 1fr;
-  }
+.loading-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 </style>

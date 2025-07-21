@@ -31,6 +31,7 @@
 
       <!-- Recent Activity Section -->
       <RecentActivitySection
+        v-if="recentActivities.length > 0"
         :activities="recentActivities"
         :loading="loadingActivities"
         @activity-action="handleActivityAction"

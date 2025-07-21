@@ -42,23 +42,59 @@ export default {
 </script>
 
 <style scoped>
-.quick-actions-section h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin: 0 0 20px 0;
+.quick-actions-section {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
-
-.action-buttons {
+.quick-actions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  justify-items: center;
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .action-buttons {
+.quick-action-card {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 16px 0 rgba(60, 60, 60, 0.08);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-width: 180px;
+  min-height: 170px;
+}
+.quick-action-card:hover {
+  box-shadow: 0 8px 32px 0 rgba(60, 60, 60, 0.16);
+  transform: translateY(-2px) scale(1.03);
+}
+.quick-action-icon {
+  font-size: 2.5rem;
+  color: #6c63ff;
+  margin-bottom: 1.2rem;
+}
+.quick-action-content {
+  text-align: center;
+}
+.quick-action-content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.quick-action-content p {
+  font-size: 0.95rem;
+  color: #444;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .quick-actions-grid {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .quick-action-card {
+    min-width: 0;
+    width: 100%;
   }
 }
 </style>
