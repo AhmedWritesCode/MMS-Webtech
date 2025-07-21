@@ -378,12 +378,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background: transparent;
+  background: linear-gradient(135deg, #0f2027 0%, #2c7744 100%);
 }
+
 .dashboard-panel {
-  background: #fff;
-  border-radius: 2rem;
-  box-shadow: 0 8px 32px 0 rgba(60, 60, 60, 0.10);
+  background: #101c13;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 24px 0 rgba(34, 139, 34, 0.18);
   max-width: 1100px;
   width: 100%;
   margin: 3rem 0 2rem 0;
@@ -392,7 +393,9 @@ export default {
   flex-direction: column;
   align-items: stretch;
   min-height: 80vh;
+  border: 2px solid #27ae60;
 }
+
 @media (max-width: 1200px) {
   .dashboard-panel {
     max-width: 98vw;
@@ -406,7 +409,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(16, 28, 19, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -414,40 +417,50 @@ export default {
 }
 
 .loading-spinner {
-  background: #4f46e5;
-  color: white;
+  background: #27ae60;
+  color: #fff;
   padding: 20px 40px;
-  border-radius: 8px;
-  font-weight: 500;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
 }
 
 .error-message {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #fee;
-  border: 1px solid #fcc;
-  color: #c33;
-  padding: 15px;
-  border-radius: 8px;
-  max-width: 300px;
+  top: 24px;
+  right: 24px;
+  background: #1a2e1a;
+  border: 1.5px solid #27ae60;
+  color: #e74c3c;
+  padding: 18px;
+  border-radius: 10px;
+  max-width: 340px;
   z-index: 1000;
+  box-shadow: 0 2px 8px rgba(39, 174, 96, 0.15);
 }
 
 .error-message button {
-  background: #c33;
-  color: white;
+  background: #27ae60;
+  color: #fff;
   border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  margin-top: 10px;
+  padding: 7px 16px;
+  border-radius: 5px;
+  margin-top: 12px;
   cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.error-message button:hover {
+  background: #145a32;
 }
 
 /* Global responsive adjustments */
 @media (max-width: 768px) {
-  .student-dashboard {
+  .dashboard-panel {
     padding: 10px;
+    border-radius: 1rem;
   }
 
   .error-message {
@@ -455,6 +468,7 @@ export default {
     right: 10px;
     left: 10px;
     max-width: none;
+    padding: 12px;
   }
 }
 </style>
