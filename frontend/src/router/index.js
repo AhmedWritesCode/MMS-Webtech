@@ -380,7 +380,7 @@ router.afterEach((to) => {
     HomeView: "Home - Student Marks System",
   };
 
-  document.title = pageTitles[to.name] || "Student Marks System";
+  document.title = pageTitles[to.name] || "Marks Management System";
 });
 
 export default router;

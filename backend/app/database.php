@@ -6,10 +6,10 @@ $capsule = new Capsule;
 
 $capsule->addConnection([
     'driver'    => 'mysql',
-    'host'      => $_ENV['DB_HOST'] ?? 'localhost',
-    'database'  => $_ENV['DB_DATABASE'] ?? 'course_marks_db',
-    'username'  => $_ENV['DB_USERNAME'] ?? 'root',
-    'password'  => $_ENV['DB_PASSWORD'] ?? '',
+    'host'      => 'localhost',
+    'database'  => 'course_marks_db',
+    'username'  => 'root',
+    'password'  => '',
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',

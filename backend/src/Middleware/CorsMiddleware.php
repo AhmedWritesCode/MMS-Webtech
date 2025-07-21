@@ -10,7 +10,8 @@ class CorsMiddleware
 {
     public function __invoke(Request $request, RequestHandler $handler): Response
     {
-        $origin = $_ENV['FRONTEND_URL'] ?? 'http://localhost:8081';
+        // $origin = $_ENV['FRONTEND_URL'] ?? 'http://localhost:8081';
+        $origin = '*';
 
         // Handle preflight OPTIONS request
         if ($request->getMethod() === 'OPTIONS') {
