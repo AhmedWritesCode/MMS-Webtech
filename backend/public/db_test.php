@@ -9,7 +9,7 @@ $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
 try {
     $pdo = new PDO($dsn, $user, $pass);
-    echo "✅ Database connection successful!";
+    echo "Database connection successful!";
 } catch (PDOException $e) {
-    echo "❌ Database connection failed: " . $e->getMessage();
+    echo "Database connection failed: " . $e->getMessage();
 }
