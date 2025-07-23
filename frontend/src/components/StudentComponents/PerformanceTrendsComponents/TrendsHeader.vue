@@ -25,68 +25,49 @@ export default {
 
 <style scoped>
 .trends-header {
-  background: #fff;
-  border-radius: 2rem;
-  padding: 36px 32px 32px 32px;
+  background: white;
+  border-radius: 1px;
+  border-radius: 16px;
+  padding: 30px;
   margin-bottom: 30px;
-  color: #23272f;
-  box-shadow: 0 4px 24px 0 rgba(124, 152, 133, 0.13);
-  backdrop-filter: blur(6px);
-  position: relative;
+  color: rgb(0, 0, 0);
 }
 
 .breadcrumb {
   margin-bottom: 16px;
-  font-size: 0.95rem;
-  opacity: 0.95;
-  color: #23272f;
+  font-size: 0.9rem;
+  opacity: 0.9;
 }
 
 .breadcrumb-link {
-  color: #23272f;
+  color: rgb(0, 0, 0);
   text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s;
 }
 
 .breadcrumb-link:hover {
   text-decoration: underline;
-  color: #7C9885;
 }
 
 .breadcrumb-separator {
   margin: 0 8px;
 }
 
-.breadcrumb-current {
-  color: #7C9885;
-  font-weight: 700;
-}
-
 .page-title {
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0 0 12px 0;
-  color: #23272f;
-  letter-spacing: -1px;
-  text-shadow: 0 2px 8px #B5B68233;
 }
 
 .page-subtitle {
-  font-size: 1.15rem;
-  opacity: 0.95;
+  font-size: 1.1rem;
+  opacity: 0.9;
   margin: 0;
   line-height: 1.5;
-  color: #7C9885;
 }
 
 @media (max-width: 768px) {
   .page-title {
     font-size: 2rem;
-  }
-  .trends-header {
-    padding: 18px 10px 16px 10px;
-    border-radius: 1.2rem;
   }
 }
 </style>
