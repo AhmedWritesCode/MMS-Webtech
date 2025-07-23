@@ -104,15 +104,15 @@ export default {
   flex-wrap: wrap;
   gap: 32px;
   justify-content: center;
-  background: #101010;
+  background: transparent;
   padding: 40px 0;
 }
 
 .stat-card {
-  background: linear-gradient(135deg, #0f5132 0%, #000 100%);
-  border: 2px solid #198754;
+  background: #fff;
+  border: 2px solid #7C9885;
   border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(25, 135, 84, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(124, 152, 133, 0.10), 0 2px 8px 0 rgba(0,0,0,0.08);
   width: 300px;
   min-height: 180px;
   display: flex;
@@ -125,22 +125,22 @@ export default {
 
 .stat-card:hover {
   transform: scale(1.04) translateY(-4px);
-  box-shadow: 0 12px 40px 0 rgba(25, 135, 84, 0.35);
-  border-color: #20c997;
+  box-shadow: 0 12px 40px 0 rgba(181, 182, 130, 0.15);
+  border-color: #B5B682;
 }
 
 .stat-icon {
   width: 56px;
   height: 56px;
-  color: #20c997;
-  background: #000;
+  color: #7C9885;
+  background: #F3F5E6;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 18px;
-  border: 2px solid #198754;
-  box-shadow: 0 2px 8px rgba(32, 201, 151, 0.15);
+  border: 2px solid #B5B682;
+  box-shadow: 0 2px 8px rgba(181, 182, 130, 0.10);
   font-size: 2.2rem;
 }
 
@@ -152,7 +152,7 @@ export default {
 .stat-content h3 {
   margin: 0 0 10px 0;
   font-size: 1.05rem;
-  color: #20c997;
+  color: #7C9885;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -161,10 +161,10 @@ export default {
 .stat-value {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #fff;
+  color: #222;
   margin: 0 0 8px 0;
   letter-spacing: 1px;
-  text-shadow: 0 2px 8px #19875444;
+  text-shadow: 0 2px 8px #7C988544;
 }
 
 .stat-change {
@@ -179,25 +179,25 @@ export default {
 
 .stat-change.positive {
   color: #fff;
-  background: linear-gradient(90deg, #198754 60%, #20c997 100%);
-  box-shadow: 0 2px 8px #19875433;
+  background: linear-gradient(90deg, #7C9885 60%, #B5B682 100%);
+  box-shadow: 0 2px 8px #7C988533;
 }
 
 .stat-change.negative {
   color: #fff;
-  background: linear-gradient(90deg, #212529 60%, #dc3545 100%);
-  box-shadow: 0 2px 8px #dc354533;
+  background: linear-gradient(90deg, #B5B682 60%, #7C9885 100%);
+  box-shadow: 0 2px 8px #B5B68233;
 }
 
 .stat-change.neutral {
   color: #adb5bd;
-  background: #222;
-  border: 1px solid #198754;
+  background: #F3F5E6;
+  border: 1px solid #7C9885;
 }
 
 .stat-label {
   font-size: 0.95rem;
-  color: #20c997;
+  color: #B5B682;
   margin-top: 4px;
   letter-spacing: 0.5px;
   font-weight: 600;

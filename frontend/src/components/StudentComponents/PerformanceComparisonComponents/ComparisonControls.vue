@@ -106,11 +106,11 @@ export default {
 
 .control-tab {
   padding: 8px 16px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #7C9885;
   background: #f8fafc;
   border-radius: 20px;
   font-weight: 600;
-  color: #64748b;
+  color: #7C9885;
   cursor: pointer;
   transition: all 0.2s;
   font-size: 0.9rem;
@@ -118,9 +118,9 @@ export default {
 
 .control-tab.active,
 .control-tab:hover {
-  border-color: #3b82f6;
-  color: #3b82f6;
-  background: #eff6ff;
+  border-color: #B5B682;
+  color: #fff;
+  background: #7C9885;
 }
 
 @media (max-width: 768px) {

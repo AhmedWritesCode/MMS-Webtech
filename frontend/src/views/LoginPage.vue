@@ -480,7 +480,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0f2027 0%, #2f9e44 100%);
+  background: linear-gradient(135deg, #7C9885 0%, #B5B682 100%);
   padding: 20px;
   position: relative;
   overflow: hidden;
@@ -498,7 +498,7 @@ export default {
 
 .floating-shape {
   position: absolute;
-  background: rgba(47, 158, 68, 0.08);
+  background: rgba(124, 152, 133, 0.08);
   border-radius: 50%;
   animation: float 7s ease-in-out infinite;
 }
@@ -509,7 +509,7 @@ export default {
   top: 8%;
   left: 12%;
   animation-delay: 0s;
-  background: rgba(47, 158, 68, 0.18);
+  background: rgba(124, 152, 133, 0.18);
 }
 
 .shape-2 {
@@ -518,7 +518,7 @@ export default {
   top: 65%;
   right: 8%;
   animation-delay: 2s;
-  background: rgba(15, 32, 39, 0.13);
+  background: rgba(181, 182, 130, 0.13);
 }
 
 .shape-3 {
@@ -527,7 +527,7 @@ export default {
   bottom: 12%;
   left: 35%;
   animation-delay: 4s;
-  background: rgba(47, 158, 68, 0.10);
+  background: rgba(124, 152, 133, 0.10);
 }
 
 @keyframes float {
@@ -541,16 +541,16 @@ export default {
 }
 
 .login-wrapper {
-  background: #101820;
+  background: #f8f8f4;
   border-radius: 20px;
-  box-shadow: 0 10px 40px 0 rgba(47, 158, 68, 0.15),
+  box-shadow: 0 10px 40px 0 rgba(124, 152, 133, 0.15),
     0 2px 8px 0 rgba(0,0,0,0.12);
   padding: 48px 36px;
   width: 100%;
   max-width: 420px;
   position: relative;
   z-index: 1;
-  border: 1.5px solid #2f9e44;
+  border: 1.5px solid #7C9885;
 }
 
 .title-section {
@@ -564,12 +564,12 @@ export default {
   justify-content: center;
   width: 72px;
   height: 72px;
-  background: linear-gradient(135deg, #2f9e44, #101820 80%);
+  background: linear-gradient(135deg, #7C9885, #B5B682 80%);
   border-radius: 50%;
   margin-bottom: 18px;
   color: #fff;
-  border: 2.5px solid #2f9e44;
-  box-shadow: 0 2px 12px #2f9e4433;
+  border: 2.5px solid #7C9885;
+  box-shadow: 0 2px 12px #7C988533;
 }
 
 .logo-icon {
@@ -579,13 +579,13 @@ export default {
 .title-section h1 {
   font-size: 26px;
   font-weight: 700;
-  color: #2f9e44;
+  color: #7C9885;
   margin: 0 0 8px 0;
   letter-spacing: 1px;
 }
 
 .subtitle {
-  color: #b7f5c5;
+  color: #B5B682;
   font-size: 15px;
   margin: 0;
   font-weight: 400;
@@ -593,7 +593,7 @@ export default {
 
 .role-selection h3 {
   font-size: 18px;
-  color: #b7f5c5;
+  color: #B5B682;
   text-align: center;
   margin-bottom: 20px;
   font-weight: 600;
@@ -611,42 +611,30 @@ export default {
   align-items: center;
   gap: 7px;
   padding: 18px 0;
-  background: #182c22;
-  border: 2px solid #1b3b2a;
+  background: #e6e8d8;
+  border: 2px solid #B5B682;
   border-radius: 14px;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(.4,0,.2,1);
   font-size: 15px;
   font-weight: 500;
-  color: #b7f5c5;
-  box-shadow: 0 2px 8px #2f9e4415;
+  color: #7C9885;
+  box-shadow: 0 2px 8px #7C988515;
 }
 
 .role-btn:hover {
-  border-color: #2f9e44;
-  color: #2f9e44;
-  background: #101820;
+  border-color: #7C9885;
+  color: #B5B682;
+  background: #f8f8f4;
   transform: scale(1.04);
 }
 
-.role-student:hover {
-  border-color: #2f9e44;
-  background: #1b3b2a;
-}
-
-.role-lecturer:hover {
-  border-color: #38b000;
-  background: #1b3b2a;
-}
-
-.role-advisor:hover {
-  border-color: #70e000;
-  background: #1b3b2a;
-}
-
+.role-student:hover,
+.role-lecturer:hover,
+.role-advisor:hover,
 .role-admin:hover {
-  border-color: #008000;
-  background: #1b3b2a;
+  border-color: #B5B682;
+  background: #e6e8d8;
 }
 
 .login-form {
@@ -659,7 +647,7 @@ export default {
   gap: 8px;
   background: none;
   border: none;
-  color: #b7f5c5;
+  color: #7C9885;
   font-size: 14px;
   cursor: pointer;
   padding: 8px 0;
@@ -668,7 +656,7 @@ export default {
 }
 
 .back-btn:hover {
-  color: #2f9e44;
+  color: #B5B682;
 }
 
 .selected-role-display {
@@ -677,10 +665,10 @@ export default {
   justify-content: center;
   gap: 8px;
   padding: 12px;
-  background: rgba(47, 158, 68, 0.12);
+  background: rgba(124, 152, 133, 0.12);
   border-radius: 8px;
   margin-bottom: 24px;
-  color: #2f9e44;
+  color: #7C9885;
   font-weight: 600;
 }
 
@@ -696,15 +684,15 @@ export default {
 }
 
 .error-message {
-  background: #2f1b1b;
-  color: #ff5e5e;
-  border: 1px solid #ff5e5e55;
+  background: #b68282;
+  color: #7C9885;
+  border: 1px solid #B5B682;
 }
 
 .success-message {
-  background: #1b2f1b;
-  color: #38b000;
-  border: 1px solid #38b00055;
+  background: #b5b68222;
+  color: #7C9885;
+  border: 1px solid #7C9885;
 }
 
 .form-group {
@@ -715,7 +703,7 @@ export default {
   display: block;
   font-size: 14px;
   font-weight: 600;
-  color: #b7f5c5;
+  color: #7C9885;
   margin-bottom: 8px;
 }
 
@@ -728,30 +716,30 @@ export default {
 .input-container input {
   width: 100%;
   padding: 12px 16px 12px 44px;
-  border: 2px solid #1b3b2a;
+  border: 2px solid #B5B682;
   border-radius: 8px;
   font-size: 16px;
-  background: #182c22;
-  color: #b7f5c5;
+  background: #e6e8d8;
+  color: #7C9885;
   transition: all 0.2s;
   outline: none;
 }
 
 .input-container input:focus {
-  border-color: #2f9e44;
-  box-shadow: 0 0 0 2px #2f9e4422;
+  border-color: #7C9885;
+  box-shadow: 0 0 0 2px #7C988522;
 }
 
 .input-container input:disabled {
-  background: #101820;
-  color: #6c757d;
+  background: #f8f8f4;
+  color: #b5b68299;
   cursor: not-allowed;
 }
 
 .input-icon {
   position: absolute;
   left: 16px;
-  color: #38b000;
+  color: #B5B682;
   z-index: 1;
 }
 
@@ -760,18 +748,18 @@ export default {
   right: 16px;
   background: none;
   border: none;
-  color: #38b000;
+  color: #B5B682;
   cursor: pointer;
   transition: color 0.2s;
 }
 
 .toggle-password:hover {
-  color: #b7f5c5;
+  color: #7C9885;
 }
 
 .field-error {
   font-size: 12px;
-  color: #ff5e5e;
+  color: #b68282;
   margin-top: 4px;
   display: block;
 }
@@ -788,7 +776,7 @@ export default {
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: #b7f5c5;
+  color: #7C9885;
   cursor: pointer;
 }
 
@@ -799,16 +787,16 @@ export default {
 .checkmark {
   width: 18px;
   height: 18px;
-  border: 2px solid #1b3b2a;
+  border: 2px solid #B5B682;
   border-radius: 4px;
   position: relative;
   transition: all 0.2s;
-  background: #182c22;
+  background: #e6e8d8;
 }
 
 .checkbox-container input[type="checkbox"]:checked + .checkmark {
-  background: #2f9e44;
-  border-color: #2f9e44;
+  background: #7C9885;
+  border-color: #7C9885;
 }
 
 .checkbox-container input[type="checkbox"]:checked + .checkmark::after {
@@ -830,20 +818,20 @@ export default {
 
 .remember-me-hint {
   font-size: 11px;
-  color: #b7f5c5;
+  color: #B5B682;
   font-weight: normal;
 }
 
 .forgot-link {
   font-size: 14px;
-  color: #38b000;
+  color: #7C9885;
   text-decoration: none;
   font-weight: 500;
 }
 
 .forgot-link:hover {
   text-decoration: underline;
-  color: #b7f5c5;
+  color: #B5B682;
 }
 
 .login-btn {
@@ -853,7 +841,7 @@ export default {
   gap: 8px;
   width: 100%;
   padding: 14px 24px;
-  background: linear-gradient(90deg, #2f9e44 60%, #101820 100%);
+  background: linear-gradient(90deg, #7C9885 60%, #B5B682 100%);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -861,13 +849,13 @@ export default {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 2px 8px #2f9e4415;
+  box-shadow: 0 2px 8px #7C988515;
 }
 
 .login-btn:hover:not(:disabled) {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 4px 16px #2f9e4433;
-  background: linear-gradient(90deg, #38b000 60%, #101820 100%);
+  box-shadow: 0 4px 16px #7C988533;
+  background: linear-gradient(90deg, #B5B682 60%, #7C9885 100%);
 }
 
 .login-btn:disabled {
@@ -879,7 +867,7 @@ export default {
 .loading-spinner {
   width: 20px;
   height: 20px;
-  border: 2px solid rgba(47, 158, 68, 0.3);
+  border: 2px solid rgba(124, 152, 133, 0.3);
   border-top: 2px solid #fff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -897,12 +885,12 @@ export default {
 .dev-section {
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid #1b3b2a;
+  border-top: 1px solid #B5B682;
 }
 
 .dev-section h4 {
   font-size: 14px;
-  color: #b7f5c5;
+  color: #7C9885;
   margin-bottom: 12px;
   text-align: center;
 }
@@ -915,17 +903,17 @@ export default {
 
 .dev-btn {
   padding: 8px 12px;
-  background: #182c22;
-  border: 1px solid #1b3b2a;
+  background: #e6e8d8;
+  border: 1px solid #B5B682;
   border-radius: 6px;
   font-size: 12px;
-  color: #b7f5c5;
+  color: #7C9885;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .dev-btn:hover:not(:disabled) {
-  background: #2f9e44;
+  background: #7C9885;
   color: #fff;
 }
 
@@ -933,12 +921,12 @@ export default {
   margin-top: 30px;
   text-align: center;
   padding-top: 20px;
-  border-top: 1px solid #1b3b2a;
+  border-top: 1px solid #B5B682;
 }
 
 .login-footer p {
   font-size: 12px;
-  color: #b7f5c5;
+  color: #7C9885;
   margin: 4px 0;
 }
 

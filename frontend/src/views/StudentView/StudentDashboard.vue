@@ -378,13 +378,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background: linear-gradient(135deg, #0f2027 0%, #2c7744 100%);
+  background: linear-gradient(135deg, #7C9885 0%, #B5B682 100%);
 }
 
 .dashboard-panel {
-  background: #101c13;
+  background: #fff;
   border-radius: 1.5rem;
-  box-shadow: 0 6px 24px 0 rgba(34, 139, 34, 0.18);
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
   max-width: 1100px;
   width: 100%;
   margin: 3rem 0 2rem 0;
@@ -393,7 +393,7 @@ export default {
   flex-direction: column;
   align-items: stretch;
   min-height: 80vh;
-  border: 2px solid #27ae60;
+  border: 2px solid #7C9885;
 }
 
 @media (max-width: 1200px) {

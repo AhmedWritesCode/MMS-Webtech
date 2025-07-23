@@ -169,20 +169,20 @@ export default {
   background: white;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid;
+  box-shadow: 0 2px 10px rgba(124, 152, 133, 0.10);
+  border-left: 4px solid #7C9885;
 }
 
 .overview-card.your-performance {
-  border-left-color: #3b82f6;
+  border-left-color: #7C9885;
 }
 
 .overview-card.class-stats {
-  border-left-color: #10b981;
+  border-left-color: #B5B682;
 }
 
 .overview-card.performance-trend {
-  border-left-color: #f59e0b;
+  border-left-color: #7C9885;
 }
 
 .card-header {
@@ -224,7 +224,7 @@ export default {
 }
 
 .stat-value.trend-positive {
-  color: #10b981;
+  color: #7C9885;
 }
 
 .stat-value.trend-negative {

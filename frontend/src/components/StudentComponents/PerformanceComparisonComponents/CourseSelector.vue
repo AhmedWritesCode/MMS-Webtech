@@ -64,23 +64,25 @@ export default {
 
 .course-tab {
   background: #f1f5f9;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #7C9885;
   border-radius: 12px;
   padding: 16px 20px;
   cursor: pointer;
   transition: all 0.2s;
   text-align: left;
+  color: #7C9885;
 }
 
 .course-tab:hover {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: #B5B682;
+  background: #F3F5E6;
+  color: #7C9885;
 }
 
 .course-tab.active {
-  border-color: #3b82f6;
-  background: #3b82f6;
-  color: white;
+  border-color: #7C9885;
+  background: #7C9885;
+  color: #fff;
 }
 
 .course-code {

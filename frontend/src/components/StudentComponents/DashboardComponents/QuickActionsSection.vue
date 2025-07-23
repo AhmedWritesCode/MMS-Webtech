@@ -55,7 +55,8 @@ export default {
 .quick-action-card {
   background: #fff;
   border-radius: 1.2rem;
-  box-shadow: 0 4px 16px 0 rgba(60, 60, 60, 0.08);
+  border: 2px solid #7C9885;
+  box-shadow: 0 4px 16px 0 rgba(124, 152, 133, 0.08);
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -66,12 +67,13 @@ export default {
   min-height: 170px;
 }
 .quick-action-card:hover {
-  box-shadow: 0 8px 32px 0 rgba(60, 60, 60, 0.16);
+  box-shadow: 0 8px 32px 0 rgba(124, 152, 133, 0.16);
   transform: translateY(-2px) scale(1.03);
+  border-color: #B5B682;
 }
 .quick-action-icon {
   font-size: 2.5rem;
-  color: #6c63ff;
+  color: #7C9885;
   margin-bottom: 1.2rem;
 }
 .quick-action-content {
@@ -81,6 +83,7 @@ export default {
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 0.3rem;
+  color: #222;
 }
 .quick-action-content p {
   font-size: 0.95rem;
