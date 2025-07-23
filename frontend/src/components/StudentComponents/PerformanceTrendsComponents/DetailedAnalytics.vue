@@ -1,7 +1,6 @@
 <template>
   <div class="detailed-analytics">
-    <div class="analytics-grid">
-      <!-- Assessment Type Performance -->
+    <div class="analytics-top-row">
       <div class="analytics-card">
         <h3>Performance by Assessment Type</h3>
         <div class="assessment-types">
@@ -30,8 +29,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Monthly Progress -->
       <div class="analytics-card">
         <h3>Monthly Progress</h3>
         <div class="monthly-chart">
@@ -52,7 +49,8 @@
           </div>
         </div>
       </div>
-
+    </div>
+    <div class="analytics-grid">
       <!-- Improvement Opportunities -->
       <div class="analytics-card">
         <h3>Areas for Improvement</h3>
@@ -64,7 +62,7 @@
           >
             <div class="improvement-header">
               <div class="improvement-icon" :class="area.priority">
-                {{ area.icon }}
+                <component :is="getAreaIcon(area.area)" class="lucide-icon" />
               </div>
               <div class="improvement-content">
                 <h4>{{ area.area }}</h4>
@@ -90,7 +88,6 @@
           </div>
         </div>
       </div>
-
       <!-- Performance Insights -->
       <div class="analytics-card">
         <h3>Performance Insights</h3>
@@ -101,7 +98,9 @@
             class="insight-item"
             :class="insight.type"
           >
-            <div class="insight-icon">{{ insight.icon }}</div>
+            <div class="insight-icon">
+              <component :is="getInsightIcon(insight.type)" class="lucide-icon" />
+            </div>
             <div class="insight-content">
               <h4>{{ insight.title }}</h4>
               <p>{{ insight.description }}</p>
@@ -123,8 +122,10 @@
 </template>
 
 <script>
+import { TrendingUp, Target, FlaskConical, BookOpen, Star, Rocket, Info, AlertTriangle, CheckCircle } from 'lucide-vue-next';
 export default {
   name: "DetailedAnalytics",
+  components: { TrendingUp, Target, FlaskConical, BookOpen, Star, Rocket, Info, AlertTriangle, CheckCircle },
   props: {
     assessmentTypePerformance: {
       type: Array,
@@ -154,10 +155,21 @@ export default {
       if (percentage >= 65) return "average";
       return "needs-improvement";
     },
-
     getTrendClass(trend) {
       return trend > 0 ? "trend-up" : trend < 0 ? "trend-down" : "trend-stable";
     },
+    getAreaIcon(area) {
+      if (area.includes('Quiz')) return Target;
+      if (area.includes('Lab')) return FlaskConical;
+      if (area.includes('Assignment')) return BookOpen;
+      return Star;
+    },
+    getInsightIcon(type) {
+      if (type === 'positive') return CheckCircle;
+      if (type === 'warning') return AlertTriangle;
+      if (type === 'info') return Info;
+      return Info;
+    }
   },
 };
 </script>
@@ -169,22 +181,30 @@ export default {
 
 .analytics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.analytics-top-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
 .analytics-card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  backdrop-filter: blur(6px);
 }
 
 .analytics-card h3 {
   margin: 0 0 20px 0;
   font-size: 1.2rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #7C9885;
 }
 
 /* Assessment Type Performance */
@@ -195,8 +215,8 @@ export default {
 }
 
 .type-item {
-  background: #f8fafc;
-  border-radius: 8px;
+  background: rgba(181, 182, 130, 0.10);
+  border-radius: 1rem;
   padding: 16px;
 }
 
@@ -208,69 +228,69 @@ export default {
 }
 
 .type-name {
-  font-weight: 600;
-  color: #1e293b;
+  font-weight: 700;
+  color: #7C9885;
 }
 
 .type-average {
-  font-weight: 700;
-  color: #3b82f6;
+  font-weight: 800;
+  color: #B5B682;
 }
 
 .type-progress {
-  height: 8px;
+  height: 10px;
   background: #e2e8f0;
-  border-radius: 4px;
+  border-radius: 5px;
   overflow: hidden;
   margin-bottom: 8px;
 }
 
 .progress-fill {
   height: 100%;
-  border-radius: 4px;
+  border-radius: 5px;
   transition: width 0.3s ease;
 }
 
 .progress-fill.excellent {
-  background: #10b981;
+  background: linear-gradient(90deg, #7C9885 0%, #B5B682 100%);
 }
 
 .progress-fill.good {
-  background: #3b82f6;
+  background: #B5B682;
 }
 
 .progress-fill.average {
-  background: #f59e0b;
+  background: #e6c972;
 }
 
 .progress-fill.needs-improvement {
-  background: #ef4444;
+  background: #e74c3c;
 }
 
 .type-details {
   display: flex;
   justify-content: space-between;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .type-count {
-  color: #64748b;
+  color: #7C9885;
 }
 
 .type-trend {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .type-trend.trend-up {
-  color: #10b981;
+  color: #7C9885;
 }
 
 .type-trend.trend-down {
-  color: #ef4444;
+  color: #e74c3c;
 }
 
 .type-trend.trend-stable {
-  color: #64748b;
+  color: #B5B682;
 }
 
 /* Monthly Progress */
@@ -279,7 +299,7 @@ export default {
   align-items: end;
   justify-content: space-around;
   height: 200px;
-  gap: 8px;
+  gap: 10px;
   padding: 0 10px;
 }
 
@@ -308,16 +328,32 @@ export default {
   min-height: 4px;
 }
 
+.month-fill.excellent {
+  background: linear-gradient(90deg, #7C9885 0%, #B5B682 100%);
+}
+
+.month-fill.good {
+  background: #B5B682;
+}
+
+.month-fill.average {
+  background: #e6c972;
+}
+
+.month-fill.needs-improvement {
+  background: #e74c3c;
+}
+
 .month-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #1e293b;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #7C9885;
   margin-bottom: 4px;
 }
 
 .month-value {
-  font-size: 0.8rem;
-  color: #64748b;
+  font-size: 0.9rem;
+  color: #B5B682;
 }
 
 /* Improvement Areas */
@@ -328,10 +364,10 @@ export default {
 }
 
 .improvement-item {
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  border: 1.5px solid #B5B682;
+  border-radius: 1rem;
   padding: 16px;
-  background: #f8fafc;
+  background: rgba(181, 182, 130, 0.10);
 }
 
 .improvement-header {
@@ -344,43 +380,46 @@ export default {
 .improvement-icon {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
+  background: #fff;
+  color: #7C9885;
+  box-shadow: 0 2px 8px #B5B68222;
 }
 
 .improvement-icon.high {
-  background: #fee2e2;
-  color: #dc2626;
+  background: #ffeaea;
+  color: #e74c3c;
 }
 
 .improvement-icon.medium {
-  background: #fef3c7;
-  color: #d97706;
+  background: #fffbe6;
+  color: #e6c972;
 }
 
 .improvement-icon.low {
-  background: #dcfce7;
-  color: #16a34a;
+  background: #eaf7ea;
+  color: #7C9885;
 }
 
 .improvement-content h4 {
   margin: 0 0 4px 0;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #7C9885;
 }
 
 .improvement-description {
   margin: 0;
-  font-size: 0.9rem;
-  color: #64748b;
+  font-size: 1rem;
+  color: #7C9885;
 }
 
 .improvement-stats {
   display: flex;
-  gap: 16px;
+  gap: 18px;
   flex-wrap: wrap;
 }
 
@@ -391,21 +430,21 @@ export default {
 }
 
 .stat-label {
-  font-size: 0.8rem;
-  color: #64748b;
+  font-size: 0.9rem;
+  color: #7C9885;
 }
 
 .stat-value {
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #23272f;
 }
 
 .stat-value.target {
-  color: #10b981;
+  color: #B5B682;
 }
 
 .stat-value.gap {
-  color: #f59e0b;
+  color: #e6c972;
 }
 
 /* Performance Insights */
@@ -416,44 +455,43 @@ export default {
 }
 
 .insight-item {
-  border-radius: 8px;
+  border-radius: 1rem;
   padding: 16px;
   display: flex;
   align-items: flex-start;
   gap: 12px;
   border-left: 4px solid;
+  background: rgba(181, 182, 130, 0.10);
 }
 
 .insight-item.positive {
-  background: #f0fdf4;
-  border-left-color: #10b981;
+  border-left-color: #7C9885;
 }
 
 .insight-item.warning {
-  background: #fffbeb;
-  border-left-color: #f59e0b;
+  border-left-color: #e6c972;
 }
 
 .insight-item.info {
-  background: #eff6ff;
-  border-left-color: #3b82f6;
+  border-left-color: #B5B682;
 }
 
 .insight-icon {
   font-size: 1.5rem;
   margin-top: 2px;
+  color: #7C9885;
 }
 
 .insight-content h4 {
   margin: 0 0 4px 0;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #7C9885;
 }
 
 .insight-content p {
   margin: 0 0 8px 0;
-  color: #64748b;
-  font-size: 0.9rem;
+  color: #7C9885;
+  font-size: 1rem;
 }
 
 .insight-metrics {
@@ -463,8 +501,52 @@ export default {
 }
 
 .metric {
-  font-size: 0.8rem;
-  color: #64748b;
+  font-size: 0.9rem;
+  color: #B5B682;
+}
+
+.lucide-icon {
+  width: 2.1rem;
+  height: 2.1rem;
+  color: #7C9885;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  padding: 0.4rem;
+  border: 2px solid #B5B682;
+  box-shadow: 0 2px 8px #B5B68222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.improvement-icon.high .lucide-icon {
+  background: #ffeaea;
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+.improvement-icon.medium .lucide-icon {
+  background: #fffbe6;
+  color: #e6c972;
+  border-color: #e6c972;
+}
+.improvement-icon.low .lucide-icon {
+  background: #eaf7ea;
+  color: #7C9885;
+  border-color: #7C9885;
+}
+.insight-item.positive .lucide-icon {
+  background: #eaf7ea;
+  color: #7C9885;
+  border-color: #7C9885;
+}
+.insight-item.warning .lucide-icon {
+  background: #fffbe6;
+  color: #e6c972;
+  border-color: #e6c972;
+}
+.insight-item.info .lucide-icon {
+  background: #eaf7ea;
+  color: #7C9885;
+  border-color: #7C9885;
 }
 
 @media (max-width: 1200px) {
@@ -473,16 +555,23 @@ export default {
   }
 }
 
+@media (max-width: 900px) {
+  .analytics-top-row {
+    grid-template-columns: 1fr;
+  }
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .analytics-grid {
     grid-template-columns: 1fr;
   }
-
   .improvement-stats {
     flex-direction: column;
     gap: 8px;
   }
-
   .insight-metrics {
     flex-direction: column;
     gap: 4px;

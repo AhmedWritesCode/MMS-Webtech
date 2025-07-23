@@ -61,45 +61,46 @@ export default {
 
 <style scoped>
 .recommendations {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
   margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  backdrop-filter: blur(6px);
 }
 
 .recommendations h2 {
   margin: 0 0 24px 0;
   font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #7C9885;
 }
 
 .recommendations-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
 .recommendation-card {
-  border-radius: 12px;
+  border-radius: 1.2rem;
   padding: 20px;
   border-left: 4px solid;
 }
 
 .recommendation-card.high {
-  background: #fef2f2;
-  border-left-color: #ef4444;
+  background: #ffeaea;
+  border-left-color: #e74c3c;
 }
 
 .recommendation-card.medium {
-  background: #fffbeb;
-  border-left-color: #f59e0b;
+  background: #fffbe6;
+  border-left-color: #e6c972;
 }
 
 .recommendation-card.low {
-  background: #f0fdf4;
-  border-left-color: #22c55e;
+  background: #eaf7ea;
+  border-left-color: #7C9885;
 }
 
 .recommendation-header {
@@ -118,7 +119,7 @@ export default {
   flex: 1;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #23272f;
 }
 
 .priority-badge {
@@ -130,22 +131,22 @@ export default {
 }
 
 .recommendation-card.high .priority-badge {
-  background: #fee2e2;
-  color: #dc2626;
+  background: #ffeaea;
+  color: #e74c3c;
 }
 
 .recommendation-card.medium .priority-badge {
-  background: #fef3c7;
-  color: #d97706;
+  background: #fffbe6;
+  color: #e6c972;
 }
 
 .recommendation-card.low .priority-badge {
-  background: #dcfce7;
-  color: #16a34a;
+  background: #eaf7ea;
+  color: #7C9885;
 }
 
 .recommendation-content p {
-  color: #64748b;
+  color: #7C9885;
   margin-bottom: 16px;
   line-height: 1.5;
 }
@@ -156,8 +157,8 @@ export default {
 
 .recommendation-details .detail-item {
   margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: #64748b;
+  font-size: 0.98rem;
+  color: #7C9885;
 }
 
 .recommendation-actions {
@@ -168,20 +169,21 @@ export default {
 .action-btn {
   padding: 8px 16px;
   border: none;
-  border-radius: 6px;
-  font-weight: 600;
+  border-radius: 8px;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .action-btn.primary {
-  background: #3b82f6;
-  color: white;
+  background: linear-gradient(90deg, #B5B682 0%, #7C9885 100%);
+  color: #23272f;
 }
 
 .action-btn.primary:hover {
-  background: #2563eb;
-  transform: translateY(-1px);
+  background: linear-gradient(90deg, #7C9885 0%, #B5B682 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
 }
 
 @media (max-width: 768px) {

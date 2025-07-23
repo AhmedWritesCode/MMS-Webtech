@@ -378,28 +378,35 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background: linear-gradient(135deg, #0f2027 0%, #2c7744 100%);
+  background: linear-gradient(135deg, #B5B682 0%, #7C9885 100%);
+  padding: 3vh 0;
 }
 
 .dashboard-panel {
-  background: #101c13;
-  border-radius: 1.5rem;
-  box-shadow: 0 6px 24px 0 rgba(34, 139, 34, 0.18);
+  background: rgba(255,255,255,0.95);
+  border-radius: 2.5rem;
+  box-shadow: 0 8px 40px 0 rgba(124, 152, 133, 0.18), 0 1.5px 8px 0 rgba(0,0,0,0.04);
   max-width: 1100px;
   width: 100%;
   margin: 3rem 0 2rem 0;
-  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  padding: 3.5rem 3rem 2.5rem 3rem;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   min-height: 80vh;
-  border: 2px solid #27ae60;
+  border: 1.5px solid #B5B682;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.dashboard-panel:hover {
+  box-shadow: 0 16px 48px 0 rgba(124, 152, 133, 0.22), 0 2px 12px 0 rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.98);
 }
 
 @media (max-width: 1200px) {
   .dashboard-panel {
     max-width: 98vw;
-    padding: 1.5rem 0.5rem 1rem 0.5rem;
+    padding: 2rem 0.5rem 1.5rem 0.5rem;
   }
 }
 
@@ -409,7 +416,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(16, 28, 19, 0.92);
+  background: rgba(181, 182, 130, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -417,50 +424,52 @@ export default {
 }
 
 .loading-spinner {
-  background: #27ae60;
-  color: #fff;
+  background: #B5B682;
+  color: #23272f;
   padding: 20px 40px;
-  border-radius: 12px;
+  border-radius: 16px;
   font-weight: 600;
   font-size: 1.2rem;
   letter-spacing: 1px;
-  box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+  box-shadow: 0 2px 16px rgba(124, 152, 133, 0.18);
+  border: 1.5px solid #7C9885;
 }
 
 .error-message {
   position: fixed;
   top: 24px;
   right: 24px;
-  background: #1a2e1a;
-  border: 1.5px solid #27ae60;
+  background: #7C9885;
+  border: 1.5px solid #B5B682;
   color: #e74c3c;
   padding: 18px;
-  border-radius: 10px;
+  border-radius: 14px;
   max-width: 340px;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(39, 174, 96, 0.15);
+  box-shadow: 0 2px 12px rgba(124, 152, 133, 0.15);
 }
 
 .error-message button {
-  background: #27ae60;
-  color: #fff;
+  background: #B5B682;
+  color: #23272f;
   border: none;
   padding: 7px 16px;
-  border-radius: 5px;
+  border-radius: 7px;
   margin-top: 12px;
   cursor: pointer;
   font-weight: 500;
   transition: background 0.2s;
 }
 .error-message button:hover {
-  background: #145a32;
+  background: #7C9885;
+  color: #fff;
 }
 
 /* Global responsive adjustments */
 @media (max-width: 768px) {
   .dashboard-panel {
     padding: 10px;
-    border-radius: 1rem;
+    border-radius: 1.2rem;
   }
 
   .error-message {

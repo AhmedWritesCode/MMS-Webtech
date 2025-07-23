@@ -64,14 +64,6 @@
       :improvement-areas="improvementAreas"
       :performance-insights="performanceInsights"
     />
-
-    <!-- Export and Actions -->
-    <ActionsSection
-      @export-trends-report="exportTrendsReport"
-      @set-performance-goals="setPerformanceGoals"
-      @share-progress="shareProgress"
-      @schedule-review="scheduleReview"
-    />
   </div>
 </template>
 
@@ -82,7 +74,6 @@ import TrendsControls from "@/components/StudentComponents/PerformanceTrendsComp
 import OverviewSummary from "@/components/StudentComponents/PerformanceTrendsComponents/OverviewSummary.vue";
 import TrendsChart from "@/components/StudentComponents/PerformanceTrendsComponents/TrendsChart.vue";
 import DetailedAnalytics from "@/components/StudentComponents/PerformanceTrendsComponents/DetailedAnalytics.vue";
-import ActionsSection from "@/components/StudentComponents/PerformanceTrendsComponents/ActionsSection.vue";
 
 // Import API services
 import { studentPerformanceAPI, utilityAPI } from "@/services/api";
@@ -95,7 +86,6 @@ export default {
     OverviewSummary,
     TrendsChart,
     DetailedAnalytics,
-    ActionsSection,
   },
   data() {
     return {
@@ -557,80 +547,99 @@ export default {
 
 <style scoped>
 .performance-trends {
-  padding: 20px;
-  background-color: #f8fafc;
+  padding: 32px 0;
+  background: linear-gradient(135deg, #B5B682 0%, #7C9885 100%);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Global responsive adjustments */
-@media (max-width: 768px) {
-  .performance-trends {
-    padding: 16px;
-  }
+.trends-container {
+  width: 100%;
+  max-width: 1100px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 2.5rem;
+  box-shadow: 0 8px 40px 0 rgba(124, 152, 133, 0.18), 0 1.5px 8px 0 rgba(0,0,0,0.04);
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.trends-container:hover {
+  box-shadow: 0 16px 48px 0 rgba(124, 152, 133, 0.22), 0 2px 12px 0 rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.98);
 }
 
 .loading-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(181, 182, 130, 0.92);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 1000;
 }
 
 .loading-spinner {
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
+  border-top: 4px solid #B5B682;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   animation: spin 1s linear infinite;
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(124, 152, 133, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .error-message {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #ffcccc;
-  padding: 10px;
+  top: 24px;
+  right: 24px;
+  background: #7C9885;
+  border: 1.5px solid #B5B682;
+  color: #e74c3c;
+  padding: 18px;
+  border-radius: 14px;
+  max-width: 340px;
   z-index: 1000;
-}
-
-.error-message p {
-  margin: 0;
-  color: #ff0000;
+  box-shadow: 0 2px 12px rgba(124, 152, 133, 0.15);
 }
 
 .error-message button {
-  background-color: #3498db;
-  color: #fff;
+  background: #B5B682;
+  color: #23272f;
   border: none;
-  padding: 5px 10px;
-  margin-top: 10px;
+  padding: 7px 16px;
+  border-radius: 7px;
+  margin-top: 12px;
   cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.error-message button:hover {
+  background: #7C9885;
+  color: #fff;
 }
 
 .no-data-message {
-  background: white;
-  border-radius: 12px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
   padding: 60px 30px;
   margin: 30px 0;
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.12);
 }
 
 .no-data-content {
@@ -648,12 +657,12 @@ export default {
   margin: 0 0 16px 0;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #7C9885;
 }
 
 .no-data-content p {
   margin: 0 0 24px 0;
-  color: #64748b;
+  color: #23272f;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -663,17 +672,30 @@ export default {
 }
 
 .retry-btn {
-  background-color: #3b82f6;
-  color: white;
+  background-color: #B5B682;
+  color: #23272f;
   border: none;
   padding: 12px 24px;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(124, 152, 133, 0.10);
 }
 
 .retry-btn:hover {
-  background-color: #2563eb;
+  background-color: #7C9885;
+  color: #fff;
+}
+
+/* Global responsive adjustments */
+@media (max-width: 900px) {
+  .trends-container {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    border-radius: 1.2rem;
+  }
+  .performance-trends {
+    padding: 12px 0;
+  }
 }
 </style>

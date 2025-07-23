@@ -28,7 +28,7 @@
     </div>
 
     <div class="overview-card projected-grade">
-      <h3>Projected Final Grade</h3>
+      <h3>Predicted Final Grade</h3>
       <div class="projection-display">
         <div
           class="projected-grade-large"
@@ -43,28 +43,6 @@
           <div class="projection-status" :class="projectedGrade.trend">
             {{ projectedGrade.status }}
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="overview-card grade-goals">
-      <h3>Grade Goals</h3>
-      <div class="goals-list">
-        <div
-          v-for="goal in gradeGoals"
-          :key="goal.grade"
-          :class="[
-            'goal-item',
-            {
-              achievable: goal.achievable,
-              selected: selectedGoal === goal.grade,
-            },
-          ]"
-          @click="selectGoal(goal.grade)"
-        >
-          <span class="goal-grade">{{ goal.grade }}</span>
-          <span class="goal-requirement">{{ goal.required }}%</span>
-          <span class="goal-status">{{ goal.achievable ? "✅" : "❌" }}</span>
         </div>
       </div>
     </div>
@@ -127,22 +105,23 @@ export default {
 .status-overview {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 24px;
   margin-bottom: 30px;
 }
 
 .overview-card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  backdrop-filter: blur(6px);
 }
 
 .overview-card h3 {
   margin: 0 0 20px 0;
   font-size: 1.2rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #7C9885;
 }
 
 /* Current Status */
@@ -159,7 +138,7 @@ export default {
 .metric-label {
   display: block;
   font-size: 0.9rem;
-  color: #64748b;
+  color: #7C9885;
   margin-bottom: 8px;
 }
 
@@ -167,7 +146,7 @@ export default {
   display: block;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #23272f;
 }
 
 .metric-value.grade {
@@ -176,19 +155,19 @@ export default {
 
 .metric-value.grade.grade-a-plus,
 .metric-value.grade.grade-a {
-  color: #059669;
+  color: #7C9885;
 }
 .metric-value.grade.grade-a-minus,
 .metric-value.grade.grade-b-plus {
-  color: #3b82f6;
+  color: #7C9885;
 }
 .metric-value.grade.grade-b {
-  color: #f59e0b;
+  color: #B5B682;
 }
 .metric-value.grade.grade-b-minus,
 .metric-value.grade.grade-c-plus,
 .metric-value.grade.grade-c {
-  color: #ef4444;
+  color: #e6c972;
 }
 
 /* Projected Grade */
@@ -212,23 +191,23 @@ export default {
 
 .projected-grade-large.grade-a-plus,
 .projected-grade-large.grade-a {
-  color: #059669;
-  background: #dcfce7;
+  color: #7C9885;
+  background: #eaf7ea;
 }
 .projected-grade-large.grade-a-minus,
 .projected-grade-large.grade-b-plus {
-  color: #3b82f6;
-  background: #dbeafe;
+  color: #7C9885;
+  background: #eaf7ea;
 }
 .projected-grade-large.grade-b {
-  color: #f59e0b;
-  background: #fef3c7;
+  color: #B5B682;
+  background: #f9f9e0;
 }
 .projected-grade-large.grade-b-minus,
 .projected-grade-large.grade-c-plus,
 .projected-grade-large.grade-c {
-  color: #ef4444;
-  background: #fee2e2;
+  color: #e6c972;
+  background: #fffbe6;
 }
 
 .projection-details {
@@ -238,7 +217,7 @@ export default {
 .projected-percentage {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #23272f;
   margin-bottom: 4px;
 }
 
@@ -250,17 +229,17 @@ export default {
 }
 
 .projection-status.positive {
-  color: #059669;
-  background: #dcfce7;
+  color: #7C9885;
+  background: #eaf7ea;
 }
 
 .projection-status.negative {
-  color: #dc2626;
-  background: #fee2e2;
+  color: #e74c3c;
+  background: #ffeaea;
 }
 
 .projection-status.neutral {
-  color: #64748b;
+  color: #7C9885;
   background: #f1f5f9;
 }
 
@@ -279,7 +258,7 @@ export default {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
-  border: 1px solid #e2e8f0;
+  border: 1.5px solid #B5B682;
 }
 
 .goal-item:hover {
@@ -287,18 +266,18 @@ export default {
 }
 
 .goal-item.selected {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: #7C9885;
+  background: #fff;
 }
 
 .goal-item.achievable {
-  background: #f0fdf4;
-  border-color: #22c55e;
+  background: #eaf7ea;
+  border-color: #7C9885;
 }
 
 .goal-item:not(.achievable) {
-  background: #fef2f2;
-  border-color: #ef4444;
+  background: #ffeaea;
+  border-color: #e74c3c;
   opacity: 0.7;
 }
 
@@ -308,7 +287,7 @@ export default {
 }
 
 .goal-requirement {
-  color: #64748b;
+  color: #7C9885;
   font-weight: 600;
 }
 

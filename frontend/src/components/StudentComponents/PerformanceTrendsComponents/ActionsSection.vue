@@ -55,61 +55,67 @@ export default {
 }
 
 .actions-card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  backdrop-filter: blur(6px);
 }
 
 .actions-card h3 {
   margin: 0 0 20px 0;
   font-size: 1.2rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #7C9885;
 }
 
 .action-buttons {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .action-btn {
-  padding: 12px 20px;
+  padding: 14px 24px;
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: 12px;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  font-size: 1rem;
+  box-shadow: 0 1px 4px rgba(124, 152, 133, 0.08);
 }
 
 .action-btn.primary {
-  background: #3b82f6;
-  color: white;
+  background: linear-gradient(90deg, #B5B682 0%, #7C9885 100%);
+  color: #23272f;
 }
 
 .action-btn.primary:hover {
-  background: #2563eb;
-  transform: translateY(-1px);
+  background: linear-gradient(90deg, #7C9885 0%, #B5B682 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
 }
 
 .action-btn.secondary {
-  background: #f1f5f9;
-  color: #475569;
-  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #7C9885;
+  border: 2px solid #B5B682;
 }
 
 .action-btn.secondary:hover {
-  background: #e2e8f0;
-  transform: translateY(-1px);
+  background: #B5B682;
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
 }
 
 @media (max-width: 768px) {
   .action-buttons {
     flex-direction: column;
+    gap: 10px;
   }
 }
 </style>

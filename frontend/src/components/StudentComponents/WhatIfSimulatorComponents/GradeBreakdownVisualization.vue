@@ -19,29 +19,6 @@
           </div>
         </div>
       </div>
-
-      <div class="breakdown-summary">
-        <div class="summary-item">
-          <span class="summary-label">Completed Assessments:</span>
-          <span class="summary-value">{{ completedWeight }}%</span>
-        </div>
-        <div class="summary-item">
-          <span class="summary-label">Remaining Assessments:</span>
-          <span class="summary-value">{{ 100 - completedWeight }}%</span>
-        </div>
-        <div class="summary-item">
-          <span class="summary-label">Current Contribution:</span>
-          <span class="summary-value"
-            >{{ currentContribution.toFixed(1) }}%</span
-          >
-        </div>
-        <div class="summary-item">
-          <span class="summary-label">Projected Contribution:</span>
-          <span class="summary-value"
-            >{{ projectedContribution.toFixed(1) }}%</span
-          >
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -76,18 +53,19 @@ export default {
 
 <style scoped>
 .grade-breakdown {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
   margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  backdrop-filter: blur(6px);
 }
 
 .grade-breakdown h2 {
   margin: 0 0 24px 0;
   font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #7C9885;
 }
 
 .breakdown-content {
@@ -97,8 +75,8 @@ export default {
 }
 
 .chart-container {
-  background: #f8fafc;
-  border-radius: 12px;
+  background: rgba(181, 182, 130, 0.10);
+  border-radius: 1.2rem;
   padding: 20px;
 }
 
@@ -123,11 +101,11 @@ export default {
 }
 
 .grade-segment.completed {
-  background: #10b981;
+  background: #7C9885;
 }
 
 .grade-segment.predicted {
-  background: #f59e0b;
+  background: #B5B682;
 }
 
 .segment-label {
@@ -146,8 +124,8 @@ export default {
 }
 
 .breakdown-summary {
-  background: #f8fafc;
-  border-radius: 12px;
+  background: rgba(181, 182, 130, 0.10);
+  border-radius: 1.2rem;
   padding: 20px;
 }
 
@@ -156,7 +134,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1.5px solid #B5B682;
 }
 
 .summary-item:last-child {
@@ -164,13 +142,13 @@ export default {
 }
 
 .summary-label {
-  color: #64748b;
+  color: #7C9885;
   font-weight: 500;
 }
 
 .summary-value {
   font-weight: 700;
-  color: #1e293b;
+  color: #23272f;
 }
 
 @media (max-width: 1200px) {

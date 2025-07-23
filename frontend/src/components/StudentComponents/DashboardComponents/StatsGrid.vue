@@ -104,44 +104,53 @@ export default {
   flex-wrap: wrap;
   gap: 32px;
   justify-content: center;
-  background: #101010;
+  background: transparent;
   padding: 40px 0;
 }
 
 .stat-card {
-  background: linear-gradient(135deg, #0f5132 0%, #000 100%);
-  border: 2px solid #198754;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(25, 135, 84, 0.25);
+  background: rgba(181, 182, 130, 0.18);
+  border: 2px solid #B5B682;
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(124, 152, 133, 0.10), 0 1.5px 8px 0 rgba(0,0,0,0.04);
   width: 300px;
   min-height: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 20px 24px 20px;
+  padding: 40px 24px 28px 24px;
   position: relative;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  backdrop-filter: blur(8px);
 }
 
 .stat-card:hover {
-  transform: scale(1.04) translateY(-4px);
-  box-shadow: 0 12px 40px 0 rgba(25, 135, 84, 0.35);
-  border-color: #20c997;
+  transform: scale(1.045) translateY(-6px);
+  box-shadow: 0 16px 48px 0 rgba(124, 152, 133, 0.18), 0 2px 12px 0 rgba(0,0,0,0.06);
+  background: rgba(181, 182, 130, 0.28);
+  border-color: #7C9885;
 }
 
 .stat-icon {
-  width: 56px;
-  height: 56px;
-  color: #20c997;
-  background: #000;
+  width: 60px;
+  height: 60px;
+  color: #7C9885;
+  background: rgba(255,255,255,0.7);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
-  border: 2px solid #198754;
-  box-shadow: 0 2px 8px rgba(32, 201, 151, 0.15);
-  font-size: 2.2rem;
+  margin-bottom: 22px;
+  border: 2.5px solid #B5B682;
+  box-shadow: 0 2px 12px rgba(124, 152, 133, 0.10);
+  font-size: 2.4rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.stat-card:hover .stat-icon {
+  background: #7C9885;
+  color: #fff;
+  border-color: #B5B682;
 }
 
 .stat-content {
@@ -150,55 +159,55 @@ export default {
 }
 
 .stat-content h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.05rem;
-  color: #20c997;
+  margin: 0 0 12px 0;
+  font-size: 1.15rem;
+  color: #7C9885;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .stat-value {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: #fff;
-  margin: 0 0 8px 0;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 8px #19875444;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #23272f;
+  margin: 0 0 10px 0;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 8px #B5B68244;
 }
 
 .stat-change {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  padding: 4px 14px;
-  border-radius: 16px;
-  margin-top: 6px;
+  padding: 6px 18px;
+  border-radius: 18px;
+  margin-top: 8px;
   display: inline-block;
   letter-spacing: 0.5px;
 }
 
 .stat-change.positive {
-  color: #fff;
-  background: linear-gradient(90deg, #198754 60%, #20c997 100%);
-  box-shadow: 0 2px 8px #19875433;
+  color: #23272f;
+  background: linear-gradient(90deg, #B5B682 60%, #7C9885 100%);
+  box-shadow: 0 2px 8px #B5B68233;
 }
 
 .stat-change.negative {
   color: #fff;
-  background: linear-gradient(90deg, #212529 60%, #dc3545 100%);
-  box-shadow: 0 2px 8px #dc354533;
+  background: linear-gradient(90deg, #23272f 60%, #e74c3c 100%);
+  box-shadow: 0 2px 8px #e74c3c33;
 }
 
 .stat-change.neutral {
-  color: #adb5bd;
-  background: #222;
-  border: 1px solid #198754;
+  color: #7C9885;
+  background: rgba(255,255,255,0.7);
+  border: 1.5px solid #B5B682;
 }
 
 .stat-label {
-  font-size: 0.95rem;
-  color: #20c997;
-  margin-top: 4px;
+  font-size: 1.05rem;
+  color: #7C9885;
+  margin-top: 6px;
   letter-spacing: 0.5px;
   font-weight: 600;
 }

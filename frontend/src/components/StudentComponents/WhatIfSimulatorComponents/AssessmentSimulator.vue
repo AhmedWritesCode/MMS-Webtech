@@ -2,20 +2,7 @@
   <div class="assessment-simulator">
     <div class="simulator-header-section">
       <h2>Assessment Score Simulator</h2>
-      <div class="simulator-controls">
-        <button class="control-btn" @click="resetToActual">
-          🔄 Reset to Actual
-        </button>
-        <button class="control-btn" @click="fillOptimistic">
-          ⭐ Fill Optimistic
-        </button>
-        <button class="control-btn" @click="fillRealistic">
-          🎯 Fill Realistic
-        </button>
-        <button class="control-btn" @click="fillConservative">
-          🛡️ Fill Conservative
-        </button>
-      </div>
+      <!-- Removed simulator-controls buttons as requested -->
     </div>
 
     <div class="assessments-grid">

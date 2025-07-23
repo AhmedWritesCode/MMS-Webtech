@@ -4,7 +4,7 @@
     <div class="scenarios-grid">
       <div class="scenario-card best-case">
         <div class="scenario-header">
-          <h3>🌟 Best Case Scenario</h3>
+          <h3>Best Case Scenario</h3>
           <div
             class="scenario-grade"
             :class="getGradeClass(scenarios.bestCase.grade)"
@@ -32,7 +32,7 @@
 
       <div class="scenario-card realistic-case">
         <div class="scenario-header">
-          <h3>🎯 Realistic Scenario</h3>
+          <h3>Most likely Scenario</h3>
           <div
             class="scenario-grade"
             :class="getGradeClass(scenarios.realistic.grade)"
@@ -60,7 +60,7 @@
 
       <div class="scenario-card worst-case">
         <div class="scenario-header">
-          <h3>⚠️ Worst Case Scenario</h3>
+          <h3>Worst Case Scenario</h3>
           <div
             class="scenario-grade"
             :class="getGradeClass(scenarios.worstCase.grade)"
@@ -124,45 +124,46 @@ export default {
 
 <style scoped>
 .scenario-analysis {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
   margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  backdrop-filter: blur(6px);
 }
 
 .scenario-analysis h2 {
   margin: 0 0 24px 0;
   font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #7C9885;
 }
 
 .scenarios-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
 .scenario-card {
-  border-radius: 12px;
+  border-radius: 1.2rem;
   padding: 20px;
   border-left: 4px solid;
 }
 
 .scenario-card.best-case {
-  background: #f0fdf4;
-  border-left-color: #22c55e;
+  background: #eaf7ea;
+  border-left-color: #7C9885;
 }
 
 .scenario-card.realistic-case {
-  background: #eff6ff;
-  border-left-color: #3b82f6;
+  background: #f9f9e0;
+  border-left-color: #B5B682;
 }
 
 .scenario-card.worst-case {
-  background: #fef2f2;
-  border-left-color: #ef4444;
+  background: #ffeaea;
+  border-left-color: #e74c3c;
 }
 
 .scenario-header {
@@ -176,7 +177,7 @@ export default {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #23272f;
 }
 
 .scenario-grade {
@@ -184,54 +185,55 @@ export default {
   font-weight: 700;
   padding: 8px 12px;
   border-radius: 8px;
-  background: white;
+  background: #fff;
+  border: 1.5px solid #B5B682;
 }
 
 .scenario-grade.grade-a-plus,
 .scenario-grade.grade-a {
-  color: #059669;
+  color: #7C9885;
 }
 .scenario-grade.grade-a-minus,
 .scenario-grade.grade-b-plus {
-  color: #3b82f6;
+  color: #7C9885;
 }
 .scenario-grade.grade-b {
-  color: #f59e0b;
+  color: #B5B682;
 }
 .scenario-grade.grade-b-minus,
 .scenario-grade.grade-c-plus,
 .scenario-grade.grade-c {
-  color: #ef4444;
+  color: #e6c972;
 }
 .scenario-grade.grade-f {
-  color: #dc2626;
+  color: #e74c3c;
 }
 
 .scenario-percentage {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #23272f;
   margin-bottom: 8px;
 }
 
 .scenario-description {
-  color: #64748b;
+  color: #7C9885;
   margin-bottom: 16px;
-  font-size: 0.9rem;
+  font-size: 0.98rem;
 }
 
 .scenario-requirements h4 {
   margin: 0 0 8px 0;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #23272f;
 }
 
 .scenario-requirements ul {
   margin: 0;
   padding-left: 16px;
-  font-size: 0.8rem;
-  color: #64748b;
+  font-size: 0.9rem;
+  color: #7C9885;
 }
 
 .scenario-requirements li {

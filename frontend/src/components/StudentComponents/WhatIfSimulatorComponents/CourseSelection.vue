@@ -1,7 +1,7 @@
 <template>
   <div class="course-selection">
     <div class="selection-card">
-      <h2>Select Course to Simulate</h2>
+      <h2>Simulate Course</h2>
       <div class="course-grid">
         <div
           v-for="course in courses"
@@ -83,44 +83,45 @@ export default {
 }
 
 .selection-card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  backdrop-filter: blur(6px);
 }
 
 .selection-card h2 {
   margin: 0 0 20px 0;
   font-size: 1.3rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #7C9885;
 }
 
 .course-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
 .course-option {
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
+  border: 2px solid #B5B682;
+  border-radius: 1.2rem;
   padding: 20px;
   cursor: pointer;
   transition: all 0.2s;
-  background: #f8fafc;
+  background: rgba(181, 182, 130, 0.10);
 }
 
 .course-option:hover {
-  border-color: #3b82f6;
-  background: #eff6ff;
-  transform: translateY(-2px);
+  border-color: #7C9885;
+  background: #fff;
+  transform: translateY(-2px) scale(1.02);
 }
 
 .course-option.selected {
-  border-color: #3b82f6;
-  background: #eff6ff;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  border-color: #7C9885;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(124, 152, 133, 0.15);
 }
 
 .course-header {
@@ -134,7 +135,7 @@ export default {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #23272f;
 }
 
 .current-grade {
@@ -142,29 +143,30 @@ export default {
   font-weight: 700;
   padding: 4px 8px;
   border-radius: 6px;
-  background: white;
+  background: #fff;
+  border: 1.5px solid #B5B682;
 }
 
 .current-grade.grade-a-plus,
 .current-grade.grade-a {
-  color: #059669;
+  color: #7C9885;
 }
 .current-grade.grade-a-minus,
 .current-grade.grade-b-plus {
-  color: #3b82f6;
+  color: #7C9885;
 }
 .current-grade.grade-b {
-  color: #f59e0b;
+  color: #B5B682;
 }
 .current-grade.grade-b-minus,
 .current-grade.grade-c-plus,
 .current-grade.grade-c {
-  color: #ef4444;
+  color: #e6c972;
 }
 
 .course-option h4 {
   margin: 0 0 16px 0;
-  color: #64748b;
+  color: #7C9885;
   font-weight: 500;
 }
 
@@ -177,7 +179,7 @@ export default {
   justify-content: space-between;
   margin-bottom: 8px;
   font-size: 0.9rem;
-  color: #64748b;
+  color: #7C9885;
 }
 
 .progress-bar {
@@ -189,7 +191,7 @@ export default {
 
 .progress-fill {
   height: 100%;
-  background: #3b82f6;
+  background: #7C9885;
   border-radius: 3px;
   transition: width 0.3s ease;
 }

@@ -287,11 +287,12 @@ export default {
 
 <style scoped>
 .main-chart-section {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem 2rem 2rem;
   margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  backdrop-filter: blur(6px);
 }
 
 .chart-header {
@@ -304,8 +305,8 @@ export default {
 .chart-header h2 {
   margin: 0;
   font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #7C9885;
 }
 
 .chart-legend {
@@ -317,8 +318,8 @@ export default {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.9rem;
-  color: #64748b;
+  font-size: 0.98rem;
+  color: #7C9885;
 }
 
 .legend-color {
@@ -328,21 +329,21 @@ export default {
 }
 
 .legend-color.your-performance {
-  background: #3b82f6;
+  background: #7C9885;
 }
 
 .legend-color.class-average {
-  background: #10b981;
+  background: #B5B682;
 }
 
 .legend-color.trend-line {
-  background: #f59e0b;
+  background: #e6c972;
 }
 
 .chart-container {
   position: relative;
-  background: #f8fafc;
-  border-radius: 12px;
+  background: rgba(181, 182, 130, 0.10);
+  border-radius: 1.2rem;
   padding: 20px;
   min-height: 400px;
 }
@@ -360,21 +361,24 @@ export default {
 
 .axis-label {
   font-size: 12px;
-  fill: #64748b;
-  font-weight: 500;
+  fill: #7C9885;
+  font-weight: 600;
 }
 
 .performance-line {
-  filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
+  filter: drop-shadow(0 2px 4px #7C988544);
+  stroke: #7C9885 !important;
 }
 
 .class-average-line {
-  filter: drop-shadow(0 1px 2px rgba(16, 185, 129, 0.3));
+  filter: drop-shadow(0 1px 2px #B5B68244);
+  stroke: #B5B682 !important;
 }
 
 .data-point {
   cursor: pointer;
   transition: r 0.2s;
+  fill: #7C9885 !important;
 }
 
 .data-point:hover {
@@ -416,15 +420,18 @@ export default {
 .performance-bar,
 .average-bar {
   width: 20px;
-  background: #3b82f6;
   border-radius: 4px 4px 0 0;
   transition: all 0.3s ease;
   cursor: pointer;
   min-height: 4px;
 }
 
+.performance-bar {
+  background: #7C9885;
+}
+
 .average-bar {
-  background: #10b981;
+  background: #B5B682;
   opacity: 0.7;
 }
 
@@ -435,9 +442,9 @@ export default {
 
 .bar-label {
   margin-top: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #1e293b;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #7C9885;
 }
 
 /* Area Chart Styles */
@@ -447,18 +454,20 @@ export default {
 }
 
 .performance-area {
-  filter: drop-shadow(0 2px 8px rgba(59, 130, 246, 0.2));
+  filter: drop-shadow(0 2px 8px #7C988544);
+  fill: #7C988533 !important;
+  stroke: #7C9885 !important;
 }
 
 /* Tooltip */
 .chart-tooltip {
   position: absolute;
-  background: #1e293b;
-  color: white;
+  background: #7C9885;
+  color: #fff;
   padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  font-size: 0.98rem;
+  box-shadow: 0 4px 12px rgba(124, 152, 133, 0.15);
   z-index: 1000;
   pointer-events: none;
   transform: translateX(-50%) translateY(-100%);
@@ -466,13 +475,13 @@ export default {
 
 .tooltip-content h4 {
   margin: 0 0 8px 0;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .tooltip-content p {
   margin: 4px 0;
-  font-size: 0.8rem;
-  opacity: 0.9;
+  font-size: 0.9rem;
+  opacity: 0.95;
 }
 
 @media (max-width: 768px) {
@@ -481,11 +490,9 @@ export default {
     gap: 16px;
     align-items: flex-start;
   }
-
   .chart-legend {
     flex-wrap: wrap;
   }
-
   .chart-bars {
     flex-wrap: wrap;
   }
