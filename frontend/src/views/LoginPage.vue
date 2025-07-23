@@ -15,7 +15,7 @@
           <GraduationCap size="48" class="logo-icon" />
         </div>
         <h1>Marks Management System</h1>
-        <p class="subtitle">Manage and monitor academic performance</p>
+        <p class="subtitle">Manage your academic performance</p>
       </div>
 
       <!-- Role Selection Buttons -->
@@ -685,7 +685,7 @@ export default {
 
 .error-message {
   background: #b68282;
-  color: #7C9885;
+  color: #000000;
   border: 1px solid #B5B682;
 }
 
