@@ -42,19 +42,19 @@ export default {
 
 <style scoped>
 .course-selector {
-  background: #111;
-  border-radius: 20px;
-  padding: 32px;
-  margin-bottom: 32px;
-  box-shadow: 0 4px 24px rgba(0, 128, 0, 0.15);
-  border: 2px solid #22c55e;
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 24px rgba(181, 182, 130, 0.10);
+  border: 2px solid #B5B682;
 }
 
 .selector-header h2 {
   margin: 0 0 28px 0;
   font-size: 1.5rem;
   font-weight: 800;
-  color: #22c55e;
+  color: #7C9885;
   letter-spacing: 1px;
   text-shadow: 0 2px 8px #000a;
 }

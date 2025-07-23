@@ -110,12 +110,12 @@ export default {
 
 <style scoped>
 .anonymous-insights {
-  background: #111;
-  border-radius: 18px;
-  padding: 36px 24px;
-  margin-bottom: 32px;
-  box-shadow: 0 4px 24px rgba(0, 128, 0, 0.15);
-  border: 2px solid #22c55e;
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.2rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  border: 2px solid #B5B682;
   transition: box-shadow 0.2s;
 }
 
@@ -123,10 +123,10 @@ export default {
   margin: 0 0 32px 0;
   font-size: 2rem;
   font-weight: 800;
-  color: #22c55e;
-  letter-spacing: 2px;
+  color: #7C9885;
+  letter-spacing: 1px;
   text-align: center;
-  text-shadow: 0 2px 8px #0f0;
+  text-shadow: none;
 }
 
 .insights-grid {
@@ -137,17 +137,17 @@ export default {
 }
 
 .insight-card {
-  background: linear-gradient(135deg, #1a2e1a 0%, #111 100%);
-  border-radius: 16px;
-  padding: 32px 24px;
-  border: 2px solid #22c55e;
+  background: #f9f9e0;
+  border-radius: 1.2rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  box-shadow: 0 2px 12px rgba(181, 182, 130, 0.12);
+  border: 1.5px solid #B5B682;
   min-width: 260px;
   max-width: 340px;
   flex: 1 1 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 2px 16px rgba(34, 197, 94, 0.15);
   transition: transform 0.15s, box-shadow 0.15s;
 }
 .insight-card:hover {
@@ -157,25 +157,26 @@ export default {
 }
 
 .insight-icon {
-  font-size: 2.5rem;
-  color: #22c55e;
-  margin-bottom: 18px;
+  font-size: 2.2rem;
+  color: #7C9885;
+  margin-right: 1.2rem;
   filter: drop-shadow(0 0 8px #22c55e88);
 }
 
 .insight-content h4 {
-  margin: 0 0 14px 0;
-  font-size: 1.2rem;
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: #B5B682;
   font-weight: 700;
-  color: #22c55e;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-align: center;
+  text-shadow: none;
 }
 
 .insight-content p {
   margin: 0 0 10px 0;
   font-size: 1.05rem;
-  color: #fff;
+  color: #000000;
   font-weight: 600;
   text-align: center;
   background: rgba(34, 197, 94, 0.08);
@@ -183,10 +184,20 @@ export default {
   padding: 6px 0;
 }
 
+.insight-value {
+  margin: 0 0 6px 0;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #7C9885;
+  text-shadow: none;
+  letter-spacing: 1px;
+}
+
 .insight-detail {
-  font-size: 0.85rem;
-  color: #a7f3d0;
-  font-style: italic;
+  font-size: 0.95rem;
+  color: #B5B682;
+  font-weight: 600;
+  opacity: 0.85;
   text-align: center;
   display: block;
   margin-top: 4px;

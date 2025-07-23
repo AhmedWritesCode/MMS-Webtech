@@ -25,11 +25,13 @@ export default {
 
 <style scoped>
 .comparison-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 16px;
-  padding: 30px;
-  margin-bottom: 30px;
-  color: white;
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin-bottom: 2.5rem;
+  color: #7C9885;
+  box-shadow: 0 4px 24px 0 rgba(181, 182, 130, 0.10);
+  border: 2px solid #B5B682;
 }
 
 .breadcrumb {
@@ -39,12 +41,13 @@ export default {
 }
 
 .breadcrumb-link {
-  color: white;
+  color: #7C9885;
   text-decoration: none;
 }
 
 .breadcrumb-link:hover {
   text-decoration: underline;
+  color: #B5B682;
 }
 
 .breadcrumb-separator {
@@ -55,6 +58,7 @@ export default {
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0 0 12px 0;
+  color: #7C9885;
 }
 
 .page-subtitle {
@@ -62,6 +66,7 @@ export default {
   opacity: 0.9;
   margin: 0;
   line-height: 1.5;
+  color: #B5B682;
 }
 
 @media (max-width: 768px) {

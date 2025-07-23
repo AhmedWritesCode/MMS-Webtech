@@ -19,12 +19,12 @@ export default {
 .student-layout {
   display: flex;
   min-height: 100vh;
-  background: #23272f;
+  background: #ffffff;
 }
 .main-content {
   flex: 1;
   margin-left: 220px;
-  padding: 2.5rem 2rem 2rem 2rem;
+  /* padding: 2.5rem 2rem 2rem 2rem; */
   min-height: 100vh;
   transition: margin-left 0.2s;
 }

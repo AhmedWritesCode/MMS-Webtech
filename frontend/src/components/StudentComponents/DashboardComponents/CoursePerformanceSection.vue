@@ -39,11 +39,12 @@ export default {
 .course-performance-section {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
-  background: #101c10;
-  padding: 2rem;
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0, 64, 0, 0.15);
+  background: rgba(255,255,255,0.92);
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(181, 182, 130, 0.10);
   min-height: 400px;
+  border: 2px solid #B5B682;
   position: relative;
 }
 

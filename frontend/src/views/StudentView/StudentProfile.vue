@@ -2,7 +2,6 @@
   <div class="student-profile">
     <div class="page-header">
       <h1>My Profile</h1>
-      <p>View and manage your personal information and academic details.</p>
     </div>
 
     <div class="profile-container">
@@ -113,114 +112,101 @@ export default {
 
 <style scoped>
 .student-profile {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 32px 12px;
-  background: #101712;
   min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #7C9885 0%, #B5B682 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem 0;
 }
 
 .page-header {
-  margin-bottom: 32px;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 2.5rem;
   text-align: left;
 }
 
 .page-header h1 {
-  color: #00ff88;
-  margin-bottom: 10px;
   font-size: 2.2rem;
-  letter-spacing: 0.03em;
   font-weight: 800;
-  text-shadow: 0 2px 8px #003d1e44;
+  color: #000000;
+  margin-bottom: 0.5rem;
 }
 
 .page-header p {
-  color: #b6f5d8;
-  margin: 0;
+  color: #B5B682;
   font-size: 1.1rem;
-  font-weight: 400;
+  margin: 0;
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
 }
 
 .profile-card {
-  background: #181f1b;
-  border: 2px solid #00ff88;
-  border-radius: 20px;
-  box-shadow: 0 6px 32px #00ff8822;
-  overflow: hidden;
-  transition: box-shadow 0.2s;
-}
-
-.profile-card:hover {
-  box-shadow: 0 8px 40px #00ff8844;
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(181, 182, 130, 0.10);
+  border: 2px solid #B5B682;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
 .profile-header {
   display: flex;
   align-items: center;
-  gap: 32px;
-  padding: 36px 36px 24px 36px;
-  background: linear-gradient(120deg, #003d1e 0%, #00ff88 100%);
-  color: #101712;
-  border-bottom: 2px solid #00ff88;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .profile-avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: #101712;
-  border: 3px solid #00ff88;
+  width: 80px;
+  height: 80px;
+  border-radius: 20%;
+  background: linear-gradient(135deg, #B5B682 60%, #7C9885 100%);
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: #00ff88;
-  box-shadow: 0 2px 16px #00ff8844;
+  box-shadow: 0 2px 12px 0 rgba(181, 182, 130, 0.25);
+  border: 3px solid #7C9885;
 }
 
 .profile-info h2 {
-  margin: 0 0 10px 0;
-  font-size: 1.7rem;
+  margin: 0 0 0.3rem 0;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #101712;
-  letter-spacing: 0.02em;
+  color: #7C9885;
 }
 
-.student-id {
-  margin: 0 0 6px 0;
-  opacity: 0.85;
-  font-size: 1.1rem;
-  color: #003d1e;
-  font-weight: 600;
-}
-
-.student-program {
-  margin: 0;
-  opacity: 0.7;
+.student-id, .student-program {
+  color: #B5B682;
   font-size: 1rem;
-  color: #003d1e;
-  font-weight: 500;
+  margin: 0;
 }
 
 .profile-details {
-  padding: 32px 36px;
-  background: #101712;
-}
-
-.detail-section {
-  margin-bottom: 36px;
-}
-
-.detail-section:last-child {
-  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 0 0.5rem;
 }
 
 .detail-section h3 {
-  color: #00ff88;
+  color: #7C9885;
   margin: 0 0 18px 0;
   font-size: 1.15rem;
-  border-bottom: 2px solid #003d1e;
+  border-bottom: 2px solid #B5B682;
   padding-bottom: 7px;
   letter-spacing: 0.04em;
   font-weight: 700;
@@ -236,8 +222,8 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  background: #181f1b;
-  border: 1px solid #003d1e;
+  background: #f9f9e0;
+  border: 1.5px solid #B5B682;
   border-radius: 10px;
   padding: 14px 18px;
   transition: background 0.2s;
@@ -245,14 +231,14 @@ export default {
 
 .detail-item label {
   font-size: 0.85rem;
-  color: #00ff88;
+  color: #7C9885;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 .detail-item span {
-  color: #b6f5d8;
+  color: #23272f;
   font-weight: 600;
   font-size: 1.05rem;
 }
@@ -266,29 +252,29 @@ export default {
 .stat-item {
   text-align: center;
   padding: 24px 10px;
-  background: #003d1e;
+  background: #f9f9e0;
   border-radius: 12px;
-  border: 2px solid #00ff88;
-  box-shadow: 0 2px 12px #00ff8822;
+  border: 2px solid #7C9885;
+  box-shadow: 0 2px 12px #B5B68222;
   transition: background 0.2s;
 }
 
 .stat-item:hover {
-  background: #00ff88;
-  color: #003d1e;
+  background: #7C9885;
+  color: #fff;
 }
 
 .stat-value {
   font-size: 2.2rem;
   font-weight: 900;
-  color: #00ff88;
+  color: #B5B682;
   margin-bottom: 10px;
-  text-shadow: 0 2px 8px #003d1e44;
+  text-shadow: none;
 }
 
 .stat-label {
   font-size: 0.9rem;
-  color: #b6f5d8;
+  color: #7C9885;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;

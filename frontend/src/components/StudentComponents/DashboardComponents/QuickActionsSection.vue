@@ -45,10 +45,11 @@ export default {
 .quick-actions-section {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
-  background: #101710;
-  padding: 2rem 0;
+  background: rgba(255,255,255,0.92);
+  padding: 2.5rem 1.5rem;
   border-radius: 1.5rem;
-  box-shadow: 0 0 0 2px #1db954 inset;
+  box-shadow: 0 4px 24px rgba(181, 182, 130, 0.10);
+  border: 2px solid #B5B682;
 }
 
 .quick-actions-grid {
@@ -59,10 +60,10 @@ export default {
 }
 
 .quick-action-card {
-  background: #fff;
+  background: rgba(255,255,255,0.97);
   border-radius: 1.2rem;
   border: 2px solid #7C9885;
-  box-shadow: 0 4px 16px 0 rgba(124, 152, 133, 0.08);
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -70,7 +71,6 @@ export default {
   cursor: pointer;
   min-width: 200px;
   min-height: 180px;
-  border: 2px solid #1db954;
   transition: 
     box-shadow 0.2s,
     transform 0.2s,
@@ -84,6 +84,7 @@ export default {
   box-shadow: 0 8px 32px 0 rgba(124, 152, 133, 0.16);
   transform: translateY(-2px) scale(1.03);
   border-color: #B5B682;
+  background: #f9f9e0;
 }
 
 .quick-action-icon {
@@ -91,22 +92,23 @@ export default {
   color: #7C9885;
   margin-bottom: 1.2rem;
 }
+
 .quick-action-content {
   text-align: center;
-  color: #fff;
+  color: #23272f;
 }
 
 .quick-action-content h4 {
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 0.3rem;
-  color: #222;
+  color: #7C9885;
 }
 .quick-action-content p {
   font-size: 1rem;
-  color: #e0ffe0;
+  color: #B5B682;
   margin: 0;
-  opacity: 0.85;
+  opacity: 0.95;
 }
 
 @media (max-width: 900px) {

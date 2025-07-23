@@ -4,7 +4,7 @@
       <div class="compare-hero-content">
         <h1 class="compare-title">Anonymous Performance Comparison</h1>
         <p class="compare-subtitle">
-          Compare your performance with classmates anonymously. All data is displayed without identifying individual students.
+          Compare your performance with different students.
         </p>
       </div>
     </div>
@@ -291,60 +291,37 @@ export default {
 <style scoped>
 .compare-bg {
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   background: linear-gradient(135deg, #7C9885 0%, #B5B682 100%);
-  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.performance-comparison {
-  background: #fff;
-  border-radius: 1.5rem;
-  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.10);
-  padding: 2.5rem;
-  margin: 2.5rem 0 2rem 0;
-  max-width: 1200px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  padding: 2.5rem 0;
 }
 
 .compare-hero {
   width: 100%;
   max-width: 1200px;
-  margin: 2.5rem 0 1.5rem 0;
-  border-radius: 1.5rem 1.5rem 0 0;
-  background: #fff;
+  border-radius: 1.5rem;
+  background: rgba(255,255,255,0.92);
   color: #7C9885;
-  box-shadow: 0 4px 24px 0 rgba(124, 152, 133, 0.10);
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 24px 0 rgba(181, 182, 130, 0.10);
   padding: 2.5rem 2rem 2rem 2rem;
-  display: flex;
-  align-items: center;
-  min-height: 120px;
-  border-bottom: 4px solid #0f0;
+  border: 2px solid #B5B682;
 }
-.compare-hero-content {
+
+.performance-comparison {
   width: 100%;
-  text-align: left;
+  max-width: 1200px;
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  border: 2px solid #B5B682;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
 }
-.compare-title {
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin: 0 0 0.5rem 0;
-  letter-spacing: -1px;
-  color: #7C9885;
-  font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', Arial, sans-serif;
-}
-.compare-subtitle {
-  font-size: 1.15rem;
-  opacity: 0.95;
-  margin: 0;
-  color: #B5B682;
-  font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', Arial, sans-serif;
-}
+
 .course-selector-row {
   width: 100%;
   max-width: 1200px;
@@ -354,10 +331,12 @@ export default {
   margin-bottom: 2rem;
   margin-top: 0;
 }
+
 .course-selector {
   display: flex;
   gap: 1rem;
 }
+
 .course-pill {
   background: #fff;
   color: #7C9885;
@@ -378,7 +357,7 @@ export default {
 }
 .select-course-label {
   font-size: 1.1rem;
-  color: #0f0;
+  color: #7C9885;
   margin-left: 2rem;
 }
 

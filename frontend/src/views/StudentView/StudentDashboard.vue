@@ -373,7 +373,7 @@ export default {
 
 <style scoped>
 .dashboard-outer {
-  width: 100vw;
+  /* width: 100vw; */
   min-height: 100vh;
   display: flex;
   justify-content: center;

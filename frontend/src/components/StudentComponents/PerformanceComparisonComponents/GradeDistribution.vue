@@ -115,26 +115,26 @@ export default {
 
 <style scoped>
 .grade-distribution {
-  background: #101010;
-  border-radius: 18px;
-  padding: 36px;
-  margin-bottom: 36px;
-  box-shadow: 0 4px 24px rgba(0, 255, 64, 0.08);
-  border: 2px solid #1db954;
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.2rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  border: 2px solid #B5B682;
 }
 
 .section-header h3 {
   margin: 0;
   font-size: 2rem;
   font-weight: 800;
-  color: #1db954;
+  color: #7C9885;
   letter-spacing: 1px;
   text-shadow: 0 2px 8px #1db95444;
 }
 
 .section-subtitle {
   margin: 6px 0 28px 0;
-  color: #b9ffb7;
+  color: #B5B682;
   font-size: 1.1rem;
   font-weight: 500;
 }
@@ -146,11 +146,11 @@ export default {
 }
 
 .chart-container {
-  background: #181818;
-  border-radius: 18px;
-  padding: 32px;
-  border: 1.5px solid #1db954;
-  box-shadow: 0 2px 12px #1db95422;
+  background: #f9f9e0;
+  border-radius: 1.2rem;
+  padding: 2rem;
+  border: 1.5px solid #B5B682;
+  box-shadow: 0 2px 12px #B5B68222;
 }
 
 .chart-bars {
@@ -216,18 +216,18 @@ export default {
 }
 
 .stat-card {
-  background: #181818;
-  border-radius: 18px;
-  padding: 28px 20px;
+  background: #f9f9e0;
+  border-radius: 1.2rem;
+  padding: 2rem 1.5rem;
   text-align: center;
-  border: 1.5px solid #1db954;
-  box-shadow: 0 2px 12px #1db95422;
+  border: 1.5px solid #B5B682;
+  box-shadow: 0 2px 12px #B5B68222;
 }
 
 .stat-card h4 {
   margin: 0 0 14px 0;
   font-size: 1.1rem;
-  color: #b9ffb7;
+  color: #7C9885;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -235,17 +235,18 @@ export default {
 .grade-highlight {
   font-size: 2.4rem;
   font-weight: 900;
-  color: #00ff88;
+  color: #B5B682;
   margin-bottom: 10px;
   letter-spacing: 1px;
-  text-shadow: 0 2px 12px #00ff8844;
+  text-shadow: none;
 }
 
 .stat-card p {
   margin: 0;
   font-size: 1rem;
-  color: #b9ffb7;
-  font-weight: 500;
+  color: #23272f;
+  font-weight: 600;
+  opacity: 0.85;
 }
 
 @media (max-width: 1200px) {

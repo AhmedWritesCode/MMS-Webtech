@@ -468,7 +468,7 @@ button.profile-link.logout:hover {
 
 /* Add margin to main content to account for fixed navbar */
 :global(#app) {
-  padding-top: clamp(3.5rem, 4vw, 4rem);
+  padding-top: 0;
 }
 
 /* Smooth scaling animation for nav items on hover */

@@ -1,8 +1,8 @@
 <template>
   <aside :class="['student-sidebar', { collapsed: isCollapsed }]">
     <div class="sidebar-header">
-      <div class="brand-logo">🎓</div>
-      <span v-if="!isCollapsed" class="brand-name">StudentMarks</span>
+      <div class="brand-logo"></div>
+      <span v-if="!isCollapsed" class="brand-name">Course Marks</span>
       <button class="collapse-btn" @click="toggleSidebar">
         <span v-if="isCollapsed">▶</span>
         <span v-else>◀</span>
@@ -82,124 +82,148 @@ export default {
 <style scoped>
 .student-sidebar {
   width: 220px;
-  background: #23272f;
-  color: #f3f4f6;
+  background: #B5B682;
+  color: #23272f;
   height: 100vh;
   display: flex;
   flex-direction: column;
   position: fixed;
   left: 0;
   top: 0;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
+  border: 2px solid #7C9885;
   transition: width 0.2s;
   z-index: 1000;
 }
+
 .student-sidebar.collapsed {
   width: 64px;
 }
+
 .sidebar-header {
   display: flex;
   align-items: center;
-  padding: 1.5rem 1rem 1rem 1rem;
-  background: #23272f;
   justify-content: space-between;
+  padding: 1.2rem 1rem 1.2rem 1.2rem;
+  background: #7C9885;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
 }
+
 .brand-logo {
   font-size: 2rem;
+  color: #fff;
 }
+
 .brand-name {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.2rem;
+  color: #fff;
   margin-left: 0.5rem;
-  color: #f3f4f6;
 }
+
 .collapse-btn {
   background: none;
   border: none;
-  color: #f3f4f6;
-  font-size: 1.2rem;
+  color: #fff;
+  font-size: 1.1rem;
   cursor: pointer;
+  margin-left: 0.5rem;
 }
+
 .sidebar-nav {
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  gap: 0.5rem;
+  padding: 1.5rem 0.5rem 1.5rem 0.5rem;
 }
+
 .sidebar-link {
   display: flex;
   align-items: center;
-  padding: 1rem;
-  color: #f3f4f6;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.8rem;
+  color: #23272f;
+  font-weight: 500;
+  font-size: 1rem;
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
-  border-left: 4px solid transparent;
-  font-size: 1.1rem;
 }
+
 .sidebar-link.active {
-  background: #2d323c;
-  border-left: 4px solid #6c63ff;
-  color: #6c63ff;
+  background: #7C9885;
+  color: #fff;
 }
+
 .sidebar-link:hover {
-  background: #262b34;
-  color: #6c63ff;
+  background: #7C9885;
+  color: #fff;
 }
+
 .sidebar-icon {
-  font-size: 1.5rem;
-  margin-right: 1rem;
+  font-size: 1.3rem;
+  color: #7C9885;
+  transition: color 0.2s;
 }
-.student-sidebar.collapsed .sidebar-icon {
-  margin-right: 0;
+
+.sidebar-link.active .sidebar-icon,
+.sidebar-link:hover .sidebar-icon {
+  color: #fff;
 }
-.sidebar-text {
-  transition: opacity 0.2s;
-}
-.student-sidebar.collapsed .sidebar-text {
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
-}
+
 .sidebar-footer {
-  padding: 1rem;
-  background: #23272f;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  padding: 1.2rem 1rem;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  background: #B5B682;
+  border-top: 1.5px solid #7C9885;
 }
+
 .sidebar-user {
   display: flex;
   align-items: center;
+  gap: 0.7rem;
   margin-bottom: 1rem;
 }
+
 .user-avatar {
-  background: #6c63ff;
+  background: #7C9885;
   color: #fff;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 2.2rem;
+  height: 2.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.1rem;
-  margin-right: 0.7rem;
 }
+
 .user-name {
+  color: #23272f;
+  font-weight: 600;
   font-size: 1rem;
 }
+
 .logout-btn {
-  background: #6c63ff;
+  width: 100%;
+  background: #7C9885;
   color: #fff;
   border: none;
-  padding: 0.5rem 1.2rem;
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 0.7rem;
+  padding: 0.7rem 0;
+  font-weight: 600;
   font-size: 1rem;
-  margin-top: 0.5rem;
-  transition: background 0.2s;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
+
 .logout-btn:hover {
-  background: #5548c8;
+  background: #23272f;
+  color: #fff;
 }
 @media (max-width: 900px) {
   .student-sidebar {

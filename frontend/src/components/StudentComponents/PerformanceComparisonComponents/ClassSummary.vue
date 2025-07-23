@@ -134,22 +134,22 @@ export default {
 
 <style scoped>
 .class-summary {
-  background: #101010;
-  border-radius: 20px;
-  padding: 36px 24px;
-  margin-bottom: 32px;
-  box-shadow: 0 4px 24px rgba(0, 128, 64, 0.15);
-  border: 2px solid #1db954;
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.2rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  border: 2px solid #B5B682;
 }
 
 .class-summary h3 {
   margin: 0 0 32px 0;
   font-size: 2rem;
   font-weight: 800;
-  color: #1db954;
+  color: #7C9885;
   letter-spacing: 1px;
   text-align: center;
-  text-shadow: 0 2px 8px #0f0;
+  text-shadow: none;
 }
 
 .summary-grid {
@@ -160,24 +160,24 @@ export default {
 }
 
 .summary-card {
-  background: linear-gradient(135deg, #1db954 0%, #101010 100%);
-  border-radius: 18px;
-  padding: 32px 20px;
+  background: #f9f9e0;
+  border-radius: 1.2rem;
+  padding: 2rem 1.5rem;
   min-width: 240px;
   max-width: 320px;
   flex: 1 1 240px;
   display: flex;
   align-items: flex-start;
   gap: 18px;
-  box-shadow: 0 2px 16px rgba(29, 185, 84, 0.18);
-  border: 1.5px solid #1db954;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  border: 1.5px solid #B5B682;
   transition: transform 0.2s, box-shadow 0.2s;
   position: relative;
 }
 
 .summary-card:hover {
   transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 8px 32px rgba(29, 185, 84, 0.25);
+  box-shadow: 0 8px 32px rgba(124, 152, 133, 0.18);
   z-index: 2;
 }
 
@@ -188,11 +188,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #101010;
+  background: #7C9885;
   border-radius: 50%;
-  box-shadow: 0 2px 12px rgba(29, 185, 84, 0.12);
-  color: #1db954;
-  border: 2px solid #1db954;
+  box-shadow: 0 2px 12px rgba(181, 182, 130, 0.12);
+  color: #fff;
+  border: 2px solid #B5B682;
 }
 
 .summary-content {
@@ -204,27 +204,27 @@ export default {
 .summary-content h4 {
   margin: 0 0 10px 0;
   font-size: 1.1rem;
-  color: #1db954;
+  color: #7C9885;
   font-weight: 700;
   letter-spacing: 0.5px;
-  text-shadow: 0 1px 4px #0f0;
+  text-shadow: none;
 }
 
 .summary-value {
   margin: 0 0 6px 0;
   font-size: 2rem;
   font-weight: 900;
-  color: #fff;
-  text-shadow: 0 2px 8px #1db954;
+  color: #B5B682;
+  text-shadow: none;
   letter-spacing: 1px;
 }
 
 .summary-detail {
   margin: 0;
   font-size: 0.95rem;
-  color: #b6ffce;
-  font-weight: 500;
-  letter-spacing: 0.2px;
+  color: #23272f;
+  font-weight: 600;
+  opacity: 0.85;
 }
 
 @media (max-width: 900px) {

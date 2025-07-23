@@ -156,8 +156,8 @@ export default {
 }
 
 .course-credits {
-  background: #B5B682;
-  color: #7C9885;
+  background: #ff9100;
+  color: #000000;
   padding: 4px 8px;
   border-radius: 6px;
   font-size: 0.8rem;

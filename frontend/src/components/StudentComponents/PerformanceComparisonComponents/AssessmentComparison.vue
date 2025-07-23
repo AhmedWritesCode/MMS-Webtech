@@ -133,13 +133,14 @@ export default {
 
 <style scoped>
 .assessment-comparison {
-  background: #101010;
-  border-radius: 18px;
-  padding: 36px;
-  margin-bottom: 36px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
-  color: #e6ffe6;
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.2rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  color: #23272f;
   font-family: 'Segoe UI', 'Arial', sans-serif;
+  border: 2px solid #B5B682;
 }
 
 .section-header {
@@ -147,7 +148,7 @@ export default {
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 36px;
-  border-bottom: 2px solid #1db954;
+  border-bottom: 2px solid #B5B682;
   padding-bottom: 18px;
 }
 
@@ -155,7 +156,7 @@ export default {
   margin: 0;
   font-size: 2rem;
   font-weight: 800;
-  color: #1db954;
+  color: #7C9885;
   letter-spacing: 1px;
 }
 
@@ -169,27 +170,27 @@ export default {
   align-items: center;
   gap: 10px;
   font-size: 1rem;
-  color: #b6ffb6;
+  color: #7C9885;
 }
 
 .legend-color {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid #1db954;
-  box-shadow: 0 0 6px #1db95455;
+  border: 2px solid #B5B682;
+  box-shadow: 0 0 6px #B5B68255;
 }
 
 .legend-color.your-score {
-  background: linear-gradient(90deg, #1db954 60%, #0a3d0a 100%);
+  background: linear-gradient(90deg, #7C9885 60%, #B5B682 100%);
 }
 
 .legend-color.class-average {
-  background: linear-gradient(90deg, #0a3d0a 60%, #1db954 100%);
+  background: linear-gradient(90deg, #B5B682 60%, #7C9885 100%);
 }
 
 .legend-color.highest-score {
-  background: linear-gradient(90deg, #222 60%, #1db954 100%);
+  background: linear-gradient(90deg, #23272f 60%, #7C9885 100%);
 }
 
 .assessment-bars {
@@ -205,16 +206,16 @@ export default {
 }
 
 .assessment-bar-item {
-  border: 2px solid #1db954;
-  border-radius: 18px;
-  padding: 28px;
-  background: #181818;
-  box-shadow: 0 2px 12px #1db95422;
+  border: 2px solid #B5B682;
+  border-radius: 1.2rem;
+  padding: 2rem 1.5rem;
+  background: #f9f9e0;
+  box-shadow: 0 2px 12px #B5B68222;
   transition: box-shadow 0.2s;
 }
 
 .assessment-bar-item:hover {
-  box-shadow: 0 4px 24px #1db95455;
+  box-shadow: 0 4px 24px #7C9885aa;
 }
 
 .assessment-info {
@@ -230,29 +231,29 @@ export default {
   margin: 0;
   font-size: 1.3rem;
   font-weight: 700;
-  color: #e6ffe6;
+  color: #7C9885;
   letter-spacing: 0.5px;
 }
 
 .assessment-type {
-  background: #1db954;
-  color: #101010;
+  background: #7C9885;
+  color: #fff;
   padding: 6px 14px;
   border-radius: 8px;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 1px;
-  box-shadow: 0 1px 4px #1db95433;
+  box-shadow: 0 1px 4px #7C988533;
 }
 
 .assessment-weight {
-  background: #101010;
-  color: #1db954;
+  background: #fff;
+  color: #B5B682;
   padding: 6px 14px;
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 700;
-  border: 1px solid #1db954;
+  border: 1px solid #B5B682;
   letter-spacing: 1px;
 }
 
@@ -273,7 +274,7 @@ export default {
   min-width: 120px;
   font-size: 1rem;
   font-weight: 700;
-  color: #b6ffb6;
+  color: #B5B682;
   letter-spacing: 0.5px;
 }
 
@@ -289,25 +290,25 @@ export default {
   border-radius: 9px;
   transition: width 0.3s cubic-bezier(.4,2,.6,1);
   min-width: 6px;
-  box-shadow: 0 1px 8px #1db95455;
+  box-shadow: 0 1px 8px #B5B68255;
 }
 
 .bar.your-score {
-  background: linear-gradient(90deg, #1db954 70%, #0a3d0a 100%);
+  background: linear-gradient(90deg, #7C9885 70%, #B5B682 100%);
 }
 
 .bar.class-average {
-  background: linear-gradient(90deg, #0a3d0a 60%, #1db954 100%);
+  background: linear-gradient(90deg, #B5B682 60%, #7C9885 100%);
 }
 
 .bar.highest-score {
-  background: linear-gradient(90deg, #222 60%, #1db954 100%);
+  background: linear-gradient(90deg, #23272f 60%, #7C9885 100%);
 }
 
 .bar-value {
   font-size: 1rem;
   font-weight: 700;
-  color: #e6ffe6;
+  color: #7C9885;
   min-width: 70px;
   letter-spacing: 0.5px;
 }
@@ -316,7 +317,7 @@ export default {
   display: flex;
   gap: 32px;
   padding-top: 18px;
-  border-top: 1.5px dashed #1db954;
+  border-top: 1.5px dashed #B5B682;
 }
 
 .stat {
@@ -327,7 +328,7 @@ export default {
 
 .stat-label {
   font-size: 1rem;
-  color: #b6ffb6;
+  color: #B5B682;
   letter-spacing: 0.5px;
 }
 
@@ -338,13 +339,13 @@ export default {
 }
 
 .stat-value.positive {
-  color: #1db954;
-  text-shadow: 0 0 4px #1db95455;
+  color: #7C9885;
+  text-shadow: 0 0 4px #7C988555;
 }
 
 .stat-value.negative {
-  color: #ff4444;
-  text-shadow: 0 0 4px #ff444455;
+  color: #e74c3c;
+  text-shadow: 0 0 4px #e74c3c55;
 }
 
 @media (max-width: 768px) {

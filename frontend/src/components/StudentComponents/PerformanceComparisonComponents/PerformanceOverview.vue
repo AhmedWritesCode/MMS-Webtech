@@ -2,7 +2,7 @@
   <div class="overview-cards">
     <div class="overview-card your-performance">
       <div class="card-header">
-        <div class="performance-icon">👤</div>
+
         <h3>Your Performance</h3>
       </div>
       <div class="card-stats">
@@ -23,8 +23,8 @@
 
     <div class="overview-card class-stats">
       <div class="card-header">
-        <div class="performance-icon">👥</div>
-        <h3>Class Statistics</h3>
+
+        <h3>Class Average</h3>
       </div>
       <div class="card-stats">
         <div class="stat-item">
@@ -35,16 +35,13 @@
           <span class="stat-value">{{ totalStudents }}</span>
           <span class="stat-label">Total Students</span>
         </div>
-        <div class="stat-item">
-          <span class="stat-value">{{ standardDeviation }}%</span>
-          <span class="stat-label">Std Deviation</span>
-        </div>
+        
       </div>
     </div>
 
     <div class="overview-card performance-trend">
       <div class="card-header">
-        <div class="performance-icon">📈</div>
+
         <h3>Performance Trend</h3>
       </div>
       <div class="card-stats">
@@ -167,15 +164,15 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  background: var(--black);
-  padding: 32px 0;
+  background: transparent;
+  padding: 0;
 }
 
 .overview-card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 10px rgba(124, 152, 133, 0.10);
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.2rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
   border-left: 4px solid #7C9885;
 }
 
@@ -203,21 +200,21 @@ export default {
   font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: 1px;
-  color: var(--white);
-  text-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+  color: #7C9885;
+  text-shadow: none;
 }
 
 .performance-icon {
   font-size: 2.2rem;
-  background: var(--main-green);
-  color: var(--white);
+  background: #B5B682;
+  color: #fff;
   border-radius: 50%;
   width: 48px;
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 12px rgba(34, 197, 94, 0.18);
+  box-shadow: 0 2px 12px rgba(181, 182, 130, 0.18);
 }
 
 .card-stats {
@@ -229,11 +226,11 @@ export default {
 .stat-item {
   text-align: left;
   flex: 1;
-  background: rgba(17, 24, 39, 0.7);
-  border-radius: 10px;
-  padding: 18px 14px;
+  background: #f9f9e0;
+  border-radius: 0.6rem;
+  padding: 1rem 1rem;
   margin: 0 2px;
-  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.08);
+  box-shadow: 0 1px 6px rgba(181, 182, 130, 0.08);
   min-width: 0;
 }
 
@@ -241,10 +238,9 @@ export default {
   display: block;
   font-size: 2.1rem;
   font-weight: 900;
-  color: var(--light-green);
+  color: #7C9885;
   margin-bottom: 6px;
   letter-spacing: 1px;
-  text-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
   transition: color 0.2s;
 }
 
@@ -252,15 +248,15 @@ export default {
   color: #7C9885;
 }
 .stat-value.trend-negative {
-  color: #f87171;
+  color: #e74c3c;
 }
 .stat-value.trend-neutral {
-  color: var(--light-green);
+  color: #B5B682;
 }
 
 .stat-label {
   font-size: 0.95rem;
-  color: #a7f3d0;
+  color: #B5B682;
   font-weight: 600;
   letter-spacing: 0.5px;
   opacity: 0.85;

@@ -46,7 +46,6 @@ export default {
 
 <style scoped>
 .dashboard-hero {
-  width: 100%;
   border-radius: 1.5rem;
   background: linear-gradient(120deg, #7C9885 0%, #B5B682 100%);
   color: #7C9885;
@@ -57,6 +56,7 @@ export default {
   align-items: center;
   min-height: 160px;
   border: 2px solid #7C9885;
+  justify-content: flex-start;
 }
 
 .hero-content {
@@ -126,7 +126,7 @@ export default {
   letter-spacing: 1px;
 }
 
-@media (max-width: 700px) {
+
   .dashboard-hero {
     flex-direction: column;
     padding: 1.5rem 1rem 1rem 1rem;
@@ -145,5 +145,5 @@ export default {
     margin-top: 1rem;
     align-self: flex-end;
   }
-}
+
 </style>

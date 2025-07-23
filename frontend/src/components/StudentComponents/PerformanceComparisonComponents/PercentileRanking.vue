@@ -111,25 +111,26 @@ export default {
 
 <style scoped>
 .percentile-ranking {
-  background: #101010;
-  border-radius: 16px;
-  padding: 32px;
-  margin-bottom: 32px;
-  box-shadow: 0 4px 24px rgba(0, 255, 64, 0.08);
-  color: #e6ffe6;
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.2rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 16px rgba(181, 182, 130, 0.10);
+  color: #23272f;
+  border: 2px solid #B5B682;
 }
 
 .section-header h3 {
   margin: 0;
   font-size: 2rem;
   font-weight: 800;
-  color: #00ff66;
+  color: #7C9885;
   letter-spacing: 1px;
 }
 
 .section-subtitle {
   margin: 6px 0 28px 0;
-  color: #b6ffcc;
+  color: #B5B682;
   font-size: 1rem;
   font-weight: 500;
 }
@@ -141,25 +142,25 @@ export default {
 }
 
 .percentile-chart {
-  background: #181f18;
-  border-radius: 14px;
-  padding: 36px 20px 20px 20px;
-  box-shadow: 0 2px 12px rgba(0, 255, 64, 0.04);
+  background: #f9f9e0;
+  border-radius: 1.2rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 2px 12px #B5B68222;
 }
 
 .percentile-bar-bg {
   position: relative;
   height: 22px;
-  background: #222;
+  background: #fff;
   border-radius: 11px;
   overflow: hidden;
   margin-bottom: 30px;
-  border: 2px solid #00ff66;
+  border: 2px solid #7C9885;
 }
 
 .percentile-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #00ff66 0%, #009944 100%);
+  background: linear-gradient(90deg, #B5B682 0%, #7C9885 100%);
   border-radius: 11px 0 0 11px;
   transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
 }
@@ -177,23 +178,23 @@ export default {
 .marker-dot {
   width: 24px;
   height: 24px;
-  background: #00ff66;
-  border: 4px solid #101010;
+  background: #7C9885;
+  border: 4px solid #fff;
   border-radius: 50%;
   margin-bottom: 6px;
-  box-shadow: 0 0 12px #00ff66, 0 2px 8px rgba(0,255,64,0.2);
+  box-shadow: 0 0 12px #7C9885, 0 2px 8px rgba(124,152,133,0.2);
 }
 
 .marker-label {
-  background: #101010;
-  color: #00ff66;
+  background: #f9f9e0;
+  color: #7C9885;
   padding: 7px 14px;
   border-radius: 8px;
   text-align: center;
   font-size: 0.9rem;
   font-weight: 700;
-  border: 1.5px solid #00ff66;
-  box-shadow: 0 2px 8px rgba(0,255,64,0.08);
+  border: 1.5px solid #B5B682;
+  box-shadow: 0 2px 8px #B5B68222;
 }
 
 .marker-text {
@@ -220,7 +221,7 @@ export default {
   top: 0;
   transform: translateX(-50%);
   font-size: 0.85rem;
-  color: #00ff66;
+  color: #7C9885;
   font-weight: 700;
   opacity: 0.8;
 }
@@ -237,15 +238,15 @@ export default {
 }
 
 .breakdown-item {
-  background: #181f18;
-  border-radius: 12px;
-  padding: 22px;
-  border-left: 6px solid #00ff66;
-  box-shadow: 0 2px 8px rgba(0,255,64,0.04);
+  background: #f9f9e0;
+  border-radius: 1.2rem;
+  padding: 1.5rem 1.2rem;
+  border-left: 6px solid #7C9885;
+  box-shadow: 0 2px 8px #B5B68222;
 }
 
 .breakdown-item.above {
-  border-left: 6px solid #009944;
+  border-left: 6px solid #B5B682;
 }
 
 .breakdown-header {
@@ -259,30 +260,30 @@ export default {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 800;
-  color: #00ff66;
+  color: #7C9885;
   letter-spacing: 0.5px;
 }
 
 .breakdown-item.above .breakdown-header h4 {
-  color: #009944;
+  color: #B5B682;
 }
 
 .breakdown-count {
   font-size: 1rem;
-  color: #b6ffcc;
+  color: #23272f;
   font-weight: 700;
 }
 
 .breakdown-bar {
   height: 12px;
-  background: #222;
+  background: #fff;
   border-radius: 6px;
   overflow: hidden;
-  border: 1.5px solid #00ff66;
+  border: 1.5px solid #7C9885;
 }
 
 .breakdown-item.above .breakdown-bar {
-  border-color: #009944;
+  border-color: #B5B682;
 }
 
 .breakdown-fill {
@@ -292,10 +293,10 @@ export default {
 }
 
 .breakdown-fill.below {
-  background: linear-gradient(90deg, #00ff66 0%, #009944 100%);
+  background: linear-gradient(90deg, #7C9885 0%, #B5B682 100%);
 }
 
 .breakdown-fill.above {
-  background: linear-gradient(90deg, #009944 0%, #00ff66 100%);
+  background: linear-gradient(90deg, #B5B682 0%, #7C9885 100%);
 }
 </style>

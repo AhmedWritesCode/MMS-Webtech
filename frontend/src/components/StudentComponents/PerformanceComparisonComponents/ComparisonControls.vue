@@ -57,9 +57,9 @@ export default {
         { key: "weighted", label: "Weighted Performance" },
       ],
       viewTypes: [
-        { key: "assessments", label: "Assessment Bars", icon: "📊" },
-        { key: "distribution", label: "Grade Distribution", icon: "📈" },
-        { key: "percentiles", label: "Percentile Ranking", icon: "🎯" },
+        { key: "assessments", label: "Assessment Bars", icon: "" },
+        { key: "distribution", label: "Grade Distribution", icon: "" },
+        { key: "percentiles", label: "Percentile Ranking", icon: "" },
       ],
     };
   },
@@ -77,15 +77,15 @@ export default {
 
 <style scoped>
 .comparison-controls {
-  background: #101010;
-  border-radius: 18px;
-  padding: 32px;
-  margin-bottom: 32px;
-  box-shadow: 0 4px 24px rgba(0, 128, 0, 0.15);
+  background: rgba(255,255,255,0.92);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 24px rgba(181, 182, 130, 0.10);
   display: flex;
   gap: 48px;
   flex-wrap: wrap;
-  border: 2px solid #22c55e;
+  border: 2px solid #B5B682;
 }
 
 .control-group {
@@ -96,7 +96,7 @@ export default {
 
 .control-group label {
   font-weight: 700;
-  color: #22c55e;
+  color: #7C9885;
   font-size: 1.1rem;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -118,7 +118,7 @@ export default {
   transition: all 0.2s;
   font-size: 1rem;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.08);
+  box-shadow: 0 2px 8px rgba(124, 152, 133, 0.08);
   outline: none;
   position: relative;
   overflow: hidden;
