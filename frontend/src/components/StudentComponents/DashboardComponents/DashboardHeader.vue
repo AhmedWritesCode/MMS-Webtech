@@ -48,15 +48,15 @@ export default {
 .dashboard-hero {
   width: 100%;
   border-radius: 1.5rem;
-  background: linear-gradient(120deg, #111 0%, #065f46 100%);
-  color: #e5ffe5;
+  background: linear-gradient(120deg, #7C9885 0%, #B5B682 100%);
+  color: #7C9885;
   margin-bottom: 2.5rem;
-  box-shadow: 0 4px 24px 0 rgba(16, 185, 129, 0.15);
+  box-shadow: 0 4px 24px 0 rgba(124, 152, 133, 0.15);
   padding: 2.5rem 2rem 2rem 2rem;
   display: flex;
   align-items: center;
   min-height: 160px;
-  border: 2px solid #22c55e;
+  border: 2px solid #7C9885;
 }
 
 .hero-content {
@@ -70,16 +70,16 @@ export default {
   width: 80px;
   height: 80px;
   border-radius: 20%;
-  background: linear-gradient(135deg, #22c55e 60%, #111 100%);
-  color: #111;
+  background: linear-gradient(135deg, #B5B682 60%, #7C9885 100%);
+  color: #fff;
   font-size: 2.5rem;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 2rem;
-  box-shadow: 0 2px 12px 0 rgba(34, 197, 94, 0.25);
-  border: 3px solid #16a34a;
+  box-shadow: 0 2px 12px 0 rgba(181, 182, 130, 0.25);
+  border: 3px solid #7C9885;
 }
 
 .hero-text {
@@ -91,15 +91,15 @@ export default {
   font-weight: 700;
   margin: 0 0 0.5rem 0;
   letter-spacing: -1px;
-  color: #22c55e;
-  text-shadow: 0 2px 8px #111a;
+  color: #fff;
+  text-shadow: 0 2px 8px #B5B68244;
 }
 
 .student-name {
   font-weight: 800;
   letter-spacing: 0.5px;
-  color: #e5ffe5;
-  background: #065f46;
+  color: #fff;
+  background: #B5B682;
   padding: 0.1em 0.5em;
   border-radius: 0.5em;
 }
@@ -108,12 +108,12 @@ export default {
   font-size: 1rem;
   opacity: 0.85;
   margin-top: 0.2rem;
-  color: #a7f3d0;
+  color: #fff;
 }
 
 .semester-pill {
-  background: #111;
-  color: #22c55e;
+  background: #7C9885;
+  color: #fff;
   font-weight: 700;
   font-size: 1.1rem;
   border-radius: 2rem;
@@ -121,8 +121,8 @@ export default {
   position: absolute;
   right: 0;
   top: 1.5rem;
-  box-shadow: 0 2px 8px 0 rgba(34, 197, 94, 0.15);
-  border: 2px solid #22c55e;
+  box-shadow: 0 2px 8px 0 rgba(181, 182, 130, 0.15);
+  border: 2px solid #B5B682;
   letter-spacing: 1px;
 }
 

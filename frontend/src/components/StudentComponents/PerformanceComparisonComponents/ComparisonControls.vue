@@ -108,12 +108,12 @@ export default {
 }
 
 .control-tab {
-  padding: 12px 28px;
-  border: 2px solid #22c55e;
-  background: #181818;
-  border-radius: 30px;
-  font-weight: 700;
-  color: #22c55e;
+  padding: 8px 16px;
+  border: 2px solid #7C9885;
+  background: #f8fafc;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #7C9885;
   cursor: pointer;
   transition: all 0.2s;
   font-size: 1rem;
@@ -126,26 +126,9 @@ export default {
 
 .control-tab.active,
 .control-tab:hover {
-  background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
-  color: #101010;
-  border-color: #16a34a;
-  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.18);
-}
-
-.control-tab.active::after,
-.control-tab:hover::after {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; right: 0; bottom: 0;
-  border-radius: 30px;
-  box-shadow: 0 0 0 3px #22c55e33;
-  pointer-events: none;
-  animation: pulse 1s infinite alternate;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 3px #22c55e33; }
-  100% { box-shadow: 0 0 0 8px #22c55e11; }
+  border-color: #B5B682;
+  color: #fff;
+  background: #7C9885;
 }
 
 @media (max-width: 768px) {

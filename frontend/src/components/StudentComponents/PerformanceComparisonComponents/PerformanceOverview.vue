@@ -172,36 +172,23 @@ export default {
 }
 
 .overview-card {
-  background: linear-gradient(135deg, var(--dark-green) 60%, var(--main-green) 100%);
-  border-radius: 18px;
-  padding: 32px 28px;
-  box-shadow: 0 6px 32px rgba(22, 163, 74, 0.18);
-  border: none;
-  color: var(--white);
-  transition: transform 0.2s;
-  position: relative;
-  overflow: hidden;
-}
-.overview-card:before {
-  content: "";
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 120px;
-  height: 120px;
-  background: rgba(34, 197, 94, 0.12);
-  border-radius: 50%;
-  z-index: 0;
-}
-.overview-card .card-header,
-.overview-card .card-stats {
-  position: relative;
-  z-index: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(124, 152, 133, 0.10);
+  border-left: 4px solid #7C9885;
 }
 
-.overview-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(22, 163, 74, 0.28);
+.overview-card.your-performance {
+  border-left-color: #7C9885;
+}
+
+.overview-card.class-stats {
+  border-left-color: #B5B682;
+}
+
+.overview-card.performance-trend {
+  border-left-color: #7C9885;
 }
 
 .card-header {
@@ -262,7 +249,7 @@ export default {
 }
 
 .stat-value.trend-positive {
-  color: #22d3ee;
+  color: #7C9885;
 }
 .stat-value.trend-negative {
   color: #f87171;

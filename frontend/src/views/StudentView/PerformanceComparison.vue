@@ -1,26 +1,31 @@
 <template>
-  <div class="compare-hero">
-    <div class="compare-hero-content">
-      <h1 class="compare-title">Anonymous Performance Comparison</h1>
-      <p class="compare-subtitle">
-        Compare your performance with classmates anonymously. All data is displayed without identifying individual students.
-      </p>
+  <div class="compare-bg">
+    <div class="compare-hero">
+      <div class="compare-hero-content">
+        <h1 class="compare-title">Anonymous Performance Comparison</h1>
+        <p class="compare-subtitle">
+          Compare your performance with classmates anonymously. All data is displayed without identifying individual students.
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="course-selector-row">
-    <div class="course-selector">
-      <button
-        v-for="course in courses"
-        :key="course.id"
-        :class="['course-pill', { active: selectedCourse && selectedCourse.id === course.id }]"
-        @click="selectCourse(course)"
-      >
-        {{ course.code }}<span v-if="course.name"> - {{ course.name }}</span>
-      </button>
+    <div class="course-selector-row">
+      <div class="course-selector">
+        <button
+          v-for="course in courses"
+          :key="course.id"
+          :class="['course-pill', { active: selectedCourse && selectedCourse.id === course.id }]"
+          @click="selectCourse(course)"
+        >
+          {{ course.code }}<span v-if="course.name"> - {{ course.name }}</span>
+        </button>
+      </div>
+      <div class="select-course-label">Select Course</div>
     </div>
-    <div class="select-course-label">Select Course</div>
-  </div>
-  <div class="performance-comparison">
+    <div class="performance-comparison">
+      <!-- Header -->
+ 
+
+    <!-- Course Selection -->
     <CourseSelector
       :courses="enrolledCourses"
       :selected-course="selectedCourse"
@@ -65,6 +70,7 @@
     </div>
     <NoCourseSelected v-else />
   </div>
+</div>
 </template>
 
 <script>
@@ -283,13 +289,37 @@ export default {
 </script>
 
 <style scoped>
+.compare-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #7C9885 0%, #B5B682 100%);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.performance-comparison {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.10);
+  padding: 2.5rem;
+  margin: 2.5rem 0 2rem 0;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .compare-hero {
   width: 100%;
+  max-width: 1200px;
+  margin: 2.5rem 0 1.5rem 0;
   border-radius: 1.5rem 1.5rem 0 0;
-  background: linear-gradient(90deg, #0f0 0%, #0a3d0a 100%);
-  color: #fff;
-  margin-bottom: 2.5rem;
-  box-shadow: 0 4px 24px 0 rgba(0, 255, 64, 0.10);
+  background: #fff;
+  color: #7C9885;
+  box-shadow: 0 4px 24px 0 rgba(124, 152, 133, 0.10);
   padding: 2.5rem 2rem 2rem 2rem;
   display: flex;
   align-items: center;
@@ -305,86 +335,100 @@ export default {
   font-weight: 800;
   margin: 0 0 0.5rem 0;
   letter-spacing: -1px;
-  color: #0f0;
-  text-shadow: 0 2px 8px #000a;
+  color: #7C9885;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', Arial, sans-serif;
 }
 .compare-subtitle {
   font-size: 1.15rem;
   opacity: 0.95;
   margin: 0;
-  color: #e0ffe0;
+  color: #B5B682;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', Arial, sans-serif;
 }
 .course-selector-row {
+  width: 100%;
+  max-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
-  background: #111;
-  border-radius: 1rem;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 2px 12px 0 rgba(0,255,64,0.08);
+  margin-top: 0;
 }
 .course-selector {
   display: flex;
   gap: 1rem;
 }
 .course-pill {
-  background: #181818;
-  color: #0f0;
-  border: 2px solid #0f0;
+  background: #fff;
+  color: #7C9885;
+  border: 2px solid #7C9885;
   border-radius: 2rem;
   padding: 0.7rem 1.5rem;
   font-size: 1.05rem;
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
-  box-shadow: 0 2px 8px 0 rgba(0,255,64,0.10);
-  outline: none;
+  box-shadow: 0 2px 8px 0 rgba(124, 152, 133, 0.06);
 }
 .course-pill.active, .course-pill:hover {
-  background: linear-gradient(90deg, #0f0 0%, #0a3d0a 100%);
-  color: #111;
-  border: 2px solid #0f0;
-  box-shadow: 0 4px 16px 0 rgba(0,255,64,0.18);
+  background: #7C9885;
+  color: #fff;
+  border-color: #7C9885;
+  box-shadow: 0 4px 16px 0 rgba(124, 152, 133, 0.12);
 }
 .select-course-label {
   font-size: 1.1rem;
   color: #0f0;
   margin-left: 2rem;
+}
+
+button, .btn, .comparison-controls button, .comparison-controls .active {
+  background: #fff;
+  color: #7C9885;
+  border: 2px solid #7C9885;
+  border-radius: 2rem;
   font-weight: 600;
-  letter-spacing: 1px;
-  text-shadow: 0 1px 4px #000a;
+  transition: background 0.2s, color 0.2s, border 0.2s;
 }
-.performance-comparison {
-  background: #101010;
-  border-radius: 1rem;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 2px 16px 0 rgba(0,255,64,0.06);
-  min-height: 400px;
+button.active, .btn.active, .comparison-controls button.active, .comparison-controls .active {
+  background: #B5B682;
+  color: #fff;
+  border-color: #B5B682;
 }
-.comparison-content {
-  background: #181f18;
-  border-radius: 1rem;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 2px 16px 0 rgba(0,255,64,0.04);
+button:hover, .btn:hover, .comparison-controls button:hover {
+  background: #7C9885;
+  color: #fff;
+  border-color: #7C9885;
+}
+@media (max-width: 1200px) {
+  .performance-comparison, .compare-hero, .course-selector-row {
+    max-width: 98vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
 }
 @media (max-width: 900px) {
   .compare-hero {
     padding: 1.5rem 1rem 1rem 1rem;
     min-height: 90px;
+    margin: 1.5rem 0 1rem 0;
   }
   .course-selector-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-    padding: 1rem;
+    margin-bottom: 1rem;
   }
   .select-course-label {
     margin-left: 0;
     margin-top: 0.5rem;
   }
-  .performance-comparison, .comparison-content {
-    padding: 1rem 0.5rem;
+  .performance-comparison {
+    padding: 1rem;
+    margin: 1rem 0 1rem 0;
   }
+}
+body, .performance-comparison {
+  background: none !important;
 }
 </style>

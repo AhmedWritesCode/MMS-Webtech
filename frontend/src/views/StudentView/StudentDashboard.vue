@@ -378,14 +378,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background: linear-gradient(135deg, #B5B682 0%, #7C9885 100%);
-  padding: 3vh 0;
+  background: linear-gradient(135deg, #7C9885 0%, #B5B682 100%);
 }
 
 .dashboard-panel {
-  background: rgba(255,255,255,0.95);
-  border-radius: 2.5rem;
-  box-shadow: 0 8px 40px 0 rgba(124, 152, 133, 0.18), 0 1.5px 8px 0 rgba(0,0,0,0.04);
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
   max-width: 1100px;
   width: 100%;
   margin: 3rem 0 2rem 0;
@@ -394,13 +393,7 @@ export default {
   flex-direction: column;
   align-items: stretch;
   min-height: 80vh;
-  border: 1.5px solid #B5B682;
-  transition: box-shadow 0.2s, background 0.2s;
-}
-
-.dashboard-panel:hover {
-  box-shadow: 0 16px 48px 0 rgba(124, 152, 133, 0.22), 0 2px 12px 0 rgba(0,0,0,0.06);
-  background: rgba(255,255,255,0.98);
+  border: 2px solid #7C9885;
 }
 
 @media (max-width: 1200px) {

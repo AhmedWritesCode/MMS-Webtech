@@ -117,10 +117,10 @@ export default {
 
 <style scoped>
 .course-card {
-  background: white;
+  background: #fff;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(124, 152, 133, 0.10);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   min-width: 280px;
@@ -128,11 +128,12 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border: 2px solid #7C9885;
 }
 
 .course-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgba(124, 152, 133, 0.15);
 }
 
 .course-header {
@@ -146,7 +147,7 @@ export default {
 .course-code {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #222;
   margin: 0;
   max-width: 140px;
   overflow: hidden;
@@ -155,8 +156,8 @@ export default {
 }
 
 .course-credits {
-  background: #e2e8f0;
-  color: #475569;
+  background: #B5B682;
+  color: #7C9885;
   padding: 4px 8px;
   border-radius: 6px;
   font-size: 0.8rem;
@@ -169,7 +170,7 @@ export default {
 
 .course-name {
   font-size: 1rem;
-  color: #64748b;
+  color: #222;
   margin: 0 0 10px 0;
   font-weight: 500;
   max-width: 100%;
@@ -188,14 +189,14 @@ export default {
 .progress-label {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #2563eb;
+  color: #7C9885;
   margin-bottom: 2px;
 }
 
 .progress-bar {
   width: 100%;
   height: 8px;
-  background: #e2e8f0;
+  background: #F3F5E6;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -207,10 +208,10 @@ export default {
 }
 
 .progress-fill.excellent {
-  background: #059669;
+  background: #7C9885;
 }
 .progress-fill.good {
-  background: #3b82f6;
+  background: #B5B682;
 }
 .progress-fill.average {
   background: #f59e0b;
@@ -225,7 +226,7 @@ export default {
   align-items: center;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #334155;
+  color: #222;
   gap: 2px;
 }
 .progress-numbers .divider {
@@ -239,7 +240,7 @@ export default {
   margin-bottom: 4px;
 }
 .stat-block {
-  background: #f8fafc;
+  background: #F3F5E6;
   border-radius: 8px;
   padding: 10px 8px;
   display: flex;
@@ -249,22 +250,22 @@ export default {
 }
 .stat-label {
   font-size: 0.8rem;
-  color: #64748b;
+  color: #7C9885;
   font-weight: 600;
 }
 .stat-value {
   font-weight: 700;
   font-size: 1.1rem;
-  color: #1e293b;
+  color: #7C9885;
 }
 /* Grade Colors */
 .grade-a-plus,
 .grade-a {
-  color: #059669;
+  color: #7C9885;
 }
 .grade-a-minus,
 .grade-b-plus {
-  color: #3b82f6;
+  color: #B5B682;
 }
 .grade-b {
   color: #f59e0b;
@@ -285,8 +286,8 @@ export default {
   align-items: center;
   gap: 6px;
   font-size: 0.9rem;
-  color: #64748b;
-  background: #f1f5f9;
+  color: #7C9885;
+  background: #F3F5E6;
   border-radius: 8px;
   padding: 6px 8px;
 }
@@ -296,10 +297,10 @@ export default {
   border-radius: 50%;
 }
 .status-dot.completed {
-  background: #059669;
+  background: #7C9885;
 }
 .status-dot.pending {
-  background: #f59e0b;
+  background: #B5B682;
 }
 
 /* Responsive Design */

@@ -67,32 +67,26 @@ export default {
 }
 
 .course-tab {
-  background: #181818;
-  border: 2px solid #22c55e;
-  border-radius: 16px;
-  padding: 20px 28px;
+  background: #f1f5f9;
+  border: 2px solid #7C9885;
+  border-radius: 12px;
+  padding: 16px 20px;
   cursor: pointer;
   transition: all 0.2s;
   text-align: left;
-  color: #22c55e;
-  font-family: 'Segoe UI', 'Arial', sans-serif;
-  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.08);
-  position: relative;
-  overflow: hidden;
+  color: #7C9885;
 }
 
 .course-tab:hover {
-  background: #22c55e;
-  color: #111;
-  border-color: #16a34a;
+  border-color: #B5B682;
+  background: #F3F5E6;
+  color: #7C9885;
 }
 
 .course-tab.active {
-  background: linear-gradient(90deg, #22c55e 60%, #111 100%);
-  color: #111;
-  border-color: #16a34a;
-  font-weight: 900;
-  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.18);
+  border-color: #7C9885;
+  background: #7C9885;
+  color: #fff;
 }
 
 .course-code {
