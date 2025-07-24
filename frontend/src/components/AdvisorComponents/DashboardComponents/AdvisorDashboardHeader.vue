@@ -64,11 +64,13 @@ export default {
 
 <style scoped>
 .dashboard-header {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  border-radius: 16px;
-  padding: 30px;
-  margin-bottom: 30px;
+  background: linear-gradient(135deg, #7C9885 0%, #B5B682 100%);
+  border-radius: 1.5rem;
+  padding: 32px;
+  margin-bottom: 32px;
   color: white;
+  border: 2px solid #7C9885;
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
 }
 
 .header-content {

@@ -1,5 +1,7 @@
 <template>
-  <div class="lecturer-dashboard">
+  <div class="lecturer-dashboard-container">
+    <LecturerNavbar @sidebar-toggle="handleSidebarToggle" />
+    <div class="lecturer-dashboard" :class="{ 'sidebar-collapsed': sidebarCollapsed }">
     <!-- Dashboard Header -->
     <div class="dashboard-header">
       <div class="header-content">
@@ -52,12 +54,7 @@
     <div class="courses-section">
       <div class="section-header">
         <h2>My Courses</h2>
-        <div class="section-actions">
-          <button class="filter-btn" @click="toggleFilterMenu">
-            <span class="btn-icon">🔍</span>
-            Filter
-          </button>
-        </div>
+    
       </div>
 
       <div class="courses-grid">
@@ -68,45 +65,31 @@
           @click="viewCourse(course.course_id)"
         >
           <div class="course-header">
-            <div class="course-info">
-              <h3 class="course-code">{{ course.course_code }}</h3>
-              <h4 class="course-name">{{ course.course_name }}</h4>
-              <p class="course-semester">{{ course.semester }}</p>
-            </div>
-            <div class="course-status">
-              <span class="status-badge active">Active</span>
-            </div>
+            <h3 class="course-code">{{ course.course_code }}</h3>
           </div>
-
+          
+          <div class="course-details">
+            <h4 class="course-name">{{ course.course_name }}</h4>
+            <p class="course-semester">{{ course.semester }}</p>
+          </div>
+          
           <div class="course-stats">
             <div class="stat-item">
-              <span class="stat-label">Students</span>
-              <span class="stat-value">{{ course.enrolled_students }}</span>
+              <div class="stat-value">{{ course.enrolled_students }}</div>
+              <div class="stat-label">Students</div>
             </div>
             <div class="stat-item">
-              <span class="stat-label">Components</span>
-              <span class="stat-value">{{ course.total_components }}</span>
+              <div class="stat-value">{{ course.total_components }}</div>
+              <div class="stat-label">Components</div>
             </div>
             <div class="stat-item">
-              <span class="stat-label">Graded</span>
-              <span class="stat-value">{{ course.graded_components }}</span>
+              <div class="stat-value">{{ course.graded_components }}</div>
+              <div class="stat-label">Graded</div>
             </div>
           </div>
-
-          <div class="course-progress">
-            <div class="progress-header">
-              <span>Grading Progress</span>
-              <span>{{ course.completion_rate }}%</span>
-            </div>
-            <div class="progress-bar">
-              <div
-                class="progress-fill"
-                :style="{ width: course.completion_rate + '%' }"
-                :class="getProgressClass(course.completion_rate)"
-              ></div>
-            </div>
-          </div>
-
+          
+          
+          
           <div class="course-actions">
             <button
               class="action-btn small"
@@ -141,49 +124,18 @@
     <!-- Assessment Components Section -->
     <div class="assessment-section">
       <h2>Manage Assessment Components</h2>
-      <label for="course-select">Select Course:</label>
-      <select id="course-select" v-model="selectedCourseId">
-        <option v-for="course in courses" :key="course.course_id" :value="course.course_id">
-          {{ course.course_code }} - {{ course.course_name }}
-        </option>
-      </select>
+      <div class="course-selector">
+        <label for="course-select">Select Course:</label>
+        <select id="course-select" v-model="selectedCourseId">
+          <option v-for="course in courses" :key="course.course_id" :value="course.course_id">
+            {{ course.course_code }} - {{ course.course_name }}
+          </option>
+        </select>
+      </div>
       <AssessmentComponentPanel v-if="selectedCourseId" :course-id="selectedCourseId" :lecturer-id="lecturerId" />
     </div>
 
-    <!-- Recent Activities -->
-    <div class="recent-activities">
-      <div class="section-header">
-        <h2>Recent Activities</h2>
-        <router-link to="/lecturer/activities" class="view-all-link">
-          View All
-        </router-link>
-      </div>
-
-      <div class="activities-list">
-        <div
-          v-for="activity in recentActivities"
-          :key="activity.id"
-          class="activity-item"
-        >
-          <div class="activity-icon">📝</div>
-          <div class="activity-content">
-            <p class="activity-description">{{ activity.description }}</p>
-            <div class="activity-meta">
-              <span class="activity-course">{{ activity.course_code }}</span>
-              <span class="activity-time">{{
-                formatDate(activity.activity_date)
-              }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Empty Activities -->
-      <div v-if="recentActivities.length === 0" class="empty-activities">
-        <p>No recent activities</p>
-      </div>
-    </div>
-
+   
     <!-- Loading Overlay -->
     <div v-if="loading" class="loading-overlay">
       <div class="loading-spinner">Loading dashboard...</div>
@@ -194,16 +146,21 @@
       <p>{{ error }}</p>
       <button @click="loadDashboardData">Retry</button>
     </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { lecturerAPI, utilityAPI } from "@/services/api";
 import AssessmentComponentPanel from "@/views/LecturerView/AssessmentComponentPanel.vue";
+import LecturerNavbar from "@/components/navigation/LecturerNavbar.vue";
 
 export default {
   name: "LecturerDashboard",
-  components: { AssessmentComponentPanel },
+  components: {
+    AssessmentComponentPanel,
+    LecturerNavbar
+  },
   data() {
     return {
       loading: false,
@@ -212,6 +169,7 @@ export default {
       lecturerId: null,
       courses: [],
       selectedCourseId: null,
+      sidebarCollapsed: false,
       overview: {
         total_courses: 0,
         total_students: 0,
@@ -332,24 +290,52 @@ export default {
         minute: "2-digit",
       });
     },
+    
+    handleSidebarToggle(collapsed) {
+      this.sidebarCollapsed = collapsed;
+    },
   },
 };
 </script>
 
 <style scoped>
+.lecturer-dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #7C9885 0%, #B5B682 100%);
+}
+
 .lecturer-dashboard {
   padding: 24px;
   max-width: 1400px;
   margin: 0 auto;
+  min-height: 100vh;
+  margin-left: 220px; /* Match the width of the sidebar */
+  width: calc(100% - 220px);
+  transition: margin-left 0.2s, width 0.2s;
+}
+
+.lecturer-dashboard.sidebar-collapsed {
+  margin-left: 64px;
+  width: calc(100% - 64px);
+}
+
+@media (max-width: 900px) {
+  .lecturer-dashboard {
+    margin-left: 64px;
+    width: calc(100% - 64px);
+  }
 }
 
 /* Dashboard Header */
 .dashboard-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 16px;
+  background: linear-gradient(135deg, #7C9885 0%, #B5B682 100%);
+  border-radius: 1.5rem;
   padding: 32px;
   margin-bottom: 32px;
   color: white;
+  border: 2px solid #7C9885;
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
 }
 
 .header-content {
@@ -394,7 +380,8 @@ export default {
 }
 
 .action-btn.primary:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: #B5B682;
+  color: #23272f;
 }
 
 .btn-icon {
@@ -408,20 +395,27 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 24px;
   margin-bottom: 32px;
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 24px;
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
+  border: 2px solid #7C9885;
 }
 
 .stat-card {
   background: white;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(124, 152, 133, 0.1);
   display: flex;
   align-items: center;
   transition: transform 0.2s;
+  border: 1px solid #B5B682;
 }
 
 .stat-card:hover {
   transform: translateY(-2px);
+  border-color: #7C9885;
 }
 
 .stat-icon {
@@ -433,7 +427,7 @@ export default {
   margin: 0 0 4px 0;
   font-size: 2rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #7C9885;
 }
 
 .stat-content p {
@@ -445,10 +439,11 @@ export default {
 /* Courses Section */
 .courses-section {
   background: white;
-  border-radius: 16px;
+  border-radius: 1.5rem;
   padding: 32px;
   margin-bottom: 32px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
+  border: 2px solid #7C9885;
 }
 
 .section-header {
@@ -470,14 +465,15 @@ export default {
   align-items: center;
   padding: 8px 16px;
   background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #B5B682;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .filter-btn:hover {
-  background: #e2e8f0;
+  background: #B5B682;
+  color: #23272f;
 }
 
 .courses-grid {
@@ -488,94 +484,103 @@ export default {
 
 .course-card {
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 1.5rem;
-  width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(124, 152, 133, 0.1);
+  padding: 1.2rem;
+  width: 280px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  border: 1px solid #B5B682;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.course-card:hover {
+  border-color: #7C9885;
+  box-shadow: 0 4px 12px rgba(124, 152, 133, 0.15);
+  transform: translateY(-2px);
 }
 
 .course-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 16px;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .course-code {
-  margin: 0 0 4px 0;
+  margin: 0;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #7C9885;
+}
+
+.course-details {
+  margin-bottom: 12px;
 }
 
 .course-name {
   margin: 0 0 4px 0;
   font-size: 1rem;
+  font-weight: 600;
   color: #374151;
 }
 
 .course-semester {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #6b7280;
 }
 
 .status-badge {
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
-}
-
-.status-badge.active {
-  background: #dcfce7;
-  color: #166534;
+  background: #B5B682;
+  color: #23272f;
 }
 
 .course-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 8px 0;
+  border-top: 1px solid rgba(181, 182, 130, 0.3);
+  border-bottom: 1px solid rgba(181, 182, 130, 0.3);
 }
 
 .stat-item {
   text-align: center;
+  flex: 1;
 }
 
 .stat-label {
-  display: block;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #6b7280;
-  margin-bottom: 4px;
+  margin-top: 2px;
 }
 
 .stat-value {
-  display: block;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #7C9885;
 }
 
 .course-progress {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-.progress-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
+.progress-label {
+  margin-bottom: 6px;
+  font-size: 0.85rem;
   color: #374151;
 }
 
 .progress-bar {
-  height: 8px;
+  height: 6px;
   background: #e2e8f0;
-  border-radius: 4px;
+  border-radius: 3px;
   overflow: hidden;
 }
 
@@ -585,58 +590,100 @@ export default {
 }
 
 .progress-excellent {
-  background: #10b981;
+  background: #7C9885;
 }
 
 .progress-good {
-  background: #3b82f6;
+  background: #B5B682;
 }
 
 .progress-warning {
-  background: #f59e0b;
+  background: #B5B682;
+  opacity: 0.8;
 }
 
 .progress-poor {
-  background: #ef4444;
+  background: #7C9885;
+  opacity: 0.6;
 }
 
 .course-actions {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  justify-content: flex-end;
+  gap: 0.4rem;
+  justify-content: space-between;
 }
 
 .action-btn.small {
-  font-size: 0.95rem;
-  padding: 0.4rem 0.9rem;
-  border-radius: 5px;
+  flex: 1;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 6px;
   background: #f5f5f5;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #B5B682;
   color: #333;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  text-align: center;
 }
+
 .action-btn.small:hover {
-  background: #e0e7ff;
-  color: #1d4ed8;
+  background: #B5B682;
+  color: #23272f;
+}
+
+/* Assessment Components Section */
+.assessment-section {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
+  border: 2px solid #7C9885;
+}
+
+.course-selector {
+  margin-bottom: 20px;
+}
+
+.course-selector label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #7C9885;
+}
+
+.course-selector select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #B5B682;
+  background-color: #fff;
+  font-size: 1rem;
+}
+
+.course-selector select:focus {
+  outline: none;
+  border-color: #7C9885;
+  box-shadow: 0 0 0 2px rgba(124, 152, 133, 0.2);
 }
 
 /* Recent Activities */
 .recent-activities {
   background: white;
-  border-radius: 16px;
+  border-radius: 1.5rem;
   padding: 32px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
+  border: 2px solid #7C9885;
 }
 
 .view-all-link {
-  color: #3b82f6;
+  color: #7C9885;
   text-decoration: none;
   font-weight: 600;
 }
 
 .view-all-link:hover {
   text-decoration: underline;
+  color: #B5B682;
 }
 
 .activities-list {
@@ -649,13 +696,15 @@ export default {
   display: flex;
   align-items: flex-start;
   padding: 16px;
-  border: 1px solid #f3f4f6;
+  border: 1px solid #B5B682;
   border-radius: 8px;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  margin-bottom: 8px;
 }
 
 .activity-item:hover {
   background: #f9fafb;
+  border-color: #7C9885;
 }
 
 .activity-icon {
@@ -672,6 +721,11 @@ export default {
   margin: 0 0 8px 0;
   color: #374151;
   font-weight: 500;
+}
+
+.activity-course {
+  color: #7C9885;
+  font-weight: 600;
 }
 
 .activity-meta {
@@ -707,7 +761,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(181, 182, 130, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -715,44 +769,52 @@ export default {
 }
 
 .loading-spinner {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  font-size: 1.1rem;
-  color: #3b82f6;
+  background: #B5B682;
+  color: #23272f;
+  padding: 20px 40px;
+  border-radius: 16px;
   font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 16px rgba(124, 152, 133, 0.18);
+  border: 1.5px solid #7C9885;
 }
 
 .error-message {
-  background: white;
-  border: 1px solid #ef4444;
-  border-radius: 12px;
-  padding: 24px;
-  margin: 20px;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: #7C9885;
+  border: 1.5px solid #B5B682;
+  color: #e74c3c;
+  padding: 18px;
+  border-radius: 14px;
+  max-width: 340px;
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(124, 152, 133, 0.15);
 }
 
 .error-message p {
-  color: #ef4444;
+  color: #fff;
   margin: 0 0 16px 0;
   font-weight: 600;
 }
 
 .error-message button {
-  background: #ef4444;
-  color: white;
+  background: #B5B682;
+  color: #23272f;
   border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 7px 16px;
+  border-radius: 7px;
+  margin-top: 12px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
   transition: background 0.2s;
 }
 
 .error-message button:hover {
-  background: #dc2626;
+  background: #7C9885;
+  color: #fff;
 }
 
 /* Responsive Design */

@@ -60,13 +60,17 @@ export default {
 <style scoped>
 .alerts-section {
   margin-bottom: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .alert-card {
   background: white;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.1);
   border-left: 4px solid #ef4444;
 }
 
@@ -92,10 +96,11 @@ export default {
 .alert-count {
   background: #fee2e2;
   color: #dc2626;
-  padding: 4px 12px;
+  padding: 6px 14px;
   border-radius: 12px;
   font-size: 0.8rem;
   font-weight: 600;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
 }
 
 .alert-students {
@@ -112,11 +117,14 @@ export default {
   background: #fef2f2;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.05);
 }
 
 .alert-student-item:hover {
   background: #fee2e2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.1);
 }
 
 .student-info {
@@ -149,26 +157,31 @@ export default {
 
 .risk-level {
   font-size: 0.8rem;
-  padding: 2px 8px;
-  border-radius: 6px;
+  padding: 4px 10px;
+  border-radius: 8px;
   font-weight: 600;
   background: #dc2626;
   color: white;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
 }
 
 .view-all-risks-btn {
   background: #dc2626;
   color: white;
   border: none;
-  padding: 12px 20px;
+  padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(220, 38, 38, 0.2);
+  margin-top: 8px;
 }
 
 .view-all-risks-btn:hover {
   background: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(220, 38, 38, 0.3);
 }
 
 @media (max-width: 480px) {

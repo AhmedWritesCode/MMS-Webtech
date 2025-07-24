@@ -22,8 +22,8 @@ export default {
 
 <style scoped>
 .main-content {
-  margin-top: 80px; /* Account for fixed navbar height */
-  padding: 20px;
+  /* margin-top: 80px; Account for fixed navbar height */
+  /* padding: 20px; */
   min-height: calc(100vh - 80px); /* Ensure full height minus navbar */
 }
 

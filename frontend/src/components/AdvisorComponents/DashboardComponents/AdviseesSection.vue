@@ -309,6 +309,10 @@ export default {
 <style scoped>
 .advisees-section {
   margin-bottom: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .section-header {
@@ -318,13 +322,15 @@ export default {
   margin-bottom: 24px;
   flex-wrap: wrap;
   gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .section-header h2 {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #4f46e5;
 }
 
 .section-controls {
@@ -340,30 +346,36 @@ export default {
 }
 
 .search-input {
-  padding: 8px 12px;
-  border: 2px solid #e2e8f0;
+  padding: 10px 16px;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
   font-size: 0.9rem;
   min-width: 200px;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .search-input:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
 .filter-select {
-  padding: 8px 12px;
-  border: 2px solid #e2e8f0;
+  padding: 10px 16px;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
   font-size: 0.9rem;
   background: white;
   cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .filter-select:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
 .view-options {
@@ -372,22 +384,23 @@ export default {
 }
 
 .view-btn {
-  padding: 8px 12px;
-  border: 2px solid #e2e8f0;
+  padding: 10px 16px;
+  border: 1px solid #e2e8f0;
   background: white;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 0.8rem;
   font-weight: 600;
   color: #64748b;
   cursor: pointer;
   transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .view-btn.active,
 .view-btn:hover {
-  border-color: #3b82f6;
-  color: #3b82f6;
-  background: #eff6ff;
+  border-color: #4f46e5;
+  color: #4f46e5;
+  background: rgba(79, 70, 229, 0.05);
 }
 
 /* Grid View */
@@ -401,16 +414,16 @@ export default {
   background: white;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s;
   border-left: 4px solid #e2e8f0;
   position: relative;
 }
 
 .student-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .student-card.excellent {
@@ -440,13 +453,14 @@ export default {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 1.2rem;
+  box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
 }
 
 .student-basic-info {
@@ -483,21 +497,25 @@ export default {
 .performance-indicator.excellent {
   background: #dcfce7;
   color: #059669;
+  box-shadow: 0 2px 4px rgba(5, 150, 105, 0.1);
 }
 
 .performance-indicator.good {
-  background: #dbeafe;
-  color: #3b82f6;
+  background: #e0e7ff;
+  color: #4f46e5;
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
 }
 
 .performance-indicator.average {
   background: #fef3c7;
   color: #d97706;
+  box-shadow: 0 2px 4px rgba(217, 119, 6, 0.1);
 }
 
 .performance-indicator.at-risk {
   background: #fee2e2;
   color: #dc2626;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
 }
 
 .student-stats {
@@ -527,33 +545,36 @@ export default {
 }
 
 .action-btn {
-  padding: 6px 12px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
   flex: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .action-btn.primary {
-  background: #3b82f6;
+  background: #4f46e5;
   color: white;
 }
 
 .action-btn.primary:hover {
-  background: #2563eb;
+  background: #4338ca;
+  box-shadow: 0 4px 6px rgba(79, 70, 229, 0.3);
 }
 
 .action-btn.secondary {
-  background: #f1f5f9;
+  background: #f8fafc;
   color: #475569;
   border: 1px solid #e2e8f0;
 }
 
 .action-btn.secondary:hover {
-  background: #e2e8f0;
+  background: #f1f5f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .action-btn.notes {
@@ -563,6 +584,7 @@ export default {
 
 .action-btn.notes:hover {
   background: #fde68a;
+  box-shadow: 0 4px 6px rgba(217, 119, 6, 0.2);
 }
 
 .quick-indicators {
@@ -605,7 +627,7 @@ export default {
 .advisees-list {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
@@ -614,9 +636,9 @@ export default {
   grid-template-columns: 2fr 80px 120px 80px 120px 100px 150px;
   gap: 16px;
   padding: 16px 20px;
-  background: #f8fafc;
+  background: rgba(79, 70, 229, 0.05);
   font-weight: 700;
-  color: #475569;
+  color: #4f46e5;
   font-size: 0.9rem;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -685,21 +707,25 @@ export default {
 .gpa-value.excellent {
   background: #dcfce7;
   color: #059669;
+  box-shadow: 0 2px 4px rgba(5, 150, 105, 0.1);
 }
 
 .gpa-value.good {
-  background: #dbeafe;
-  color: #3b82f6;
+  background: #e0e7ff;
+  color: #4f46e5;
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
 }
 
 .gpa-value.average {
   background: #fef3c7;
   color: #d97706;
+  box-shadow: 0 2px 4px rgba(217, 119, 6, 0.1);
 }
 
 .gpa-value.at-risk {
   background: #fee2e2;
   color: #dc2626;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
 }
 
 .status-badge {
@@ -712,21 +738,25 @@ export default {
 .status-badge.excellent {
   background: #dcfce7;
   color: #059669;
+  box-shadow: 0 2px 4px rgba(5, 150, 105, 0.1);
 }
 
 .status-badge.good {
-  background: #dbeafe;
-  color: #3b82f6;
+  background: #e0e7ff;
+  color: #4f46e5;
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
 }
 
 .status-badge.average {
   background: #fef3c7;
   color: #d97706;
+  box-shadow: 0 2px 4px rgba(217, 119, 6, 0.1);
 }
 
 .status-badge.at-risk {
   background: #fee2e2;
   color: #dc2626;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
 }
 
 .action-buttons {
@@ -744,6 +774,9 @@ export default {
   text-align: center;
   padding: 60px 20px;
   color: #64748b;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-top: 20px;
 }
 
 .empty-icon {

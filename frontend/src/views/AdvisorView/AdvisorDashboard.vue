@@ -476,12 +476,17 @@ export default {
 
 <style scoped>
 .advisor-dashboard {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
   background: #f8fafc;
-  min-height: 100vh;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .loading-overlay {
@@ -490,7 +495,8 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(79, 70, 229, 0.2);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -498,46 +504,81 @@ export default {
 }
 
 .loading-spinner {
-  background: #4f46e5;
-  color: white;
+  background: white;
+  color: #4f46e5;
   padding: 20px 40px;
-  border-radius: 8px;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+  }
 }
 
 .error-message {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #fee;
-  border: 1px solid #fcc;
-  color: #c33;
-  padding: 15px;
-  border-radius: 8px;
-  max-width: 300px;
+  top: 24px;
+  right: 24px;
+  background: white;
+  border: 1px solid #fee2e2;
+  color: #dc2626;
+  padding: 16px;
+  border-radius: 12px;
+  max-width: 340px;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px rgba(220, 38, 38, 0.1);
+}
+
+.error-message p {
+  color: #dc2626;
+  margin: 0 0 16px 0;
+  font-weight: 600;
 }
 
 .error-message button {
-  background: #c33;
+  background: #4f46e5;
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  margin-top: 10px;
+  padding: 8px 16px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
 }
 
 .error-message button:hover {
-  background: #b22;
+  background: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
 }
 
 /* Global responsive adjustments */
+@media (max-width: 1200px) {
+  .advisor-dashboard {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .advisor-dashboard {
-    padding: 10px;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+    gap: 16px;
   }
 
   .error-message {
@@ -545,6 +586,7 @@ export default {
     right: 10px;
     left: 10px;
     max-width: none;
+    padding: 12px;
   }
 }
 </style>

@@ -1,109 +1,53 @@
 <template>
-  <nav class="lecturer-navbar">
-    <div class="navbar-container">
-      <!-- Brand -->
-      <router-link to="/lecturer/dashboard" class="navbar-brand">
-        <span class="brand-logo">🎓</span>
-        <span class="brand-title">Lecturer Portal</span>
-      </router-link>
-
-      <!-- Desktop Nav Links -->
-      <div class="navbar-links" v-if="!showMobileMenu">
-        <router-link to="/lecturer/dashboard" class="nav-link" :class="{ active: $route.path === '/lecturer/dashboard' }">
-          <span class="nav-icon">🏠</span>
-          <span class="nav-text">Dashboard</span>
-        </router-link>
-        <div class="nav-dropdown" @mouseenter="showCoursesDropdown = true" @mouseleave="showCoursesDropdown = false">
-          <div class="nav-link dropdown-trigger" :class="{ active: isCoursesActive }">
-            <span class="nav-icon">📚</span>
-            <span class="nav-text">My Courses</span>
-            <span class="dropdown-arrow">▼</span>
-          </div>
-          <div class="dropdown-menu" v-if="showCoursesDropdown">
-            <router-link v-for="course in lecturerCourses" :key="course.id" :to="`/lecturer/course/${course.id}`" class="dropdown-item">
-              <span class="course-code">{{ course.code }}</span>
-              <span class="course-name">{{ course.name }}</span>
-            </router-link>
-          </div>
-        </div>
-        <router-link to="/lecturer/student-management" class="nav-link" :class="{ active: $route.path === '/lecturer/student-management' }">
-          <span class="nav-icon">👥</span>
-          <span class="nav-text">Student Management</span>
-        </router-link>
-        <router-link to="/lecturer/analytics" class="nav-link" :class="{ active: $route.path === '/lecturer/analytics' }">
-          <span class="nav-icon">📊</span>
-          <span class="nav-text">Analytics</span>
-        </router-link>
-        <router-link to="/lecturer/notifications" class="nav-link" :class="{ active: $route.path === '/lecturer/notifications' }">
-          <span class="nav-icon">🔔</span>
-          <span class="nav-text">Notifications</span>
-        </router-link>
-      </div>
-
-      <!-- User Dropdown -->
-      <div class="navbar-user" v-if="!showMobileMenu">
-        <div class="user-dropdown" @click.stop="toggleUserDropdown">
-          <div class="user-avatar">{{ getLecturerInitials(lecturerName) }}</div>
-          <div class="user-info">
-            <span class="user-name">{{ lecturerName }}</span>
-            <span class="user-role">Lecturer</span>
-          </div>
-          <span class="dropdown-arrow">▼</span>
-          <div class="user-menu" v-if="showUserDropdown">
-            <router-link to="/lecturer/profile" class="user-menu-item">👤 Profile</router-link>
-            <router-link to="/lecturer/settings" class="user-menu-item">⚙️ Settings</router-link>
-            <div class="user-menu-divider"></div>
-            <button class="user-menu-item logout" @click="logout">🚪 Logout</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hamburger for Mobile -->
-      <button class="navbar-hamburger" @click="toggleMobileMenu">
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
+  <aside :class="['lecturer-sidebar', { collapsed: isCollapsed }]">
+    <div class="sidebar-header">
+      <div class="brand-logo"></div>
+      <span v-if="!isCollapsed" class="brand-name">Course Marks</span>
+      <button class="collapse-btn" @click="toggleSidebar">
+        <span v-if="isCollapsed">▶</span>
+        <span v-else>◀</span>
       </button>
     </div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" v-if="showMobileMenu">
-      <router-link to="/lecturer/dashboard" class="mobile-menu-item" @click="closeMobileMenu">🏠 Dashboard</router-link>
-      <div class="mobile-menu-section">
-        <div class="mobile-menu-title">My Courses</div>
-        <router-link v-for="course in lecturerCourses" :key="course.id" :to="`/lecturer/course/${course.id}`" class="mobile-menu-item" @click="closeMobileMenu">
-          <span class="course-code">{{ course.code }}</span> - <span class="course-name">{{ course.name }}</span>
-        </router-link>
+    <nav class="sidebar-nav">
+      <router-link to="/lecturer/dashboard" class="sidebar-link" :class="{ active: $route.path === '/lecturer/dashboard' }">
+        <span class="sidebar-icon">🏠</span>
+        <span v-if="!isCollapsed" class="sidebar-text">Dashboard</span>
+      </router-link>
+      <router-link to="/lecturer/student-management" class="sidebar-link" :class="{ active: $route.path === '/lecturer/student-management' }">
+        <span class="sidebar-icon">👥</span>
+        <span v-if="!isCollapsed" class="sidebar-text">Students</span>
+      </router-link>
+      <router-link to="/lecturer/analytics" class="sidebar-link" :class="{ active: $route.path === '/lecturer/analytics' }">
+        <span class="sidebar-icon">📊</span>
+        <span v-if="!isCollapsed" class="sidebar-text">Analytics</span>
+      </router-link>
+      <router-link to="/lecturer/profile" class="sidebar-link" :class="{ active: $route.path === '/lecturer/profile' }">
+        <span class="sidebar-icon">👤</span>
+        <span v-if="!isCollapsed" class="sidebar-text">Profile</span>
+      </router-link>
+    </nav>
+    <div class="sidebar-footer" v-if="!isCollapsed">
+      <div class="sidebar-user">
+        <span class="user-avatar">{{ getLecturerInitials(lecturerName) }}</span>
+        <span class="user-name">{{ lecturerName }}</span>
       </div>
-      <router-link to="/lecturer/analytics" class="mobile-menu-item" @click="closeMobileMenu">📊 Analytics</router-link>
-      <router-link to="/lecturer/notifications" class="mobile-menu-item" @click="closeMobileMenu">🔔 Notifications</router-link>
-      <router-link to="/lecturer/profile" class="mobile-menu-item" @click="closeMobileMenu">👤 Profile</router-link>
-      <router-link to="/lecturer/settings" class="mobile-menu-item" @click="closeMobileMenu">⚙️ Settings</router-link>
-      <button class="mobile-menu-item logout" @click="logout">🚪 Logout</button>
+      <button class="logout-btn" @click="logout">Logout</button>
     </div>
-  </nav>
+  </aside>
 </template>
 
 <script>
 import authService from "@/services/auth";
-import { lecturerAPI, utilityAPI } from "@/services/api";
+import {  utilityAPI } from "@/services/api";
 
 export default {
   name: "LecturerNavbar",
   data() {
     return {
-      showCoursesDropdown: false,
-      showUserDropdown: false,
-      showMobileMenu: false,
-      lecturerName: "Loading...",
+      isCollapsed: false,
+      lecturerName: "Lecturer",
       lecturerId: null,
-      lecturerCourses: [],
     };
-  },
-  computed: {
-    isCoursesActive() {
-      return this.$route.path.startsWith("/lecturer/course/");
-    },
   },
   async mounted() {
     await this.loadLecturerData();
@@ -119,10 +63,6 @@ export default {
         if (userResponse.success) {
           this.lecturerName = userResponse.data.full_name;
           this.lecturerId = userResponse.data.id;
-          const coursesResponse = await lecturerAPI.getCourses(this.lecturerId);
-          if (coursesResponse.success) {
-            this.lecturerCourses = coursesResponse.data.courses || [];
-          }
         }
       } catch (error) {
         console.error("Error loading lecturer data:", error);
@@ -136,21 +76,15 @@ export default {
         .toUpperCase()
         .slice(0, 2);
     },
-    toggleUserDropdown() {
-      this.showUserDropdown = !this.showUserDropdown;
+    toggleSidebar() {
+      this.isCollapsed = !this.isCollapsed;
+      // Emit event to parent components
+      this.$emit('sidebar-toggle', this.isCollapsed);
     },
     handleClickOutside(event) {
       if (!this.$el.contains(event.target)) {
-        this.showUserDropdown = false;
-        this.showCoursesDropdown = false;
-        this.showMobileMenu = false;
+        // Only close dropdowns, not the sidebar
       }
-    },
-    toggleMobileMenu() {
-      this.showMobileMenu = !this.showMobileMenu;
-    },
-    closeMobileMenu() {
-      this.showMobileMenu = false;
     },
     async logout() {
       try {
@@ -165,289 +99,157 @@ export default {
 </script>
 
 <style scoped>
-.lecturer-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 64px;
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+.lecturer-sidebar {
+  width: 220px;
+  background: #B5B682;
+  color: #23272f;
+  height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
+  border: 2px solid #7C9885;
+  transition: width 0.2s;
+  z-index: 1000;
 }
 
-.navbar-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  width: 100%;
+.lecturer-sidebar.collapsed {
+  width: 64px;
+}
+
+.sidebar-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
+  padding: 1.2rem 1rem 1.2rem 1.2rem;
+  background: #7C9885;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
 }
 
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #1e293b;
-  font-weight: 700;
-  font-size: 1.2rem;
-  gap: 0.75rem;
-}
 .brand-logo {
   font-size: 2rem;
-}
-.brand-title {
-  font-size: 1.1rem;
-  font-weight: 600;
+  color: #fff;
 }
 
-.navbar-links {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #64748b;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-}
-.nav-link.active, .nav-link:hover {
-  background: #eff6ff;
-  color: #2563eb;
-}
-.nav-icon {
+.brand-name {
+  font-weight: 700;
   font-size: 1.2rem;
+  color: #fff;
+  margin-left: 0.5rem;
 }
 
-.nav-dropdown {
-  position: relative;
-}
-.dropdown-trigger {
+.collapse-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
   cursor: pointer;
+  margin-left: 0.5rem;
 }
-.dropdown-arrow {
-  font-size: 0.8rem;
-  margin-left: 4px;
-}
-.dropdown-menu {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  min-width: 220px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  padding: 0.5rem 0;
-  z-index: 2000;
+
+.sidebar-nav {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  animation: fadeIn 0.2s;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.dropdown-item {
-  padding: 0.75rem 1.2rem;
-  color: #1e293b;
-  text-decoration: none;
-  font-size: 0.97rem;
-  border: none;
-  background: none;
-  text-align: left;
-  transition: background 0.2s;
-  cursor: pointer;
-}
-.dropdown-item:hover {
-  background: #f1f5f9;
-}
-.course-code {
-  font-weight: 600;
-  color: #2563eb;
-  margin-right: 0.5rem;
-}
-.course-name {
-  color: #64748b;
+  gap: 0.5rem;
+  padding: 1.5rem 0.5rem 1.5rem 0.5rem;
 }
 
-.navbar-user {
-  position: relative;
+.sidebar-link {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.8rem;
+  color: #23272f;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
 }
-.user-dropdown {
+
+.sidebar-link.active {
+  background: #7C9885;
+  color: #fff;
+}
+
+.sidebar-link:hover {
+  background: #7C9885;
+  color: #fff;
+}
+
+.sidebar-icon {
+  font-size: 1.3rem;
+  color: #7C9885;
+  transition: color 0.2s;
+}
+
+.sidebar-link.active .sidebar-icon,
+.sidebar-link:hover .sidebar-icon {
+  color: #fff;
+}
+
+.sidebar-footer {
+  padding: 1.2rem 1rem;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  background: #B5B682;
+  border-top: 1.5px solid #7C9885;
+}
+
+.sidebar-user {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  cursor: pointer;
-  position: relative;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  transition: background 0.2s;
+  margin-bottom: 1rem;
 }
-.user-dropdown:hover {
-  background: #f1f5f9;
-}
+
 .user-avatar {
-  width: 2.2rem;
-  height: 2.2rem;
-  background: #2563eb;
+  background: #7C9885;
   color: #fff;
   border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 1.1rem;
 }
-.user-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
+
 .user-name {
+  color: #23272f;
   font-weight: 600;
-  font-size: 0.97rem;
-  color: #1e293b;
-}
-.user-role {
-  font-size: 0.85rem;
-  color: #64748b;
-}
-.dropdown-arrow {
-  font-size: 0.8rem;
-  color: #64748b;
-}
-.user-menu {
-  position: absolute;
-  top: 120%;
-  right: 0;
-  min-width: 180px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  padding: 0.5rem 0;
-  z-index: 3000;
-  display: flex;
-  flex-direction: column;
-  animation: fadeIn 0.2s;
-}
-.user-menu-item {
-  padding: 0.7rem 1.2rem;
-  color: #1e293b;
-  text-decoration: none;
-  font-size: 0.97rem;
-  border: none;
-  background: none;
-  text-align: left;
-  transition: background 0.2s;
-  cursor: pointer;
-}
-.user-menu-item:hover {
-  background: #f1f5f9;
-}
-.user-menu-divider {
-  height: 1px;
-  background: #e5e7eb;
-  margin: 0.3rem 0;
-}
-.user-menu-item.logout {
-  color: #ef4444;
-}
-.user-menu-item.logout:hover {
-  background: #fef2f2;
+  font-size: 1rem;
 }
 
-.navbar-hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  background: none;
+.logout-btn {
+  width: 100%;
+  background: #7C9885;
+  color: #fff;
   border: none;
+  border-radius: 0.7rem;
+  padding: 0.7rem 0;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  margin-left: 1rem;
-}
-.hamburger-bar {
-  width: 28px;
-  height: 3px;
-  background: #64748b;
-  border-radius: 2px;
-  transition: all 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 
-/* Mobile Styles */
+.logout-btn:hover {
+  background: #23272f;
+  color: #fff;
+}
+
 @media (max-width: 900px) {
-  .navbar-links {
-    gap: 0.5rem;
-  }
-  .navbar-container {
-    padding: 0 0.5rem;
-  }
-}
-@media (max-width: 768px) {
-  .navbar-links,
-  .navbar-user {
-    display: none;
-  }
-  .navbar-hamburger {
-    display: flex;
-  }
-  .mobile-menu {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: #fff;
-    border-top: 1px solid #e5e7eb;
-    z-index: 4000;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    animation: fadeIn 0.2s;
-  }
-  .mobile-menu-item {
-    padding: 1.1rem 1.5rem;
-    color: #1e293b;
-    text-decoration: none;
-    font-size: 1.05rem;
-    border: none;
-    background: none;
-    text-align: left;
-    transition: background 0.2s;
-    cursor: pointer;
-  }
-  .mobile-menu-item:hover {
-    background: #f1f5f9;
-  }
-  .mobile-menu-item.logout {
-    color: #ef4444;
-  }
-  .mobile-menu-item.logout:hover {
-    background: #fef2f2;
-  }
-  .mobile-menu-section {
-    margin: 0.5rem 0;
-  }
-  .mobile-menu-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #64748b;
-    margin: 0.5rem 1.5rem 0.2rem 1.5rem;
+  .lecturer-sidebar {
+    position: absolute;
+    height: 100%;
+    z-index: 2000;
   }
 }
 </style>

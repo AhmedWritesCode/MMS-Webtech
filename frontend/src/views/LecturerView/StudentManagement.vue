@@ -18,10 +18,12 @@
           placeholder="Password"
           :required="!editingId"
         />
-        <label class="checkbox">
-          <input type="checkbox" v-model="form.is_active" />
-          Active
-        </label>
+        <div class="checkbox-container">
+          <label class="checkbox">
+            <input type="checkbox" v-model="form.is_active" />
+            <span>Active</span>
+          </label>
+        </div>
         <div class="btn-group">
           <button type="submit" class="primary">
             {{ editingId ? 'Update' : 'Add' }}
@@ -36,31 +38,33 @@
     <!-- Student List -->
     <div class="student-list">
       <h3>📋 Student Records</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Full Name</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="student in students" :key="student.id">
-            <td>{{ student.username }}</td>
-            <td>{{ student.email }}</td>
-            <td>{{ student.full_name }}</td>
-            <td :class="{ active: student.is_active, inactive: !student.is_active }">
-              {{ student.is_active ? 'Active' : 'Inactive' }}
-            </td>
-            <td>
-              <button class="edit" @click="editStudent(student)">Edit</button>
-              <button class="delete" @click="deleteStudent(student.id)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Full Name</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="student in students" :key="student.id">
+              <td>{{ student.username }}</td>
+              <td>{{ student.email }}</td>
+              <td>{{ student.full_name }}</td>
+              <td :class="{ active: student.is_active, inactive: !student.is_active }">
+                {{ student.is_active ? 'Active' : 'Inactive' }}
+              </td>
+              <td class="action-buttons">
+                <button class="edit" @click="editStudent(student)">Edit</button>
+                <button class="delete" @click="deleteStudent(student.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -156,18 +160,29 @@ onMounted(fetchStudents)
 
 <style scoped>
 .lecturer-panel {
-  max-width: 850px;
+  max-width: 1100px;
   margin: 2rem auto;
-  padding: 2rem;
-  background: #fefefe;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
+  border: 2px solid #7C9885;
 }
 
 h2,
 h3 {
   text-align: center;
-  color: #3c3c3c;
+  color: #7C9885;
+  margin-bottom: 1.5rem;
+}
+
+.form-container {
+  margin-bottom: 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(124, 152, 133, 0.1);
+  border: 1px solid #B5B682;
 }
 
 form {
@@ -175,83 +190,164 @@ form {
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-  background: #f3f7fb;
-  border-radius: 8px;
+  background: rgba(181, 182, 130, 0.1);
+  border-radius: 0.8rem;
 }
 
 input {
-  padding: 0.6rem;
+  padding: 0.8rem;
   font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  border: 1px solid #B5B682;
+  background-color: #fff;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #7C9885;
+  box-shadow: 0 0 0 2px rgba(124, 152, 133, 0.2);
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
 }
 
 .checkbox {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox input {
+  cursor: pointer;
 }
 
 .btn-group {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
 }
 
 button {
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1.2rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 0.7rem;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
+  transition: all 0.2s;
 }
 
 .primary {
-  background-color: #007bff;
+  background-color: #7C9885;
   color: white;
+}
+
+.primary:hover {
+  background-color: #6a8573;
 }
 
 .cancel {
-  background-color: #6c757d;
-  color: white;
+  background-color: #B5B682;
+  color: #23272f;
 }
 
-.edit {
-  background-color: #ffc107;
-  color: black;
+.cancel:hover {
+  background-color: #a3a473;
 }
 
-.delete {
-  background-color: #dc3545;
-  color: white;
+.student-list {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(124, 152, 133, 0.1);
+  border: 1px solid #B5B682;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 0.5rem;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+  background: #fff;
 }
 
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 0.75rem;
+th {
+  background-color: #7C9885;
+  color: white;
+  font-weight: 600;
+  padding: 1rem;
   text-align: left;
 }
 
+th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+
+th:last-child {
+  border-top-right-radius: 0.5rem;
+}
+
+td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #B5B682;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background-color: rgba(181, 182, 130, 0.1);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit {
+  background-color: #B5B682;
+  color: #23272f;
+}
+
+.edit:hover {
+  background-color: #a3a473;
+}
+
+.delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.delete:hover {
+  background-color: #c0392b;
+}
+
 .active {
-  color: green;
+  color: #7C9885;
   font-weight: bold;
 }
 
 .inactive {
-  color: red;
+  color: #e74c3c;
   font-weight: bold;
 }
 
 .success-message {
   text-align: center;
-  color: #28a745;
+  background-color: rgba(124, 152, 133, 0.2);
+  color: #7C9885;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: 1px solid #7C9885;
 }
 </style>

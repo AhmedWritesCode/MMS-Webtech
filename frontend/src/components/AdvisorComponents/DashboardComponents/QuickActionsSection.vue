@@ -2,21 +2,7 @@
   <div class="quick-actions-section">
     <h2>Quick Actions</h2>
     <div class="actions-grid">
-      <button class="action-card" @click="generateProgressReports">
-        <div class="action-icon">📊</div>
-        <div class="action-content">
-          <h3>Generate Progress Reports</h3>
-          <p>Create comprehensive reports for all advisees</p>
-        </div>
-      </button>
-
-      <button class="action-card" @click="scheduleGroupMeeting">
-        <div class="action-icon">👥</div>
-        <div class="action-content">
-          <h3>Schedule Group Meeting</h3>
-          <p>Organize meetings with multiple students</p>
-        </div>
-      </button>
+  
 
       <button class="action-card" @click="exportStudentData">
         <div class="action-icon">📤</div>
@@ -42,13 +28,6 @@
         </div>
       </button>
 
-      <button class="action-card" @click="accessResources">
-        <div class="action-icon">📚</div>
-        <div class="action-content">
-          <h3>Academic Resources</h3>
-          <p>Counseling materials and guides</p>
-        </div>
-      </button>
     </div>
   </div>
 </template>
@@ -95,13 +74,19 @@ export default {
 <style scoped>
 .quick-actions-section {
   margin-bottom: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .quick-actions-section h2 {
   margin: 0 0 20px 0;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #4f46e5;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .actions-grid {
@@ -112,21 +97,22 @@ export default {
 
 .action-card {
   background: white;
-  border: 2px solid #e2e8f0;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 20px;
   display: flex;
   align-items: center;
   gap: 16px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s;
   text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .action-card:hover {
-  border-color: #3b82f6;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+  border-color: #4f46e5;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgba(79, 70, 229, 0.15);
 }
 
 .action-icon {
@@ -136,14 +122,25 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f1f5f9;
+  background: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
   border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.action-card:hover .action-icon {
+  transform: scale(1.1);
 }
 
 .action-content h3 {
   margin: 0 0 4px 0;
   font-weight: 600;
   color: #1e293b;
+  transition: color 0.3s;
+}
+
+.action-card:hover .action-content h3 {
+  color: #4f46e5;
 }
 
 .action-content p {

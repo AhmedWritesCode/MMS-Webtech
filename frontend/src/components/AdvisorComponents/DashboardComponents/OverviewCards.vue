@@ -67,44 +67,6 @@
         </button>
       </div>
     </div>
-
-    <div class="overview-card upcoming-meetings">
-      <div class="card-header">
-        <h3>Upcoming Meetings</h3>
-        <div class="meetings-icon">📅</div>
-      </div>
-      <div class="card-content">
-        <div v-if="upcomingMeetings.length > 0" class="meetings-list">
-          <div
-            v-for="meeting in upcomingMeetings.slice(0, 3)"
-            :key="meeting.id"
-            class="meeting-item"
-          >
-            <div class="meeting-time">
-              <span class="meeting-date">{{
-                formatMeetingDate(meeting.dateTime)
-              }}</span>
-              <span class="meeting-hour">{{
-                formatMeetingTime(meeting.dateTime)
-              }}</span>
-            </div>
-            <div class="meeting-details">
-              <p class="student-name">{{ meeting.studentName }}</p>
-              <p class="meeting-purpose">{{ meeting.purpose }}</p>
-            </div>
-            <button class="meeting-action-btn" @click="viewMeeting(meeting.id)">
-              View
-            </button>
-          </div>
-        </div>
-        <div v-else class="no-meetings">
-          <p>No upcoming meetings scheduled</p>
-          <button class="schedule-meeting-btn" @click="scheduleMeeting">
-            Schedule Meeting
-          </button>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -186,14 +148,16 @@ export default {
 
 .overview-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 1.5rem;
   padding: 24px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 24px 0 rgba(124, 152, 133, 0.18);
+  border: 1px solid #B5B682;
   transition: transform 0.2s;
 }
 
 .overview-card:hover {
   transform: translateY(-2px);
+  border-color: #7C9885;
 }
 
 .card-header {
@@ -207,7 +171,7 @@ export default {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #7C9885;
 }
 
 .performance-icon,
@@ -241,22 +205,22 @@ export default {
 }
 
 .stat-circle.excellent {
-  background: linear-gradient(135deg, #059669, #047857);
+  background: #7C9885;
   color: white;
 }
 
 .stat-circle.good {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: white;
+  background: #B5B682;
+  color: #23272f;
 }
 
 .stat-circle.average {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: #f59e0b;
   color: white;
 }
 
 .stat-circle.at-risk {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: #e74c3c;
   color: white;
 }
 
@@ -290,8 +254,9 @@ export default {
   align-items: center;
   gap: 12px;
   padding: 12px;
-  background: #f8fafc;
+  background: rgba(181, 182, 130, 0.1);
   border-radius: 8px;
+  border: 1px solid #B5B682;
 }
 
 .activity-indicator {
@@ -335,9 +300,9 @@ export default {
 .view-all-activity-btn {
   background: #f1f5f9;
   color: #475569;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #B5B682;
   padding: 8px 16px;
-  border-radius: 6px;
+  border-radius: 0.7rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
@@ -345,7 +310,8 @@ export default {
 }
 
 .view-all-activity-btn:hover {
-  background: #e2e8f0;
+  background: #B5B682;
+  color: #23272f;
 }
 
 /* Upcoming Meetings */
@@ -360,8 +326,9 @@ export default {
   align-items: center;
   gap: 16px;
   padding: 16px;
-  background: #f8fafc;
+  background: rgba(181, 182, 130, 0.1);
   border-radius: 8px;
+  border: 1px solid #B5B682;
 }
 
 .meeting-time {
@@ -399,18 +366,19 @@ export default {
 }
 
 .meeting-action-btn {
-  background: #3b82f6;
+  background: #7C9885;
   color: white;
   border: none;
   padding: 6px 12px;
-  border-radius: 6px;
+  border-radius: 0.7rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .meeting-action-btn:hover {
-  background: #2563eb;
+  background: #B5B682;
+  color: #23272f;
 }
 
 .no-meetings {
@@ -424,18 +392,19 @@ export default {
 }
 
 .schedule-meeting-btn {
-  background: #059669;
+  background: #7C9885;
   color: white;
   border: none;
   padding: 8px 16px;
-  border-radius: 6px;
+  border-radius: 0.7rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .schedule-meeting-btn:hover {
-  background: #047857;
+  background: #B5B682;
+  color: #23272f;
 }
 
 @media (max-width: 1200px) {
