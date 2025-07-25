@@ -2,7 +2,7 @@
 <template>
   <aside :class="['admin-sidebar', { collapsed: isCollapsed }]">
     <div class="sidebar-header">
-      <div class="brand-logo">🛡️</div>
+      <div class="brand-logo"></div>
       <span v-if="!isCollapsed" class="brand-name">StudentMarks</span>
       <button class="collapse-btn" @click="toggleSidebar">
         <span v-if="isCollapsed">▶</span>
@@ -11,33 +11,26 @@
     </div>
     <nav class="sidebar-nav">
       <router-link to="/admin/dashboard" class="sidebar-link" :class="{ active: $route.path === '/admin/dashboard' }">
-        <span class="sidebar-icon">🏠</span>
+        <span class="sidebar-icon"></span>
         <span v-if="!isCollapsed" class="sidebar-text">Dashboard</span>
       </router-link>
       <router-link to="/admin/users" class="sidebar-link" :class="{ active: $route.path.startsWith('/admin/users') }">
-        <span class="sidebar-icon">👥</span>
+        <span class="sidebar-icon"></span>
         <span v-if="!isCollapsed" class="sidebar-text">User Management</span>
       </router-link>
       <router-link to="/admin/courses" class="sidebar-link" :class="{ active: $route.path.startsWith('/admin/courses') }">
-        <span class="sidebar-icon">📚</span>
+        <span class="sidebar-icon"></span>
         <span v-if="!isCollapsed" class="sidebar-text">Course Management</span>
       </router-link>
       <router-link to="/admin/assign-lecturers" class="sidebar-link" :class="{ active: $route.path.startsWith('/admin/assign-lecturers') }">
-        <span class="sidebar-icon">👨‍🏫</span>
+        <span class="sidebar-icon"></span>
         <span v-if="!isCollapsed" class="sidebar-text">Assign Lecturers</span>
       </router-link>
-      <router-link to="/admin/remark-requests" class="sidebar-link" :class="{ active: $route.path.startsWith('/admin/remark-requests') }">
-        <span class="sidebar-icon">📝</span>
-        <span v-if="!isCollapsed" class="sidebar-text">Remark Requests</span>
-      </router-link>
       <router-link to="/admin/system-logs" class="sidebar-link" :class="{ active: $route.path.startsWith('/admin/system-logs') }">
-        <span class="sidebar-icon">🗂️</span>
+        <span class="sidebar-icon"></span>
         <span v-if="!isCollapsed" class="sidebar-text">System Logs</span>
       </router-link>
-      <router-link to="/admin/notifications" class="sidebar-link" :class="{ active: $route.path.startsWith('/admin/notifications') }">
-        <span class="sidebar-icon">🔔</span>
-        <span v-if="!isCollapsed" class="sidebar-text">Notifications</span>
-      </router-link>
+
     </nav>
     <div class="sidebar-footer" v-if="!isCollapsed">
       <div class="sidebar-user">

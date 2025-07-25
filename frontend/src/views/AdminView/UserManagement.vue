@@ -1,6 +1,6 @@
 <template>
   <div class="user-management">
-    <h2>👥 Manage User Accounts</h2>
+    <h2> Manage User Accounts</h2>
 
     <!-- Alert Message -->
     <div v-if="message" :class="['alert', messageType]">{{ message }}</div>
@@ -65,9 +65,9 @@
           </div>
         </div>
         <div class="user-actions">
-          <button @click="editUser(user)" class="btn small edit">✏</button>
+          <button @click="editUser(user)" class="btn small edit">Edit</button>
           <button @click="confirmDelete(user)" class="btn small delete">
-            🗑
+            Delete
           </button>
         </div>
       </li>

@@ -1,11 +1,10 @@
 <template>
   <div class="admin-dashboard">
-    <h2>🎓 Admin Dashboard</h2>
+    <h2> Admin Dashboard</h2>
 
     <!-- Overview Cards -->
     <div class="overview-cards">
       <div class="card">
-        <div class="card-icon">👥</div>
         <div class="card-content">
           <h3>Total Users</h3>
           <div class="card-value">{{ stats.totalUsers }}</div>
@@ -17,7 +16,6 @@
       </div>
 
       <div class="card">
-        <div class="card-icon">📚</div>
         <div class="card-content">
           <h3>Active Courses</h3>
           <div class="card-value">{{ stats.activeCourses }}</div>
@@ -28,7 +26,6 @@
       </div>
 
       <div class="card">
-        <div class="card-icon">📊</div>
         <div class="card-content">
           <h3>System Health</h3>
           <div class="card-value">{{ systemHealth.status }}</div>
