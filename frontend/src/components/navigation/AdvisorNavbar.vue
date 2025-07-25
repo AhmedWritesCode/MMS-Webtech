@@ -10,30 +10,18 @@
     </div>
     <nav class="sidebar-nav">
       <router-link to="/advisor/dashboard" class="sidebar-link" :class="{ active: $route.path === '/advisor/dashboard' }">
-        <span class="sidebar-icon">🏠</span>
+        <span class="sidebar-icon"></span>
         <span v-if="!isCollapsed" class="sidebar-text">Dashboard</span>
       </router-link>
       <router-link to="/advisor/advisees" class="sidebar-link" :class="{ active: $route.path.startsWith('/advisor/advisee') }">
-        <span class="sidebar-icon">👥</span>
+        <span class="sidebar-icon"></span>
         <span v-if="!isCollapsed" class="sidebar-text">My Advisees</span>
         <span v-if="!isCollapsed && atRiskCount > 0" class="risk-badge">{{ atRiskCount }}</span>
       </router-link>
-      <router-link to="/advisor/analytics" class="sidebar-link" :class="{ active: $route.path === '/advisor/analytics' }">
-        <span class="sidebar-icon">📊</span>
-        <span v-if="!isCollapsed" class="sidebar-text">Analytics</span>
-      </router-link>
-      <router-link to="/advisor/reports" class="sidebar-link" :class="{ active: $route.path.startsWith('/advisor/reports') }">
-        <span class="sidebar-icon">📈</span>
-        <span v-if="!isCollapsed" class="sidebar-text">Reports</span>
-      </router-link>
-      <router-link to="/advisor/schedule-meeting" class="sidebar-link" :class="{ active: $route.path === '/advisor/schedule-meeting' }">
-        <span class="sidebar-icon">📅</span>
-        <span v-if="!isCollapsed" class="sidebar-text">Schedule Meeting</span>
-      </router-link>
-      <router-link to="/advisor/profile" class="sidebar-link" :class="{ active: $route.path === '/advisor/profile' }">
-        <span class="sidebar-icon">👤</span>
-        <span v-if="!isCollapsed" class="sidebar-text">Profile</span>
-      </router-link>
+      
+      
+      
+      
     </nav>
     <div class="sidebar-footer" v-if="!isCollapsed">
       <div class="sidebar-user">

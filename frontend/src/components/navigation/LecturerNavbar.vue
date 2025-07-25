@@ -10,21 +10,15 @@
     </div>
     <nav class="sidebar-nav">
       <router-link to="/lecturer/dashboard" class="sidebar-link" :class="{ active: $route.path === '/lecturer/dashboard' }">
-        <span class="sidebar-icon">🏠</span>
+        <span class="sidebar-icon"></span>
         <span v-if="!isCollapsed" class="sidebar-text">Dashboard</span>
       </router-link>
       <router-link to="/lecturer/student-management" class="sidebar-link" :class="{ active: $route.path === '/lecturer/student-management' }">
-        <span class="sidebar-icon">👥</span>
+        <span class="sidebar-icon"></span>
         <span v-if="!isCollapsed" class="sidebar-text">Students</span>
       </router-link>
-      <router-link to="/lecturer/analytics" class="sidebar-link" :class="{ active: $route.path === '/lecturer/analytics' }">
-        <span class="sidebar-icon">📊</span>
-        <span v-if="!isCollapsed" class="sidebar-text">Analytics</span>
-      </router-link>
-      <router-link to="/lecturer/profile" class="sidebar-link" :class="{ active: $route.path === '/lecturer/profile' }">
-        <span class="sidebar-icon">👤</span>
-        <span v-if="!isCollapsed" class="sidebar-text">Profile</span>
-      </router-link>
+      
+  
     </nav>
     <div class="sidebar-footer" v-if="!isCollapsed">
       <div class="sidebar-user">

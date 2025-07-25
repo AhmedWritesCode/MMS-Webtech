@@ -1,8 +1,8 @@
 <template>
   <div class="lecturer-panel">
-    <h2>🎓 Student Management Panel</h2>
+    <h2> Student Management Panel</h2>
 
-    <!-- ✅ Success Message -->
+ 
     <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
 
     <!-- Add/Edit Student Form -->

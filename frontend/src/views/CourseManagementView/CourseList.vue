@@ -1,6 +1,6 @@
 <template>
   <div class="course-list">
-    <h2>📘 Manage Courses</h2>
+    <h2> Manage Courses</h2>
 
     <!-- Alert Message -->
     <div v-if="message" :class="['alert', messageType]">{{ message }}</div>

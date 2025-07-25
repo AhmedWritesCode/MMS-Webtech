@@ -26,6 +26,7 @@
         <span class="sidebar-icon"></span>
         <span v-if="!isCollapsed" class="sidebar-text">Assign Lecturers</span>
       </router-link>
+
       <router-link to="/admin/system-logs" class="sidebar-link" :class="{ active: $route.path.startsWith('/admin/system-logs') }">
         <span class="sidebar-icon"></span>
         <span v-if="!isCollapsed" class="sidebar-text">System Logs</span>

@@ -21,21 +21,21 @@
     <!-- Overview Stats -->
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-icon">📚</div>
+        <div class="stat-icon"></div>
         <div class="stat-content">
           <h3>{{ overview.total_courses }}</h3>
           <p>Active Courses</p>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">👥</div>
+        <div class="stat-icon"></div>
         <div class="stat-content">
           <h3>{{ overview.total_students }}</h3>
           <p>Total Students</p>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">📝</div>
+        <div class="stat-icon"></div>
         <div class="stat-content">
           <h3>{{ overview.total_components }}</h3>
           <p>Assessment Components</p>

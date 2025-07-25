@@ -1,6 +1,6 @@
 <template>
   <div class="assign-lecturers">
-    <h2>📘 Assign Lecturers to Courses</h2>
+    <h2> Assign Lecturers to Courses</h2>
 
     <div v-if="message" :class="['alert', messageType]">{{ message }}</div>
 

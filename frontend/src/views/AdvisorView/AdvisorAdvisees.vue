@@ -55,7 +55,6 @@
 
     <!-- Empty State -->
     <div v-if="!loading && advisees.length === 0" class="empty-state">
-      <div class="empty-icon">👥</div>
       <h3>No Advisees Assigned</h3>
       <p>You don't have any students assigned to you yet.</p>
       <p>Contact your department administrator to get assigned advisees.</p>
@@ -249,18 +248,20 @@ export default {
   max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
-  background: #f8fafc;
+  background: #f3f5e6;
   min-height: 100vh;
   position: relative;
 }
 
 /* Page Header */
 .page-header {
-  background: white;
+  background: linear-gradient(120deg, #7C9885 0%, #B5B682 100%);
   border-radius: 16px;
   padding: 30px;
   margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 24px rgba(124, 152, 133, 0.15);
+  border: 2px solid #7C9885;
+  color: white;
 }
 
 .header-content {
@@ -271,15 +272,18 @@ export default {
 
 .header-info h1 {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 800;
   margin: 0 0 8px 0;
-  color: #1e293b;
+  color: white;
+  text-shadow: 0 2px 8px rgba(181, 182, 130, 0.3);
+  letter-spacing: -0.5px;
 }
 
 .header-subtitle {
   font-size: 1.1rem;
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
+  font-weight: 500;
 }
 
 .header-stats {
@@ -291,41 +295,51 @@ export default {
   text-align: center;
   padding: 16px 24px;
   border-radius: 12px;
-  background: #f8fafc;
-  border: 2px solid #e2e8f0;
-  min-width: 100px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  min-width: 120px;
+  backdrop-filter: blur(5px);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .stat-card.at-risk {
-  background: #fef2f2;
-  border-color: #fecaca;
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
 }
 
 .stat-card.excellent {
-  background: #f0fdf4;
-  border-color: #bbf7d0;
+  background: rgba(81, 255, 58, 0.25);
+  border-color: rgba(97, 255, 57, 0.4);
 }
 
 .stat-number {
   display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
   margin-bottom: 4px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .stat-card.at-risk .stat-number {
-  color: #dc2626;
+  color: #fee2e2;
 }
 
 .stat-card.excellent .stat-number {
-  color: #059669;
+  color: #f3f5e6;
 }
 
 .stat-label {
   font-size: 0.9rem;
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* Loading Overlay */
@@ -335,20 +349,32 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(243, 245, 230, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  backdrop-filter: blur(5px);
 }
 
 .loading-spinner {
-  background: #4f46e5;
+  background: #7C9885;
   color: white;
   padding: 20px 40px;
-  border-radius: 8px;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(124, 152, 133, 0.3);
+  border: 2px solid #B5B682;
+  animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: 0 8px 24px rgba(124, 152, 133, 0.3);
+  }
+  to {
+    box-shadow: 0 12px 36px rgba(124, 152, 133, 0.5);
+  }
 }
 
 /* Error Message */
@@ -356,28 +382,47 @@ export default {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: #fee;
-  border: 1px solid #fcc;
-  color: #c33;
-  padding: 15px;
-  border-radius: 8px;
-  max-width: 300px;
+  background: #fee2e2;
+  border: 2px solid #ef4444;
+  color: #b91c1c;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 350px;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.error-message p {
+  margin: 0 0 15px 0;
+  font-weight: 500;
 }
 
 .error-message button {
-  background: #c33;
+  background: #ef4444;
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  margin-top: 10px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
 }
 
 .error-message button:hover {
-  background: #b22;
+  background: #dc2626;
 }
 
 /* Empty State */
@@ -386,23 +431,32 @@ export default {
   padding: 60px 20px;
   background: white;
   border-radius: 16px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(124, 152, 133, 0.1);
+  border: 2px solid #7C9885;
 }
 
 .empty-icon {
-  font-size: 4rem;
+  font-size: 5rem;
   margin-bottom: 20px;
+  color: #7C9885;
+  background: #f3f5e6;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 3px solid #B5B682;
 }
 
 .empty-state h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #7C9885;
   margin: 0 0 12px 0;
 }
 
 .empty-state p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #64748b;
   margin: 0 0 8px 0;
   line-height: 1.5;
@@ -412,7 +466,7 @@ export default {
 @media (max-width: 1200px) {
   .header-content {
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
     text-align: center;
   }
 
@@ -423,30 +477,33 @@ export default {
 
 @media (max-width: 768px) {
   .advisor-advisees {
-    padding: 10px;
+    padding: 15px;
   }
 
   .page-header {
-    padding: 20px;
+    padding: 25px 20px;
   }
 
   .header-info h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .header-stats {
-    flex-direction: column;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
   }
 
   .stat-card {
-    min-width: auto;
+    min-width: 110px;
+    flex: 1;
+    padding: 15px;
   }
 
   .error-message {
-    top: 10px;
-    right: 10px;
-    left: 10px;
+    top: 15px;
+    right: 15px;
+    left: 15px;
     max-width: none;
   }
 }
@@ -458,6 +515,14 @@ export default {
 
   .header-subtitle {
     font-size: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
   }
 }
 </style>
