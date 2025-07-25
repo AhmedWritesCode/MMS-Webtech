@@ -199,33 +199,34 @@ export default {
 h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: #333;
+  color: #7C9885;
 }
 
 .alert {
   padding: 1rem;
   margin-bottom: 1rem;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: 600;
   text-align: center;
 }
 .alert.success {
-  background: #e6fffa;
-  color: #2c7a7b;
-  border: 1px solid #b2f5ea;
+  background: #e6e8d8;
+  color: #7C9885;
+  border: 1px solid #B5B682;
 }
 .alert.error {
   background: #fff5f5;
   color: #c53030;
-  border: 1px solid #feb2b2;
+  border: 1px solid #B5B682;
 }
 
 .form-card {
-  background: #fff;
+  background: #f8f8f4;
   padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px 0 rgba(124, 152, 133, 0.15), 0 2px 8px 0 rgba(0,0,0,0.12);
   margin-bottom: 2rem;
+  border: 1.5px solid #7C9885;
 }
 .form-row {
   display: flex;
@@ -239,13 +240,22 @@ h2 {
 .form-group label {
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: #7C9885;
 }
 input,
 select {
   padding: 0.6rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 2px solid #B5B682;
+  border-radius: 8px;
   font-size: 1rem;
+  background: #e6e8d8;
+  color: #7C9885;
+}
+input:focus,
+select:focus {
+  border-color: #7C9885;
+  box-shadow: 0 0 0 2px rgba(124, 152, 133, 0.15);
+  outline: none;
 }
 .form-actions {
   margin-top: 1rem;
@@ -253,36 +263,41 @@ select {
 .btn {
   padding: 0.6rem 1.2rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   margin-right: 0.5rem;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(124, 152, 133, 0.15);
 }
 .primary {
-  background: #4f46e5;
+  background: linear-gradient(90deg, #7C9885 60%, #B5B682 100%);
   color: #fff;
 }
 .primary:hover {
-  background: #4338ca;
+  background: linear-gradient(90deg, #B5B682 60%, #7C9885 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 16px rgba(124, 152, 133, 0.33);
 }
 .secondary {
-  background: #e5e7eb;
-  color: #374151;
+  background: #e6e8d8;
+  color: #7C9885;
 }
 .secondary:hover {
   background: #d1d5db;
+  transform: translateY(-2px);
 }
 .small {
   padding: 0.4rem 0.7rem;
   font-size: 0.9rem;
 }
 .edit {
-  background: #facc15;
-  color: #1f2937;
+  background: #B5B682;
+  color: #fff;
 }
 .edit:hover {
-  background: #eab308;
+  background: #a3a473;
+  transform: translateY(-2px);
 }
 .delete {
   background: #f87171;
@@ -290,6 +305,7 @@ select {
 }
 .delete:hover {
   background: #ef4444;
+  transform: translateY(-2px);
 }
 
 .user-list {
@@ -300,11 +316,12 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f9fafb;
+  background: #f8f8f4;
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: 20px;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 40px 0 rgba(124, 152, 133, 0.15), 0 2px 8px 0 rgba(0,0,0,0.12);
+  border: 1.5px solid #7C9885;
 }
 .user-details {
   display: flex;
@@ -313,26 +330,27 @@ select {
 .user-name {
   font-weight: bold;
   font-size: 1.1rem;
+  color: #7C9885;
 }
 .user-email {
   font-size: 0.95rem;
-  color: #6b7280;
+  color: #B5B682;
 }
 .user-tags {
   margin-top: 0.5rem;
 }
 .tag {
   display: inline-block;
-  background: #e5e7eb;
-  color: #374151;
+  background: #e6e8d8;
+  color: #7C9885;
   padding: 0.2rem 0.6rem;
   border-radius: 5px;
   font-size: 0.8rem;
   margin-right: 0.5rem;
 }
 .tag.role {
-  background: #c7d2fe;
-  color: #3730a3;
+  background: #e6e8d8;
+  color: #7C9885;
 }
 .tag.active {
   background: #d1fae5;
@@ -355,17 +373,19 @@ select {
   align-items: center;
 }
 .modal {
-  background: #fff;
+  background: #f8f8f4;
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: 20px;
   width: 100%;
   max-width: 400px;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px 0 rgba(124, 152, 133, 0.15), 0 2px 8px 0 rgba(0,0,0,0.12);
+  border: 1.5px solid #7C9885;
 }
 .modal h3 {
   margin-bottom: 1rem;
   font-size: 1.2rem;
+  color: #7C9885;
 }
 .modal-actions {
   margin-top: 1.5rem;

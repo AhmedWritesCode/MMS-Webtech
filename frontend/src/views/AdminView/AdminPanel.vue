@@ -184,13 +184,13 @@ export default {
 h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #2d3748;
+  color: #7C9885;
 }
 
 h3 {
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  color: #4a5568;
+  color: #7C9885;
 }
 
 .overview-cards {
@@ -201,20 +201,22 @@ h3 {
 }
 
 .card {
-  background: white;
-  border-radius: 10px;
+  background: #f8f8f4;
+  border-radius: 20px;
   padding: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px 0 rgba(124, 152, 133, 0.15), 0 2px 8px 0 rgba(0,0,0,0.12);
   display: flex;
   align-items: center;
   gap: 1rem;
+  border: 1.5px solid #7C9885;
 }
 
 .card-icon {
   font-size: 2rem;
-  background: #ebf8ff;
+  background: #e6e8d8;
   padding: 1rem;
   border-radius: 10px;
+  color: #7C9885;
 }
 
 .card-content {
@@ -224,23 +226,24 @@ h3 {
 .card-value {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #2b6cb0;
+  color: #7C9885;
   margin: 0.5rem 0;
 }
 
 .card-breakdown {
   font-size: 0.875rem;
-  color: #718096;
+  color: #B5B682;
   display: flex;
   gap: 1rem;
 }
 
 .quick-actions {
-  background: white;
-  border-radius: 10px;
+  background: #f8f8f4;
+  border-radius: 20px;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px 0 rgba(124, 152, 133, 0.15), 0 2px 8px 0 rgba(0,0,0,0.12);
+  border: 1.5px solid #7C9885;
 }
 
 .action-buttons {
@@ -254,24 +257,27 @@ h3 {
   align-items: center;
   gap: 0.5rem;
   padding: 1rem;
-  background: #f7fafc;
+  background: linear-gradient(90deg, #7C9885 60%, #B5B682 100%);
   border-radius: 8px;
   text-decoration: none;
-  color: #4a5568;
+  color: white;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(124, 152, 133, 0.15);
 }
 
 .action-btn:hover {
-  background: #edf2f7;
-  transform: translateY(-2px);
+  background: linear-gradient(90deg, #B5B682 60%, #7C9885 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 16px rgba(124, 152, 133, 0.33);
 }
 
 .recent-activity, .system-notifications {
-  background: white;
-  border-radius: 10px;
+  background: #f8f8f4;
+  border-radius: 20px;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px 0 rgba(124, 152, 133, 0.15), 0 2px 8px 0 rgba(0,0,0,0.12);
+  border: 1.5px solid #7C9885;
 }
 
 .activity-item {
@@ -279,14 +285,15 @@ h3 {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  border-bottom: 1px solid #edf2f7;
+  border-bottom: 1px solid #e6e8d8;
 }
 
 .activity-icon {
   font-size: 1.25rem;
   padding: 0.5rem;
   border-radius: 8px;
-  background: #f7fafc;
+  background: #e6e8d8;
+  color: #7C9885;
 }
 
 .activity-details {
@@ -295,7 +302,7 @@ h3 {
 
 .activity-time {
   font-size: 0.875rem;
-  color: #718096;
+  color: #B5B682;
 }
 
 .notification-item {
@@ -305,7 +312,7 @@ h3 {
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 0.5rem;
-  background: #f7fafc;
+  background: #e6e8d8;
 }
 
 .notification-item.high {
@@ -325,24 +332,25 @@ h3 {
 .notification-title {
   font-weight: 600;
   margin-bottom: 0.25rem;
+  color: #7C9885;
 }
 
 .notification-message {
   font-size: 0.875rem;
-  color: #718096;
+  color: #B5B682;
 }
 
 .dismiss-btn {
   padding: 0.25rem 0.5rem;
   border: none;
   background: none;
-  color: #a0aec0;
+  color: #7C9885;
   cursor: pointer;
   font-size: 1rem;
   transition: color 0.3s ease;
 }
 
 .dismiss-btn:hover {
-  color: #718096;
+  color: #B5B682;
 }
 </style>
